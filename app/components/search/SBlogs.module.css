@@ -1,0 +1,119 @@
+.listcon {
+    /* background-color: aqua; */
+    min-height: 110vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+.list {
+    /* background-color: #8a2be2; */
+    /* display: flex; */
+    flex-wrap: wrap;
+    padding-top: 0.2rem;
+    max-width: fit-content;
+    /* justify-content: center; */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+}
+
+.listItem {
+    background-color: rgb(255, 255, 255);
+    margin: 0.2rem;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: 15rem;
+    border-radius: 12px;
+    padding: 0.7rem 0.7rem 0.5rem 0.7rem;
+
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.26);
+    /* horizontal | vertical | blur | spread | color */
+    break-inside: avoid;
+}
+
+.listItem:hover {
+    transform: scale(1.02);
+}
+
+.listItem img {
+    border-radius: 0px;
+    width: 13.5rem;
+    height: 9rem;
+}
+
+.listItem span {
+    font-size: 0.8rem;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    /* background-color: #555; */
+    padding: 0.2rem 0 0 0;
+    color: #3b3b3b;
+}
+
+.sh {
+    width: fit-content;
+    margin-left: 5rem;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 0.5rem;
+    font-weight: 100;
+    font-size: 1.5rem;
+    color: #8b8b8b;
+}
+
+.noresult {
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 2rem;
+    font-weight: 100;
+    font-size: 1.9rem;
+    color: #727272;
+    text-align: center;
+    /* background-color: rebeccapurple; */
+    min-height: 100vh;
+}
+
+@media (min-width: 300px) and (max-width: 400px) {
+    .listItem img {
+        border-radius: 0px;
+        width: 19.5rem;
+        height: 13rem;
+        justify-self: center;
+        align-self: center;
+    }
+    .sh{
+        margin: 0.2rem 0 0.2rem 2.5rem;
+    }
+    .listItem {
+        background-color: rgb(255, 255, 255);
+        margin: 0.4rem;
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        width: 22rem;
+        padding-top: 1rem;
+    }
+    .list {
+    /* background-color: #8a2be2; */
+    /* display: flex; */
+    flex-wrap: wrap;
+    padding: 0.3rem 0.2rem 0 0.2rem;
+    max-width: fit-content;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1px;
+}
+.listItem span {
+    margin: 0.3rem;
+    font-size: 1rem;
+}
+}
+
+@media (min-width: 400px) and (max-width: 680px) {
+    .list {
+        grid-template-columns: repeat(2, 1fr);
+        /* background-color: #3b3b3b; */
+    }
+}

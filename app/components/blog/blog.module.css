@@ -1,0 +1,85 @@
+.main{
+    /* background-color: red; */
+    display: flex;
+}
+.buttondiv{
+    /* background-color: aqua; */
+    width: 40%;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 6rem;
+}
+.main button{
+    background: transparent;
+}
+.detaildiv{
+    /* background-color: rgb(0, 255, 34); */
+    width: 60%;
+    margin-left: 4rem;
+    display: flex;
+}
+.detaildiv span{
+    display: block;
+    color: rgb(74, 74, 74);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* text-shadow:
+    1px 1px 0 rgba(255, 255, 255, 0.8),
+    -1px -1px 0 rgba(0, 0, 0, 0.2);      */
+    margin-left: 1rem;
+    font-size: 0.9rem;
+
+}
+.tagscon{
+    /* background-color: red; */
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    justify-content: center;
+    margin: 0 2rem;
+    flex-wrap: wrap;
+}
+.tagscon div{
+    margin: 3px;
+    color: rgb(66, 66, 66);
+    /* color: rgb(27, 182, 81); */
+    /* font-weight: lighter; */
+    background-color: rgb(254, 254, 254);
+    margin: 0.2rem;
+    position: relative;
+    /* padding: 0.1rem 0.7rem 0.1rem 0.2rem; */
+    padding: 0.1rem 0.3rem;
+    border-radius: 5px;
+    border: 1px solid rgba(172, 172, 172, 0.562);
+    cursor: pointer;
+    text-align: center;
+    font-size: 1rem;
+    font-family: Arial, sans-serif;
+    font-weight: 100;
+    color: #545454;
+}
+.tagscon div:hover{
+    background-color: rgb(255, 149, 0);
+    color: white;
+}
+@media (min-width: 300px) and (max-width: 500px) {
+    .main{
+        flex-direction: column;
+        padding: 0.5rem 2rem 0 2rem;
+    }
+    .detaildiv{
+        width: 100%;
+        justify-content: space-between;
+        margin: 0;
+    }
+    .buttondiv{
+        width: 100%;
+        margin: 1rem 2rem 0 0;
+        padding-right: 1rem;
+
+    }
+    .tagscon{
+        margin: 0 0.3rem 1rem 0.3rem;
+    }
+
+}

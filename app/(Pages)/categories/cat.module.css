@@ -1,0 +1,25 @@
+.CategoriesTitle {
+  width: fit-content;
+  margin-left: 5rem;
+  font-weight: 600;
+  font-size: 1.6rem;
+  margin-top: 0.5rem;
+  color: rgb(53, 53, 53);
+}
+.slugDisplay {
+  width: fit-content;
+  margin-left: 5rem;
+  font-weight: 100;
+  font-size: 1.6rem;
+  margin-top: 0.5rem;
+}
+@media (min-width: 300px) and (max-width: 500px) {
+    .CategoriesTitle{
+        margin: 0;
+        width: 100%;
+        text-align: center;
+    }
+    .slugDisplay{
+        margin-left: 3rem;
+    }
+}

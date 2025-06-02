@@ -1,0 +1,6 @@
+<!-- public/thumb-outline.svg -->
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+     xmlns="http://www.w3.org/2000/svg">
+  <path d="M5 9V20H6C6.55228 20 7 19.5523 7 19V10C7 9.44772 6.55228 9 6 9H5ZM5 9V4C5 3.44772 5.44772 3 6 3H10C10.3506 3 10.6872 3.06015 11 3.17071C12.6872 3.56464 14 5.02944 14 7V9H17C18.6569 9 20 10.3431 20 12V15C20 16.3062 19.1652 17.4175 18 17.8293V18C18 19.6569 16.6569 21 15 21H9C7.34315 21 6 19.6569 6 18V17"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

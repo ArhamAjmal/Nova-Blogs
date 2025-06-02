@@ -1,0 +1,22 @@
+.noresult{
+    font-family:Arial, Helvetica, sans-serif;
+    margin-top: 2rem;
+    font-weight: 100;
+    font-size: 1.9rem;
+    color: #727272;
+    text-align: center;
+    /* background-color: rebeccapurple; */
+    min-height: 100vh;
+}
+.likeBlogs {
+  width: fit-content;
+  margin-left: 5rem;
+  font-weight: 100;
+  font-size: 1.6rem;
+  margin-top: 0.5rem;
+}
+     @media (min-width: 300px) and (max-width: 500px) {
+    .likeBlogs {
+        margin-left: 2.5rem;
+    }
+     }
