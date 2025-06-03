@@ -16,14 +16,13 @@ export default function Home() {
   const [small,setsmall] = useState(false)
     
  useEffect(() => {
-     if (typeof window !== 'undefined') {
 
  if (window.innerWidth < 720) {
   console.log("eleeeeeeeeeeee")
   setsmall(true)
   r.push('/home')
   
- }
+ 
 }
    
  }, [])
