@@ -13,6 +13,8 @@ import { useRouter } from "next/navigation";
 
 export default function Home() {
   const r=useRouter()
+  if (typeof window !== 'undefined') {
+    
  useEffect(() => {
    
  if (window.innerWidth < 720) {
@@ -24,6 +26,7 @@ export default function Home() {
  if (window.innerWidth < 720) {
   return(<></>)
   r.push('/home')
+}
 }
   return (
     <div>  
