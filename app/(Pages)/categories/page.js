@@ -11,7 +11,7 @@ import styles from './cat.module.css'
 import { catImageCloud } from '@/app/actions/catImageCloud';
 //server
 const page =async() => {
-    dbConnect();
+    await dbConnect();
     const categories = await BlogModel.distinct("category");//fetching all categories and caching them
     const categories2=JSON.parse(JSON.stringify(categories))
     //console.log(categories2)
