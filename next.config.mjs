@@ -2,6 +2,13 @@ import createMDX from '@next/mdx'
  
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Transpile MDXEditor to avoid runtime issues
+  transpilePackages: ['@mdxeditor/editor'],
+  // Enable modern JavaScript features
+  webpack: (config) => {
+    config.experiments = { ...config.experiments, topLevelAwait: true };
+    return config;
+  },
   // Configure `pageExtensions` to include markdown and MDX files
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
   // Optionally, add any other Next.js config below

@@ -1,7 +1,7 @@
 import fetchBlog from '@/app/actions/fetchBlog';
 import NotFoundPage from '@/app/components/action/NotFoundPage';
-import MdxEditor from '@/app/components/admin/MdxEditor'
-import Footer from '@/app/components/Footer/Footer'
+import MdxEditor from '@/app/components/admin/MdxEditor';
+import UiwEditor from '@/app/components/admin/UiwEditor';
 import { auth, currentUser } from "@clerk/nextjs/server";
 import React from 'react'
 
@@ -23,6 +23,7 @@ const page =async ({ params,searchParams }) => {
   return (
     <div style={{height:"fit-content"}}>
       <MdxEditor task={task} blogtoEdit={a.data}/>
+      
     </div>
   )
 }

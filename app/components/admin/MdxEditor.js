@@ -1,20 +1,25 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Editor } from "@toast-ui/editor";
-import "@toast-ui/editor/dist/toastui-editor.css";
 import uploadblog from "@/app/actions/uploadblog";
 import { useRouter } from "next/navigation";
 import editblog from "@/app/actions/editBlog";
 
+import dynamic from "next/dynamic";
+
+// Dynamically import the editor to prevent SSR issues
+const MDEditor = dynamic(() => import("@uiw/react-md-editor"), { ssr: false });
+
 export default function MdxEditor(props) {
   const r=useRouter()
-  const editorRef = useRef(null);
-  const editorInstance = useRef(null);
+  // const editorRef = useRef(null);
+  // const editorInstance = useRef(null);
   const task=props.task
   const blog=props.blogtoEdit
-  console.log(blog)
+  //console.log(blog)
   // Blog data state
+  const [tagComma, settagComma] = useState()
+  const [content, setContent] = useState(blog?.description||"## Hello, Next.js!");
   const [blogData, setBlogData] = useState({
     title:blog?.title ||"",
     category:blog?.category || "",
@@ -24,7 +29,7 @@ export default function MdxEditor(props) {
     coverImageUrl: blog?.coverImageUrl ||"",
     author:blog?.author ||"",
   });
-
+/*/toast code
   useEffect(() => {
      if (!editorRef.current || editorInstance.current) return;
 
@@ -59,14 +64,26 @@ export default function MdxEditor(props) {
       editorRef.current.innerHTML = ""; // Clear any leftover wrapper
     }
   };
-  }, []);
+  }, []);*/
  // Handle input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
 
     // Special handling for tags (comma separated string to array)
     if (name === "tags") {
+      console.log("Elelee",value.endsWith(" "))
+      if(value.trim().endsWith(",")||value.endsWith(" ")){
+        settagComma(true)
+        setBlogData((prev) => ({
+        ...prev,
+        tags: value,
+      }));
+        return
+      }
+      settagComma(false)
       const tagArray = value.split(",").map((tag) => tag.trim()).filter(Boolean);
+      console.log(value)
+      console.log(tagArray)
       setBlogData((prev) => ({
         ...prev,
         tags: tagArray,
@@ -78,13 +95,14 @@ export default function MdxEditor(props) {
       }));
     }
   };
+  
+  //toast code
   const handleedit =async () => {
-      if (editorInstance.current) {
-      const markdown = editorInstance.current.getMarkdown();
       const finalData = {
         ...blogData,
-        description: markdown,
+        description: content,
       };
+      console.log(finalData)
       const isAnyFieldEmpty = Object.values(finalData).some(value => value === '');
       if (isAnyFieldEmpty) {
       alert('Please fill out all the fields');
@@ -106,40 +124,32 @@ export default function MdxEditor(props) {
      }
 
     }
-  }
+  
     const handleupload =async () => {
-      if (editorInstance.current) {
-      const markdown = editorInstance.current.getMarkdown();
+      
       const finalData = {
         ...blogData,
-        description: markdown,
+        description: content,
       };
+      console.log(finalData)
       const isAnyFieldEmpty = Object.values(finalData).some(value => value === '');
       if (isAnyFieldEmpty) {
       alert('Please fill out all the fields');
       return; // prevent further action like form submissio
     }
-    //  console.log("Submitted Blog Data:", finalData);
-     //server action to upload blog
      const up=await uploadblog(finalData)
      console.log(up)
      if(up.success){
       alert("File Uploaded")
-      // console.log(up.data.slug)
       r.push(`/blog/${up.data.slug}`)
-      // const a=confirm("File uploaded")
-      // if(a)console.log("Yes")
-      //   else console.log("No")
      }else{
       alert(`Upload Failed:${up.data}`)
      }
-
-    }
   }
 
   return (
     <div style={{ padding: "2rem",overflowX: "hidden",width:"100%",height:"200vh"}}>
-      <button onClick={()=>r.push('/admin/create')}>Create Blog</button>
+     {(task=="edit")&& <button onClick={()=>r.push('/admin/create')}>Create Blog</button>}
       <div style={{textAlign:"center",fontSize:'1.5rem',fontWeight:"bold",color:"gray"}}>{task.charAt(0).toUpperCase() + task.slice(1)} Blog</div>
       <div style={{overflow:"hidden"}} >
          <input
@@ -186,24 +196,24 @@ export default function MdxEditor(props) {
         onChange={handleChange}
         style={inputStyle}
       />
-
       <input
         type="text"
         name="tags"
-        placeholder="Tags (comma separated: tag1, tag2)"
+        placeholder="Tags (comma separated: tag1,tag2,tag3)"
         onChange={handleChange}
         value={blogData.tags}
         style={inputStyle}
       />
+     {tagComma && <span style={{color:"red",fontSize:"10px",padding:"0",marginTop:"-1rem"}}>Do not end tags area with comma(,) or space[ ]</span>}
       </div>
-     
+      <MDEditor value={content} onChange={setContent} height={600}/>
       {/* Editor container */}
-      <div style={{overflowX: "hidden" }} ref={editorRef}></div>
+      {/* <div style={{overflowX: "hidden" }} ref={editorRef}></div> */}
 
       {/* Submit Button */}
       <div style={{ marginTop: "1rem",justifyContent:"center",alignContent:"center",display:"flex" }}>
      { (task=="create") && <button
-          onClick={handleupload}
+          onClick={()=>handleupload()}
           style={{
             padding: "0.6rem 1.2rem",
             backgroundColor: "#0070f3",
@@ -217,7 +227,7 @@ export default function MdxEditor(props) {
           Upload
         </button>
         }
-      {(task=="edit") && <button onClick={handleedit} style={{
+      {(task=="edit") && <button onClick={()=>handleedit()} style={{
             padding: "0.6rem 1.2rem",
             backgroundColor: "#0070f3",
             color: "#fff",

@@ -1,6 +1,5 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import "@toast-ui/editor/dist/toastui-editor.css";
 
 import {
   ClerkProvider,
