@@ -7,30 +7,22 @@ import Footer from '../../components/Footer/Footer';
 import dbConnect from '@/app/lib/connect';
 import BlogModel from '@/app/lib/model';
 import styles from './cat.module.css'
+export const dynamic = 'force-dynamic'; // This disables static generation
+
 
 import { catImageCloud } from '@/app/actions/catImageCloud';
 //server
 const page =async() => {
-    await dbConnect();
+    let categories2 = []; // <-- define outside
+  try {
+     await dbConnect();
     const categories = await BlogModel.distinct("category");//fetching all categories and caching them
-    const categories2=JSON.parse(JSON.stringify(categories))
-    //console.log(categories2)
-    
-    /*/now here we will fetch map then send directly
-      //1. All cat list
-          const map = {};
-      // const b = async () => {
-        // const map = {};
-        for (const cat of categories2) {
-
-          const url = await catImageCloud(cat);
-          
-          map[cat] = url;
-          // setImageMap(prev => ({ ...prev, [cat]: url }));
-        }*/
-        // console.log(map)
-     // }
-      // b()
+    categories2=JSON.parse(JSON.stringify(categories))
+  } catch (error) {
+    console.log(error)
+  }
+   
+  
   return (
     <div>
     <div className={styles.CategoriesTitle}>Categories</div>
