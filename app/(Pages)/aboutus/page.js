@@ -1,18 +1,17 @@
 import React from 'react'
 import styles from './about.module.css'
-import Footer from '@/app/components/Footer/Footer'
-const page = () => {
+const Page = () => {
   return (
     <div>
     <div className={styles.aboutcontainer}>
       <h1>About Us</h1>
       <p>
         Welcome to our blog! We are passionate about sharing knowledge, insights, and real-life experiences
-        on a wide range of topics—from technology and development to lifestyle and creativity.
+        on a wide range of topics from technology and development to lifestyle and creativity.
       </p>
       <p>
-        Our mission is to inform, inspire, and connect with readers by delivering high-quality and authentic
-        content. Whether you're here to learn something new, stay updated, or simply enjoy a good read,
+        Our mission is to inform, inspire, and connect with readers by delivering high quality and authentic
+        content. Whether you are here to learn something new, stay updated, or simply enjoy a good read,
         we have got something for everyone.
       </p>
       <p>
@@ -28,4 +27,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

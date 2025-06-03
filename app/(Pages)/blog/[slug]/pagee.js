@@ -113,7 +113,7 @@ const Blogpage = () => {
   )
 }
 
-export default Blogpage
+export default Blogpage;
 
 
  /*useEffect(() => {
