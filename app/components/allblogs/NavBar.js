@@ -16,11 +16,20 @@ import Suggestions from './Suggestions';
 
 const NavBar = () => {
   const [query, setQuery] = useState('');
-  const [suggestions, setsuggestions] = useState(JSON.parse(localStorage.getItem("queries")))
+  const [suggestions, setsuggestions] = useState()
   const [open, setOpen] = useState(false);//isi boolean ki base me hum alert ko visible or invisible kren ge
   const modalRef = useRef(null);
   const router = useRouter();
   const inputref = useRef()
+  useEffect(() => {
+    setsuggestions(JSON.parse(localStorage.getItem("queries")))
+  }, [])
+   useEffect(() => {
+    
+      localStorage.setItem("queries", JSON.stringify(suggestions));
+    
+  }, [suggestions])
+  
    const handleSearch = (e) => {//on click search
     setOpen(false)
     inputref.current?.blur()
@@ -31,16 +40,19 @@ const NavBar = () => {
         router.push(`/search?q=${encodeURIComponent(query.trim())}`);
     }
     //saving search to local storage
-    let searches = JSON.parse(localStorage.getItem("queries")) || [];
+    let searches = suggestions || [];
+
     searches = searches.filter(item => item !== query.trim());// Remove if already exists
       searches.unshift(query.trim()); // Add to beginning
      if (searches.length > 5) {// Keep only 5
        searches = searches.slice(0, 5);
      }
-     localStorage.setItem("queries", JSON.stringify(searches));
+    //  localStorage.setItem("queries", JSON.stringify(searches));
+    setsuggestions(searches)
      setsuggestions(searches)
     // console.log("GEt items:::",localStorage.getItem("queries"))
   };
+
   const handleInputChange = (e) => {//suggessions update
     const value = e.target.value;
     //const capitalized = value.charAt(0).toUpperCase() + value.slice(1);
@@ -56,6 +68,7 @@ const NavBar = () => {
       setSuggestions([]);
     }*/
   };
+
   const router2 = useRouter();
     const handleClickLogo = () => {
       router2.push('/');
