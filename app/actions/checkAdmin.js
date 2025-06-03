@@ -1,4 +1,4 @@
-import { auth, currentUser } from "@clerk/nextjs/server";
+/*import { auth, currentUser } from "@clerk/nextjs/server";
 import React from 'react'
 
 const checkAdmin =async () => {
@@ -20,3 +20,4 @@ const checkAdmin =async () => {
 }
 
 export default checkAdmin
+*/

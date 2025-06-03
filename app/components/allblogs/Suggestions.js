@@ -20,7 +20,7 @@ const Suggestions = (props) => {
   return (//mousedown for click->you are stopping the browser from changing focus during the mousedown phase.The input keeps its focus
     <div onMouseDown={(e) => e.preventDefault()} ref={props.modalref} className={styles.suggList}>
       {list.map((item,ind)=>(
-      <div onClick={()=>handleclick(item)} style={{margin:0,...(ind == list.length - 1 && { border: '0' })}}>{item}</div>
+      <div key={ind} onClick={()=>handleclick(item)} style={{margin:0,...(ind == list.length - 1 && { border: '0' })}}>{item}</div>
       ))}
    
     </div>

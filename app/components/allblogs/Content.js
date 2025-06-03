@@ -7,7 +7,7 @@ import CatList from '../categories/CatList';
 import { useRouter } from 'next/navigation';
 import Spinner from './Spinner';
 import Footer from '../Footer/Footer';
-const content = () => {//lazyloading+catch
+const Content = () => {//lazyloading+catch
   const scrollRefs = useRef({});
  const router = useRouter();
   // const handleClick = () => {
@@ -116,7 +116,7 @@ const content = () => {//lazyloading+catch
   )
 }
 
-export default content
+export default Content
 /**Allblogs logic
  * 1.All cetegories list(hard coded or fetch)
  * 2.bari bari sari list ki item ki query lgk blogs ki list fetch hok ae gi

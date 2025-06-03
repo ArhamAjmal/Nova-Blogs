@@ -1,4 +1,4 @@
-"use client"
+/*"use client"
 import { useUser } from '@clerk/nextjs';
 
 const checkAdminClient =async () => {
@@ -19,4 +19,4 @@ const checkAdminClient =async () => {
 
 }
 
-export default checkAdminClient
+export default checkAdminClient*/

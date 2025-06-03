@@ -16,7 +16,7 @@ import { FaPen, FaPencil } from 'react-icons/fa6';
 import { useRouter } from 'next/navigation';
 import NotFoundPage from '@/app/components/action/NotFoundPage';
 import { useUser } from '@clerk/nextjs';
-const page = () => {
+const Blogpage = () => {
   const {user, isLoaded} = useUser();//is loaded?
   const adminEmail1 = "arhamoajmal@gmail.com";
   const admin=(isLoaded && user?.primaryEmailAddress.emailAddress === adminEmail1)?true:false
@@ -113,7 +113,7 @@ const page = () => {
   )
 }
 
-export default page
+export default Blogpage
 
 
  /*useEffect(() => {
