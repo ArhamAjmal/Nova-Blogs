@@ -13,21 +13,22 @@ import { useRouter } from "next/navigation";
 
 export default function Home() {
   const r=useRouter()
-  if (typeof window !== 'undefined') {
     
  useEffect(() => {
-   
+     if (typeof window !== 'undefined') {
+
  if (window.innerWidth < 720) {
   console.log("eleeeeeeeeeeee")
   r.push('/home')
+   return(<></>)
  }
+}
    
- }, [window.innerWidth])
- if (window.innerWidth < 720) {
-  return(<></>)
-  r.push('/home')
-}
-}
+ }, [])
+//  if (window.innerWidth < 720) {
+//   return(<></>)
+// }
+
   return (
     <div>  
       {/* <Test/>     */}
