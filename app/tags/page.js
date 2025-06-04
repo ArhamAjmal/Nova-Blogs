@@ -8,11 +8,16 @@ import styles from './tags.module.css'
 
 // Server Component
 const page = async({ searchParams }) => {
-  const selected =await searchParams?.selected || null;
-  const tagsArray = selected ? selected.split(',') : [];//// Convert tags string to array
+  const selected =searchParams?.selected || 'empty';;
+  const tagsArray = selected !== 'empty' ? selected.split(',') : [];//// Convert tags string to array
   //here we will fetch blogs on the basis of tags
+  try {
   const blogs=await BlogModel.find({tags:{$in:tagsArray},}).sort({ date: -1 }).limit(9).select("title coverImageUrl slug");
   const blogs2=JSON.parse(JSON.stringify(blogs))
+  } catch (error) {
+    
+  }
+  
   return (
     <div style={{minHeight:"110vh"}}>
       <NavBar/>
