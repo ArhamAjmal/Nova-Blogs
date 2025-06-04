@@ -117,7 +117,7 @@ const NavBar = () => {
       </button>
        </form>
        
-       {(open && !query) && <Suggestions ref={modalRef} suggestions={suggestions} iref={inputref}/>}
+       {(open && !query) && <Suggestions ref={modalRef} suggestions={suggestions|| []} iref={inputref}/>}
       </div>
       
     </div>

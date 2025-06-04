@@ -6,7 +6,7 @@ const Suggestions = (props) => {
    const r=useRouter()
    const [show, setshow] = useState(true)
   // const [list, setlist] = useState(["Drug on human body and its side effects","Effect of drug on human body and its side effects","Body and its side effects",])
-  const [list, setlist] = useState([...props.suggestions])
+  const [list, setlist] = useState(() => Array.isArray(props.suggestions) ? [...props.suggestions] : [])
   //console.log("Suggejbsakbda",props.suggestions)
   useEffect(() => {
     setlist(props.suggestions)
