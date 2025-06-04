@@ -12,7 +12,7 @@ const Header = () => {
     <div className={styles.con}>
     <div className={`${styles.div1}  fade-in`}>
         <h2 style={{ fontFamily: "'Times New Roman', Times, serif" }}>Nova Blogs</h2>
-        <p >Your daily dose of fresh perspectives and thought provoking insights for curious minds/</p>
+        <p >Your daily dose of fresh perspectives and thought provoking insights for curious minds//</p>
         <button onClick={handleClick}>Learn more</button>
     </div>
     <div className={styles.div2}>

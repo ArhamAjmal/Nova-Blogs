@@ -19,7 +19,6 @@ const page = async({ searchParams }) => {
   } catch (error) {
     console.log(error)
   }
-  console.log("blogs",blogs)
   console.log("blogs2",blogs2)
   
   return (
