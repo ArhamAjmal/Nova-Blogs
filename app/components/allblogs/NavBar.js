@@ -17,6 +17,7 @@ import Suggestions from './Suggestions';
 const NavBar = () => {
   const [query, setQuery] = useState('');
   const [suggestions, setsuggestions] = useState([])
+  const [sugestionsL, setsugestionsL] = useState(true)
   const [open, setOpen] = useState(false);//isi boolean ki base me hum alert ko visible or invisible kren ge
   const modalRef = useRef(null);
   const router = useRouter();
@@ -24,13 +25,15 @@ const NavBar = () => {
   useEffect(() => {
     
     setsuggestions(JSON.parse(localStorage.getItem("queries")))
+    if(suggestions.length==0)setsugestionsL(false)
+      else setsugestionsL(true)
     console.log("op",localStorage.getItem("queries"))
   }, [])
    useEffect(() => {
 
       localStorage.setItem("queries", JSON.stringify(suggestions));
-        console.log("ele",JSON.parse(localStorage.getItem("queries")))
-
+      if(suggestions.length==0)setsugestionsL(false)
+      else setsugestionsL(true)
   }, [suggestions])
   
    const handleSearch = (e) => {//on click search
@@ -117,7 +120,7 @@ const NavBar = () => {
       </button>
        </form>
        
-       {(open && !query && suggestions.length!=0) && <Suggestions ref={modalRef} suggestions={suggestions|| []} iref={inputref}/>}
+       {(open && !query && sugestionsL) && <Suggestions ref={modalRef} suggestions={suggestions|| []} iref={inputref}/>}
       </div>
       
     </div>
