@@ -3,8 +3,10 @@ import Footer from '@/app/components/Footer/Footer'
 import FBlogs from '@/app/components/search/FBlogs'
 import BlogModel from '@/app/lib/model'
 import styles from '../cat.module.css'
+import dbConnect from '@/app/lib/connect'
 //server
 const page =async ({ params }) => {
+  await dbConnect()
   //catch route params
    let { slug } =await params; // Extract route param->params should be awaited
    slug=decodeURIComponent(slug)

@@ -5,8 +5,10 @@ import FBlogs from '../../components/search/FBlogs'
 import Shead from '../../components/search/Shead'
 import Footer from '../../components/Footer/Footer'
 import BlogModel from '@/app/lib/model'
+import dbConnect from '@/app/lib/connect'
 
 const page = async({ params, searchParams }) => {
+  await dbConnect()
   //const userId = params.id;//[id]
   const query =searchParams.q;
   // console.log(query)

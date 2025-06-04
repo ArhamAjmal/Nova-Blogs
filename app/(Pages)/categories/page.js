@@ -13,9 +13,9 @@ export const dynamic = 'force-dynamic'; // This disables static generation
 import { catImageCloud } from '@/app/actions/catImageCloud';
 //server
 const page =async() => {
+       await dbConnect();
     let categories2 = []; // <-- define outside
   try {
-     await dbConnect();
     const categories = await BlogModel.distinct("category");//fetching all categories and caching them
     categories2=JSON.parse(JSON.stringify(categories))
   } catch (error) {
