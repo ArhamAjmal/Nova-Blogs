@@ -16,18 +16,21 @@ import Suggestions from './Suggestions';
 
 const NavBar = () => {
   const [query, setQuery] = useState('');
-  const [suggestions, setsuggestions] = useState()
+  const [suggestions, setsuggestions] = useState([])
   const [open, setOpen] = useState(false);//isi boolean ki base me hum alert ko visible or invisible kren ge
   const modalRef = useRef(null);
   const router = useRouter();
   const inputref = useRef()
   useEffect(() => {
+    
     setsuggestions(JSON.parse(localStorage.getItem("queries")))
+    console.log("op",localStorage.getItem("queries"))
   }, [])
    useEffect(() => {
-    
+
       localStorage.setItem("queries", JSON.stringify(suggestions));
-    
+        console.log("ele",JSON.parse(localStorage.getItem("queries")))
+
   }, [suggestions])
   
    const handleSearch = (e) => {//on click search
