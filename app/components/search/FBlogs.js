@@ -69,6 +69,7 @@ const FBlogs = (props) => {//props will decide
             //if(tags!="empty"){console.log("www",tags)}
             // const res = await fetch(`/api/blogs/tags?selected=${tags}`);
             // const data = await res.json();
+              console.log(tlist)
               setdata2(tlist)
               if(tlist.length<9)setfinish(true)
                 else setfinish(false)
