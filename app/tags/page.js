@@ -22,8 +22,8 @@ const page = async({ searchParams }) => {
       
       {selected!="empty" && 
       <div className={styles.resultDisplay}>Result:</div>}
-       {selected!="empty" &&
-      <FBlogs tags={selected} tlist={blogs2}/>}
+       {/* {selected!="empty" &&
+      <FBlogs tags={selected} tlist={blogs2}/>} */}
        <Footer/>
     </div>
     /* width: fit-content;

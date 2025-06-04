@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation'
 const CatNames = () => {
   const r=useRouter();
   const reff=useRef()
-    const [Cats, setCats] = useState(["Health","Science","Tech","Crypto","Startups","Gudgets","RealEstate","Coding","Ai","Future"])
+    const [Cats, setCats] = useState(["Health","Science","Tech","Crypto","Gadgets","Startups","RealEstate","Coding","Ai","Future"])
   
     useEffect(() => {
       const a=()=>{
