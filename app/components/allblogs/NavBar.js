@@ -24,11 +24,18 @@ const NavBar = () => {
   const inputref = useRef()
   useEffect(() => {
     
-  const saved = localStorage.getItem("queries");
-  const parsed = saved ? JSON.parse(saved) : [];
-  setsuggestions(parsed);
-  setsugestionsL(parsed.length > 0);
-    console.log("op",localStorage.getItem("queries"))
+  if (typeof window !== 'undefined') {
+    try {
+      const saved = localStorage.getItem("queries");
+      const parsed = Array.isArray(JSON.parse(saved)) ? JSON.parse(saved) : [];
+      setsuggestions(parsed);
+      setsugestionsL(parsed.length > 0);
+    } catch (err) {
+      console.error("Error reading suggestions from localStorage:", err);
+      setsuggestions([]);
+      setsugestionsL(false);
+    }
+  }
   }, [])
    useEffect(() => {
 
