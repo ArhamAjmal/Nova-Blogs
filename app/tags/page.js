@@ -5,9 +5,11 @@ import FBlogs from '../components/search/FBlogs';
 import Footer from '../components/Footer/Footer';
 import BlogModel from '../lib/model';
 import styles from './tags.module.css'
+import dbConnect from '../lib/connect';
 
 // Server Component
 const page = async({ searchParams }) => {
+  await dbConnect()
   const selected =searchParams?.selected || 'empty';;
   const tagsArray = selected !== 'empty' ? selected.split(',') : [];//// Convert tags string to array
   //here we will fetch blogs on the basis of tags
