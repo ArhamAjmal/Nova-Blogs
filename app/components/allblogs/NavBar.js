@@ -24,9 +24,10 @@ const NavBar = () => {
   const inputref = useRef()
   useEffect(() => {
     
-    setsuggestions(JSON.parse(localStorage.getItem("queries")))
-    if(suggestions.length==0)setsugestionsL(false)
-      else setsugestionsL(true)
+  const saved = localStorage.getItem("queries");
+  const parsed = saved ? JSON.parse(saved) : [];
+  setsuggestions(parsed);
+  setsugestionsL(parsed.length > 0);
     console.log("op",localStorage.getItem("queries"))
   }, [])
    useEffect(() => {
