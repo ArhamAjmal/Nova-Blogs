@@ -12,6 +12,7 @@ const page = async({ searchParams }) => {
   const tagsArray = selected !== 'empty' ? selected.split(',') : [];//// Convert tags string to array
   //here we will fetch blogs on the basis of tags
   let blogs2=[]
+  console.log("blogs2.1",blogs2)
   try {
   const blogs=await BlogModel.find({tags:{$in:tagsArray},}).sort({ date: -1 }).limit(9).select("title coverImageUrl slug");
   console.log("blogs",blogs)
@@ -19,7 +20,7 @@ const page = async({ searchParams }) => {
   } catch (error) {
     console.log(error)
   }
-  console.log("blogs2",blogs2)
+  console.log("blogs2.2",blogs2)
   
   return (
     <div style={{minHeight:"110vh"}}>
