@@ -19,8 +19,9 @@ import { useUser } from '@clerk/nextjs';
 const Blogpage = () => {
   const {user, isLoaded} = useUser();//is loaded?
   const adminEmail1 = "arhamoajmal@gmail.com";
-  const admin=(isLoaded && user?.primaryEmailAddress.emailAddress === adminEmail1)?true:false
-  
+  const adminEmail2 = "tubaarif3905@gmail.com";
+  const admin=(isLoaded && (user?.primaryEmailAddress.emailAddress === adminEmail1||user?.primaryEmailAddress.emailAddress === adminEmail2))?true:false
+
 
   const [blog, setblog] = useState("")
   const r=useRouter()

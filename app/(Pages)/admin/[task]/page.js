@@ -8,7 +8,9 @@ import React from 'react'
 const page =async ({ params,searchParams }) => {
       const user=await currentUser()
       const adminEmail1 = "arhamoajmal@gmail.com";
-      const admin=(user?.primaryEmailAddress.emailAddress === adminEmail1)?true:false
+      const adminEmail2 = "tubaarif3905@gmail.com";
+      const admin=(user?.primaryEmailAddress.emailAddress === adminEmail1||user?.primaryEmailAddress.emailAddress === adminEmail2)?true:false
+
       if(!admin){
         return(<NotFoundPage/>)
       }
