@@ -14,10 +14,13 @@ const page = async({ searchParams }) => {
   let blogs2=[]
   try {
   const blogs=await BlogModel.find({tags:{$in:tagsArray},}).sort({ date: -1 }).limit(9).select("title coverImageUrl slug");
+  console.log("blogs",blogs)
   blogs2=JSON.parse(JSON.stringify(blogs))
   } catch (error) {
     console.log(error)
   }
+  console.log("blogs",blogs)
+  console.log("blogs2",blogs2)
   
   return (
     <div style={{minHeight:"110vh"}}>
