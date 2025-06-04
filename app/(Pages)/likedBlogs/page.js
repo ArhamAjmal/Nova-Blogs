@@ -9,6 +9,8 @@ import UserModel from '@/app/lib/userModel';
 const page =async () => {
     await dbConnect();
     const user = await currentUser();
+    if(user==null)return(<div style={{minHeight:"100vh",fontSize:"1.9rem",textAlign:"center",marginTop:"2rem",color:"#727272"}}>No user found</div>)
+    console.log("User",user)
     //1.fetching data directly from db and then sending to fblogs
   //   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/user/${user?.primaryEmailAddress?.emailAddress}`, {
   //    cache:"no-store", // Revalidate every 60 seconds
