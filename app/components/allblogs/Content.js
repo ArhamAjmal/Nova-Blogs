@@ -76,6 +76,8 @@ const Content = () => {//lazyloading+catch
   if (Object.keys(Allblogs).length<3) {
     return(<div style={{minHeight:"110vh"}}><Spinner/></div>)
   }
+  console.log(cat.length,Object.keys(Allblogs).length-1)
+  console.log(cat.length!=(Object.keys(Allblogs).length-1))
   return (
     <div className={styles.allList}>
       {/* {Object.keys(Allblogs).length==0 &&<div style={{textAlign:"center",marginTop:"2rem"}}>Loading...</div>} */}
@@ -112,6 +114,7 @@ const Content = () => {//lazyloading+catch
 ))
 }
     {(Object.keys(Allblogs).length>2 && cat.length!=allCat.length) &&<button onClick={a}>more</button>}
+    {cat.length!=(Object.keys(Allblogs).length-1) && <Spinner/>}
     </div>
   )
 }

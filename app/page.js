@@ -13,7 +13,7 @@ import { useRouter } from "next/navigation";
 
 export default function Home() {
   const r=useRouter()
-  const [small,setsmall] = useState(false)
+  const [small,setsmall] = useState(true)
     
  useEffect(() => {
 
@@ -21,13 +21,12 @@ export default function Home() {
   console.log("eleeeeeeeeeeee")
   setsmall(true)
   r.push('/home')
-  
- 
 }
+else setsmall(false)
    
  }, [])
  if (small) {
-  return null
+  return (<></>)
 }
 
   return (
