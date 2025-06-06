@@ -16,7 +16,7 @@ const Content = () => {//lazyloading+catch
  const scroll = (category, direction) => {
   const container = scrollRefs.current[category];
   if (container) {
-    const scrollAmount = 400;
+    const scrollAmount = 500;
     container.scrollBy({
       left: direction === 'left' ? -scrollAmount : scrollAmount,
       behavior: 'smooth',
