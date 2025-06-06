@@ -193,7 +193,6 @@
 }
 .list button:first-child{
   /* background-color: rgb(255, 0, 149); */
-  transform: scaleX(-1); /* Flips the image horizontally */
   left: -15px;
 }
 .list button:last-child{
@@ -331,6 +330,22 @@
     .sbar form>input{
       width: 10.5rem;
     }
+    .list button{
+    transform: scale(0.7);
+    }
+    .list button:first-child{
+  /* background-color: rgb(255, 0, 149); */
+  left: -20px;
+}
+.list button:last-child{
+    margin-right: 0.1rem;
+    /* background-color: green; */
+    right: -20px;
+}
+.list{
+      padding: 0 1rem;
+
+}
 }
 @media (min-width: 300px) and (max-width: 500px) {
   .maincon{

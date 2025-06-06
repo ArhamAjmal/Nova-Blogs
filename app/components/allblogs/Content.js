@@ -92,7 +92,7 @@ const Content = () => {//lazyloading+catch
 
     {/* <button onClick={() => scroll(category, 'left')}><Image height={30} width={30} src={'/next.png'}/></button> */}
     <div ref={(el) => (scrollRefs.current[category] = el)} className={styles.list}>
-     <button onClick={() => scroll(category, 'left')}><Image height={30} width={30} src={'https://res.cloudinary.com/djruzbhto/image/upload/v1749220575/next_2_scujyd.png'}/></button>
+     <button onClick={() => scroll(category, 'left')}><Image height={30} width={30} src={'https://res.cloudinary.com/djruzbhto/image/upload/v1749221443/next_3_si4yto.png'}/></button>
 
       { blogs.map((item,ind)=>(
     
