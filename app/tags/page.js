@@ -29,7 +29,7 @@ const page = async({ searchParams }) => {
       <NavBar/>
       <Filter aa={selected}/>
       {selected=="empty" && 
-      <div style={{width:'100%',fontWeight:'100',fontSize:'1.25rem',marginTop:'0.5rem',fontFamily:"Arial",color:"#5e5e5e",textAlign:"center",minHeight:"100vh",color:"grey",marginLeft:"1rem"}}>No tag selected</div>}
+      <div style={{width:'100%',fontWeight:'400',fontSize:'1.25rem',marginTop:'0.5rem',fontFamily:"Arial",color:"#5e5e5e",textAlign:"center",minHeight:"100vh",color:"grey",marginLeft:"1rem"}}>No tag selected</div>}
       
       {selected!="empty" && 
       <div className={styles.resultDisplay}>Result:</div>}
