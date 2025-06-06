@@ -169,8 +169,8 @@
 
 }
 .list button{
-    background: white;
-    background: radial-gradient(circle, rgba(40, 40, 40, 0.134) 1%, transparent 80%);
+    background: transparent;
+    /* background: radial-gradient(circle, rgba(40, 40, 40, 0.134) 1%, transparent 80%); */
     align-self: center;
     height:fit-content;
     position: absolute;
