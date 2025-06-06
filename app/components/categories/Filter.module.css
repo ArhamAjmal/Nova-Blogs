@@ -238,7 +238,7 @@
 }
 @media (min-width: 300px) and (max-width: 500px) {
     .mainTags{
-        padding: 0.5rem 1.8rem;
+        padding: 0.5rem 1.5rem;
         margin-bottom: 0.3rem;
     }
     .mainCatNames{
@@ -250,9 +250,9 @@
     .listItem img{
         display: none;
     }
-    .tagscon{
+    /* .tagscon{
         padding: 0;
-    }
+    } */
     .tagscon div{
         margin: 0.05rem;
     }
