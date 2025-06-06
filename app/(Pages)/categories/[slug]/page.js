@@ -18,7 +18,7 @@ const page =async ({ params }) => {
     const blogs2=JSON.parse(JSON.stringify(blogs))
     return (
     <div>
-        <div style={{width:'fit-content',marginLeft:'5rem',fontWeight:'100',fontSize:'1.6rem',marginTop:'0.5rem'}}>{slug.charAt(0).toUpperCase() + slug.slice(1)}</div>
+        <div style={{width:'fit-content',marginLeft:'5rem',fontWeight:'500',fontSize:'1.6rem',marginTop:'0.5rem'}}>{slug.charAt(0).toUpperCase() + slug.slice(1)}</div>
         {/* <div style={{marginLeft:'0rem',fontWeight:'500',fontSize:'1.6rem',marginTop:'0.5rem',textAlign:"center"}}>{slug.charAt(0).toUpperCase() + slug.slice(1)}</div> */}
 
         <FBlogs cat={slug.charAt(0).toUpperCase() + slug.slice(1)} catlist={(blogs2)}/>
