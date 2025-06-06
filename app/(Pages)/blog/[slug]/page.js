@@ -108,7 +108,7 @@ const Blogpage = () => {
     </div>
     <Details likes={blog.likes?blog.likes:0} shares={blog.shares?blog.shares:0} aa={blog.author} date={blog.date} slug={blog.slug} admin={admin}/>
     <BlogTags tags={blog.tags}/>
-    <div style={{width:'fit-content',marginLeft:'3.4rem',marginTop:"1rem",fontWeight:'100',fontSize:'1.3rem',marginTop:'0.5rem'}}>Related Blogs</div>
+    <div style={{width:'fit-content',marginLeft:'3.4rem',marginTop:"1rem",fontWeight:'400',fontSize:'1.3rem',marginTop:'0.5rem'}}>Related Blogs</div>
     <FBlogs related={blog.tags} ss={blog.slug} minheight={true}/>
     </div>
   )
