@@ -92,7 +92,7 @@ const Content = () => {//lazyloading+catch
 
     {/* <button onClick={() => scroll(category, 'left')}><Image height={30} width={30} src={'/next.png'}/></button> */}
     <div ref={(el) => (scrollRefs.current[category] = el)} className={styles.list}>
-     <button onClick={() => scroll(category, 'left')}><Image height={30} width={30} src={'https://res.cloudinary.com/djruzbhto/image/upload/v1749221443/next_3_si4yto.png'}/></button>
+     <button onClick={() => scroll(category, 'left')}><Image height={30} width={30} src={'https://res.cloudinary.com/djruzbhto/image/upload/v1749240844/next_4_vndtsl.png'}/></button>
 
       { blogs.map((item,ind)=>(
     
@@ -107,7 +107,7 @@ const Content = () => {//lazyloading+catch
           <span>{item.title}</span>
           </div>
       ))}
-          <button onClick={() => scroll(category, 'right')}><Image height={30} width={30} src={'https://res.cloudinary.com/djruzbhto/image/upload/v1749220575/next_2_scujyd.png'}/></button>
+          <button onClick={() => scroll(category, 'right')}><Image height={30} width={30} src={'https://res.cloudinary.com/djruzbhto/image/upload/v1749240839/next_4_dqze8s.png'}/></button>
     </div>
     {/* <button onClick={() => scroll(category, 'right')}><Image height={30} width={30} src={'/next.png'}/></button> */}
     </div>
