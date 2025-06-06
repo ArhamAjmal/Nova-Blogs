@@ -118,13 +118,13 @@
     min-height: 100vh;
 }
 .allList> button{
-    background-color:transparent;
+    /* background-color:transparent; */
     align-self: center;
     border: 0;
     cursor: pointer;
       color: #515151;
 
-    /* background-color: rebeccapurple; */
+    /* background-color: rgb(140, 25, 255); */
 }
 .mainlist{
     /* background-color: blue; */
@@ -138,8 +138,9 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    /* background-color: chocolate; */
+    /* background-color: rgb(255, 133, 46); */
     position: relative;
+    /* padding-left: 2rem; */
 }
 .list::-webkit-scrollbar{
     display: none;
@@ -158,31 +159,47 @@
 .secmainlist a:hover{
   color: rgb(255, 145, 0);
 }
-.secmainlist button{
-    background: transparent;
-    /* height: fit-content; */
-    background-color: rgb(255, 255, 255);
-    height: 60px;
-    width: 21px;
-    /* height: 12rem; */
-    align-self: center;
-    border: 0px ;
-    border-radius: 20px;
-    filter: opacity(0.9);
-    color: rgb(0, 0, 0);
-    font-family:  Courier, monospace;
-    margin-left: 0.2rem;
-    /* cursor: pointer; */
-}
-.secmainlist button:last-child{
-    margin-right: 0.1rem;
-}
+
 .list{
     /* background-color: #8a2be2; */
     display: flex;
     overflow: scroll;
-    width: 98%;
-    
+    /* width: 98%; */
+    padding: 0 1.5rem;
+
+}
+.list button{
+    background: white;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.319) 1%, transparent 80%);
+    align-self: center;
+    height:fit-content;
+    position: absolute;
+    border-radius: 50px;
+    padding: 1rem;
+    /* height: 60px;
+    width: 21px; */
+    /* height: 12rem; */
+    /* align-self: center; */
+    border: 0px ;
+    /* border-radius: 20px; */
+    /* filter: opacity(0.9); */
+    /* color: rgb(0, 0, 0); */
+    /* font-family:  Courier, monospace; */
+    /* margin-left: 0.2rem; */
+    /* cursor: pointer; */
+    z-index: 999;
+     /* box-shadow: 2px 10px 40px 4px rgba(0, 0, 0, 0.908); */
+  /* horizontal | vertical | blur | spread | color */
+}
+.list button:first-child{
+  /* background-color: rgb(255, 0, 149); */
+  transform: scaleX(-1); /* Flips the image horizontally */
+  left: -15px;
+}
+.list button:last-child{
+    margin-right: 0.1rem;
+    /* background-color: green; */
+    right: -15px;
 }
 .listItem{
     background-color: rgb(255, 255, 255);
@@ -325,3 +342,12 @@
     margin-bottom: 0.1rem;
   }
 }
+     @media (min-width: 950px){
+      .list button:first-child{
+
+  left: 0px;
+}
+.list button:last-child{
+    right: 0px;
+}
+     }

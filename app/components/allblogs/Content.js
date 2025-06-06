@@ -16,7 +16,7 @@ const Content = () => {//lazyloading+catch
  const scroll = (category, direction) => {
   const container = scrollRefs.current[category];
   if (container) {
-    const scrollAmount = 300;
+    const scrollAmount = 400;
     container.scrollBy({
       left: direction === 'left' ? -scrollAmount : scrollAmount,
       behavior: 'smooth',
@@ -90,8 +90,9 @@ const Content = () => {//lazyloading+catch
       <div className={styles.secmainlist}>
       <Link href={`/categories/${category}`}>more</Link>
 
-    <button onClick={() => scroll(category, 'left')}>{"<"}</button>
+    {/* <button onClick={() => scroll(category, 'left')}><Image height={30} width={30} src={'/next.png'}/></button> */}
     <div ref={(el) => (scrollRefs.current[category] = el)} className={styles.list}>
+     <button onClick={() => scroll(category, 'left')}><Image height={30} width={30} src={'/next.png'}/></button>
 
       { blogs.map((item,ind)=>(
     
@@ -106,8 +107,9 @@ const Content = () => {//lazyloading+catch
           <span>{item.title}</span>
           </div>
       ))}
+          <button onClick={() => scroll(category, 'right')}><Image height={30} width={30} src={'/next.png'}/></button>
     </div>
-    <button onClick={() => scroll(category, 'right')}>{">"}</button>
+    {/* <button onClick={() => scroll(category, 'right')}><Image height={30} width={30} src={'/next.png'}/></button> */}
     </div>
 
 </div>
