@@ -189,18 +189,18 @@
     /* margin-left: 0.2rem; */
     /* cursor: pointer; */
     z-index: 999;
-      opacity: 0.7; /* Makes the image 50% transparent */
+      opacity: 0.8; /* Makes the image 50% transparent */
      /* box-shadow: 2px 10px 40px 4px rgba(0, 0, 0, 0.908); */
   /* horizontal | vertical | blur | spread | color */
 }
 .list button:first-child{
   /* background-color: rgb(255, 0, 149); */
-  left: -10px;
+  left: -15px;
 }
 .list button:last-child{
     margin-right: 0.1rem;
     /* background-color: green; */
-    right: -10px;
+    right: -15px;
 }
 .listItem{
     background-color: rgb(255, 255, 255);
@@ -333,16 +333,16 @@
       width: 10.5rem;
     }
     .list button{
-    transform: scale(0.7);
+    transform: scale(0.8);
     }
     .list button:first-child{
   /* background-color: rgb(255, 0, 149); */
-  left: -20px;
+  left: -10px;
 }
 .list button:last-child{
     margin-right: 0.1rem;
     /* background-color: green; */
-    right: -20px;
+    right: -10px;
 }
 .list{
       padding: 0 1rem;
