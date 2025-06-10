@@ -13,9 +13,10 @@ import checkAdmin from '@/app/actions/checkAdmin'
 const page =async () => {
  const user = await currentUser();
 //  console.log(await checkAdmin())
+console.log("user:",user?.primaryEmailAddress.emailAddress)
   return (
     <div >
-      {!user && <CreatUser/>}
+      {user && <CreatUser/>}
       
       <CatNames/>
       <Content/>

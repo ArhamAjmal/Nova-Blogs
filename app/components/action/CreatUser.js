@@ -11,7 +11,7 @@ const CreatUser = () => {
                 const res = await fetch(`/api/user/${user?.primaryEmailAddress?.emailAddress}`);
                 const data = await res.json();
                 if (!data.success) {
-                    // console.log("user is not registered")
+                     console.log("user is not registered")
                     //3.registering the logined user
                     const res = await fetch(`/api/user/${user?.primaryEmailAddress?.emailAddress}`, {
                         method: "post", headers: {
