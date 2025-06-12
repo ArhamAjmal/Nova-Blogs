@@ -111,7 +111,7 @@ const Blogpage = () => {
             height:'250px',
             maxWidth: '400px', // Responsive width
             maxHeight: '650px', // Your desired max height
-            margin:'6px auto 20px auto',
+            margin:'0px auto 20px auto',
             display:'flex',
             objectFit:'cover',
             border:"solid 2px",
