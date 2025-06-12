@@ -16,6 +16,7 @@ import { FaPen, FaPencil } from 'react-icons/fa6';
 import { useRouter } from 'next/navigation';
 import NotFoundPage from '@/app/components/action/NotFoundPage';
 import { useUser } from '@clerk/nextjs';
+import Image from 'next/image';
 const Blogpage = () => {
   const {user, isLoaded} = useUser();//is loaded?
   const adminEmail1 = "arhamoajmal@gmail.com";
@@ -102,7 +103,19 @@ const Blogpage = () => {
       <FaPen size={20} color='grey'/>
     </button>      }
       </div>
-      
+       <Image
+        height={300}
+        width={400}
+        src={blog.coverImageUrl}
+         style={{
+            height:'250px',
+            maxWidth: '400px', // Responsive width
+            maxHeight: '650px', // Your desired max height
+            margin:'6px auto 20px auto',
+            display:'flex',
+            objectFit:'cover',
+            border:"solid 2px",
+          }}/>
       {/* <Description des={blog.description}/> */}
       {mdxSource && <MDXRemote {...mdxSource} components={mdxComponents} />}
     </div>

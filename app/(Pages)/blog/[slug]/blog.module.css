@@ -100,7 +100,7 @@
   background-color: #2c5282;
 }*/
 .container img{
-  width: fit-content;
+  /* width: fit-content; */
   border-radius: 10px;
 }
 /* Code blocks */
