@@ -5,6 +5,7 @@ import styles from './SBlogs.module.css'
 import { useRouter } from 'next/navigation';
 import Spinner from '../allblogs/Spinner';
 import Footer from '../Footer/Footer';
+import Spinner2 from '../allblogs/Spinner2';
 
 const FBlogs = (props) => {//props will decide
   const minheight=props.minheight
@@ -22,7 +23,13 @@ const FBlogs = (props) => {//props will decide
 
   const [data2, setdata2] = useState([])
   const [finish, setfinish] = useState(false)
+  const [showSpinner, setshowSpinner] = useState(false)
 
+  useEffect(() => {
+   //console.log("first")
+   setshowSpinner(false)
+  }, [data2.length])
+  
         useEffect(() => {
             const a=async()=>{
             //for specifi cat
@@ -105,6 +112,8 @@ const FBlogs = (props) => {//props will decide
           
         }, [tags,slug,query,likedList])
         const b=async()=>{
+          setshowSpinner(true)
+          //relacing  spinner with more
           //for specifi cat
             if(slug!=null && query==null &&tags==null){
               if(slug.startsWith("Recent")){
@@ -161,8 +170,9 @@ const FBlogs = (props) => {//props will decide
           <span>{item.title}</span>
           </div>
       ))}
-    </div> 
-{(data2.length!=0 && (!finish)) &&<button onClick={b} style={{width:"fit-content",alignSelf:'center',border:"0",color:"grey",margin:"0.7rem",cursor:"pointer",background:"transparent"}}>more</button>}    
+    </div>
+    {showSpinner &&<div style={{marginTop:"0.7rem",marginBottom:"0.3rem"}}><Spinner2/></div> } 
+{(data2.length!=0 && (!finish) && !showSpinner) &&<button onClick={b} style={{width:"fit-content",alignSelf:'center',border:"0",color:"grey",margin:"0.7rem",cursor:"pointer",background:"transparent"}}>more</button>}    
 </div>
   )
 }

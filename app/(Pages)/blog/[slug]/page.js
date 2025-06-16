@@ -104,11 +104,11 @@ const Blogpage = () => {
     </button>      }
       </div>
        <Image
-        height={300}
+        height={400}
         width={400}
         src={blog.coverImageUrl}
          style={{
-            height:'220px',
+            height:'270px',
             maxWidth: '400px', // Responsive width
             maxHeight: '650px', // Your desired max height
             margin:'0px auto 20px auto',

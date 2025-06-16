@@ -9,8 +9,8 @@ const Cimage = ({ src, alt}) => {
         width={800}
         height={300}
         style={{
-            height:'220px',
-            maxWidth: '400px', // Responsive width
+            height:'240px',
+            maxWidth: '350px', // Responsive width
             maxHeight: '650px', // Your desired max height
             margin:'20px auto 0px auto',
             display:'flex',

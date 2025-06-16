@@ -7,6 +7,8 @@ import CatList from '../categories/CatList';
 import { useRouter } from 'next/navigation';
 import Spinner from './Spinner';
 import Footer from '../Footer/Footer';
+import Spinner2 from './Spinner2';
+import getLimitedBlogs from '@/app/actions/getLimitedBlogs';
 const Content = () => {//lazyloading+catch
   const scrollRefs = useRef({});
  const router = useRouter();
@@ -31,9 +33,11 @@ const Content = () => {//lazyloading+catch
   //getting recent blogs
   useEffect(() => {
       const fetchRecent = async () => {
-     const res = await fetch(`/api/blogs/category/limited?category=Recent`);
-      const data = await res.json();
-      setAllblogs({"Recent Blogs":data.data})
+    //  const res = await fetch(`/api/blogs/category/limited?category=Recent`);
+    //   const data = await res.json();
+      const d=await getLimitedBlogs("Recent")
+      // console.log("Hiiiiiiiiiiiiiiii",d.data)
+      setAllblogs({"Recent Blogs":d.data})
     }
     fetchRecent()
   
@@ -52,20 +56,34 @@ const Content = () => {//lazyloading+catch
 
   //2.fetching data on the basis of list
   useEffect(() => {
-    //loop of allcategories     
+    //loop of allcategories
+    const obj={}     
     const b=async() => {
       for (let c of cat) {  //console.log(c)->categoy
-      const res = await fetch(`/api/blogs/category/limited?category=${c}`);
-      const data = await res.json();
-      //console.log("DATA: ",data.data)
+      // const res = await fetch(`/api/blogs/category/limited?category=${c}`);
+      // const data = await res.json();
+      const d=await getLimitedBlogs(c)
+      obj[c]=d.data
+      // console.log("objjjjjjjjj:",obj)
+      /*/game for giving it 4 list until cat==allcat
       setAllblogs(prev => ({
            ...prev,        // Copy existing properties
-           [c]:data.data  // Add new array
+           [c]:d.data  // Add new array
           }))
-      }
+      }*/
     }
+     setAllblogs(prev => ({//means ab loop complete one k bad data mile ga
+           ...prev,        // Copy existing properties
+           ...obj  // Add new array
+          }))
+        // console.log("first:",Allblogs)
+      }
+    // setAllblogs(prev =>[...prev,obj])
+      
+
     b();
   }, [cat])
+
   const a=()=>{
     setcat(prev => [
       ...prev,
@@ -73,14 +91,11 @@ const Content = () => {//lazyloading+catch
     ])
   }
   
-  if (Object.keys(Allblogs).length<3) {
+  if ((Object.keys(Allblogs).length<4 && cat.length!=allCat.length) || cat.length==0) {
     return(<div style={{minHeight:"110vh"}}><Spinner/></div>)
   }
-  console.log(cat.length,Object.keys(Allblogs).length-1)
-  console.log(cat.length!=(Object.keys(Allblogs).length-1))
   return (
     <div className={styles.allList}>
-      {/* {Object.keys(Allblogs).length==0 &&<div style={{textAlign:"center",marginTop:"2rem"}}>Loading...</div>} */}
       {/* {Object.keys(Allblogs).length==0 && <Spinner/>} */}
     
       {Object.entries(Allblogs).map(([category, blogs])=>(
@@ -90,7 +105,6 @@ const Content = () => {//lazyloading+catch
       <div className={styles.secmainlist}>
       <Link href={`/categories/${category}`}>more</Link>
 
-    {/* <button onClick={() => scroll(category, 'left')}><Image height={30} width={30} src={'/next.png'}/></button> */}
     <div ref={(el) => (scrollRefs.current[category] = el)} className={styles.list}>
      <button onClick={() => scroll(category, 'left')}><Image height={25} width={25} src={'https://res.cloudinary.com/djruzbhto/image/upload/v1749240844/next_4_vndtsl.png'}/></button>
 
@@ -109,14 +123,13 @@ const Content = () => {//lazyloading+catch
       ))}
           <button onClick={() => scroll(category, 'right')}><Image height={25} width={25} src={'https://res.cloudinary.com/djruzbhto/image/upload/v1749240839/next_4_dqze8s.png'}/></button>
     </div>
-    {/* <button onClick={() => scroll(category, 'right')}><Image height={30} width={30} src={'/next.png'}/></button> */}
     </div>
 
 </div>
 ))
 }
-    {(Object.keys(Allblogs).length>2 && cat.length!=allCat.length) &&<button onClick={a}>more</button>}
-    {cat.length!=(Object.keys(Allblogs).length-1) && <Spinner/>}
+    {(Object.keys(Allblogs).length>2 && cat.length!=allCat.length) &&<button onClick={a} style={{marginBottom:"0.4rem"}}>more</button>}
+    {cat.length!=(Object.keys(Allblogs).length-1) && <Spinner2/>}
     </div>
   )
 }

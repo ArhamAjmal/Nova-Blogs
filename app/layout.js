@@ -1,6 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
+import NextNProgress from "next-nprogress-bar";
 import {
   ClerkProvider,
   SignInButton,
@@ -9,6 +9,7 @@ import {
   SignedOut,
   UserButton,
 } from '@clerk/nextjs'
+import ProgressBar from "./components/Progress/ProgressBar";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -29,6 +30,7 @@ export default function RootLayout({ children }) {
     <ClerkProvider className='clerkp'>
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <ProgressBar/>
         {children}
       </body>
     </html>

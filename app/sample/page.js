@@ -6,10 +6,12 @@ import Spinner from '../components/allblogs/Spinner'
 import Test from '../components/home/Test'
 import MdxEditor from '../components/admin/MdxEditor'
 import NotFoundPage from '../components/action/NotFoundPage'
+import Spinner2 from '../components/allblogs/Spinner2'
 
 const page = () => {
   return (
     <div style={{height:"110vh"}}>
+      <Spinner2/>
       <NotFoundPage/>
       <Footer/>
       </div>
