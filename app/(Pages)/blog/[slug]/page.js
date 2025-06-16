@@ -108,7 +108,7 @@ const Blogpage = () => {
         width={400}
         src={blog.coverImageUrl}
          style={{
-            height:'250px',
+            height:'240px',
             maxWidth: '400px', // Responsive width
             maxHeight: '650px', // Your desired max height
             margin:'0px auto 20px auto',
