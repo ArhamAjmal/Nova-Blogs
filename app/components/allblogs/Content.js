@@ -91,7 +91,7 @@ const Content = () => {//lazyloading+catch
     ])
   }
   
-  if ((Object.keys(Allblogs).length<4 && cat.length!=allCat.length) || cat.length==0) {
+  if ((Object.keys(Allblogs).length<4 && cat.length!=allCat.length) || (cat.length==0 || Object.keys(Allblogs).length!=cat.length+1)) {
     return(<div style={{minHeight:"110vh"}}><Spinner/></div>)
   }
   return (
