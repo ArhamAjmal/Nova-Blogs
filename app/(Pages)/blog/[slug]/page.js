@@ -145,6 +145,7 @@ const Blogpage = () => {
         height={400}
         width={400}
         src={blog.coverImageUrl}
+        objectFit='fill'
          style={{
             height:'250px',
             maxWidth: '400px', // Responsive width
@@ -154,6 +155,7 @@ const Blogpage = () => {
             objectFit:'fill',
             border:"solid 2px",
           }}/>
+          
           </figure>
       {/* <Description des={blog.description}/> */}
       <section>
