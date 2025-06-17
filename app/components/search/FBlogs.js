@@ -167,7 +167,7 @@ const FBlogs = (props) => {//props will decide
             alt={item.title}
             width={300}
             height={200}
-            style={{ objectFit: 'cover' }}
+            style={{ objectFit: 'fill' }}
             />
           <h2>{item.title}</h2>
           </article>
