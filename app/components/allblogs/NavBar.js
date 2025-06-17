@@ -89,7 +89,7 @@ const NavBar = () => {
     };
  
   return (
-    <div className={styles.maincon}>
+    <header className={styles.maincon}>
       <div className={styles.clerkb}>
       <SignedIn>
         <UserButton/>
@@ -101,8 +101,8 @@ const NavBar = () => {
       </SignedOut>
       </div>
 
-<div onClick={handleClickLogo} className={styles.logo} style={{ fontFamily: "'Times New Roman', Times, serif" }}>Nova Blogs</div>
-    <div className={styles.navdiv}>
+<h1 onClick={handleClickLogo} className={styles.logo} style={{ fontFamily: "'Times New Roman', Times, serif" }}>Nova Blogs</h1>
+    <nav className={styles.navdiv}>
     <ul >
       <li ><Link href="/home">Home</Link></li>
       {/* <li><Link href="/allblogs">AllBlogs</Link></li> */}
@@ -131,8 +131,8 @@ const NavBar = () => {
        {(open && !query && sugestionsL) && <Suggestions ref={modalRef} suggestions={suggestions|| []} iref={inputref}/>}
       </div>
       
-    </div>
-    </div>
+    </nav>
+    </header>
   )
 }
 

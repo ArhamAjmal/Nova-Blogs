@@ -17,10 +17,12 @@ const page = async({ params, searchParams }) => {
   const sBlogs2=JSON.parse(JSON.stringify(sBlogs))
   console.log(sBlogs2)
   return (
-    <div>
+    <main>
+    <section aria-label="Liked Blogs">
     <Shead query={query}/>
     <FBlogs query={query} qlist={sBlogs2}/>
-    </div>
+    </section>
+    </main>
   )
 }
 

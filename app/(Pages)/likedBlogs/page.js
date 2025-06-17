@@ -28,15 +28,16 @@ const page =async () => {
     console.log("firs:t",blogs2)
 
   return (
-    <div>
-       <div className={styles.likeBlogs}>Liked Blogs</div>
+    <main>
+      <section aria-label="Liked Blogs">
+       <h1 className={styles.likeBlogs}>Liked Blogs</h1>
         {/* {user &&
         <FBlogs email={user?.primaryEmailAddress?.emailAddress}/>
         } */}
         {/* <FBlogs likedList={JSON.parse(JSON.stringify(blogs))}/> */}
          <FBlogs likedList={blogs2}/>
-
-         </div>
+</section>
+         </main>
   )
 }
 

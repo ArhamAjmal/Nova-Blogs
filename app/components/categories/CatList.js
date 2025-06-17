@@ -5,6 +5,7 @@ import styles from './Filter.module.css'
 import { useRouter } from 'next/navigation';
 import Spinner from '../allblogs/Spinner';
 import { catImageCloud } from '@/app/actions/catImageCloud';
+import Link from 'next/link';
 
 const CatList = (props) => {
   const router=useRouter();
@@ -18,10 +19,10 @@ const CatList = (props) => {
       <div className={styles.Catlist}>
         {/* <button onClick={()=>console.log(allcategories)}>Click</button> */}
       { allcategories.map((item,ind)=>(
-
-        <div onClick={()=>router.push(`/categories/${item}`)} key={ind} className={styles.listItem}>
+        <Link href={`/categories/${item}`} className='linkWrapper'>
+        <div key={ind} className={styles.listItem}>
         <Image
-        alt='my image'
+            alt={item}
             src={`/${item}.png`}
             width={200}
             height={150}
@@ -30,6 +31,7 @@ const CatList = (props) => {
             />
           <span>{item}</span>
           </div>
+          </Link>
       ))}
     </div>
     </div>

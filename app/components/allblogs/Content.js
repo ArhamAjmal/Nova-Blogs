@@ -4,14 +4,14 @@ import React, { useEffect, useRef, useState } from 'react'
 import styles from './allblogs.module.css'
 import Link from 'next/link';
 import CatList from '../categories/CatList';
-import { useRouter } from 'next/navigation';
+// import { useRouter } from 'next/navigation';
 import Spinner from './Spinner';
 import Footer from '../Footer/Footer';
 import Spinner2 from './Spinner2';
 import getLimitedBlogs from '@/app/actions/getLimitedBlogs';
 const Content = () => {//lazyloading+catch
   const scrollRefs = useRef({});
- const router = useRouter();
+//  const router = useRouter();
   // const handleClick = () => {
   //   router.push('/blogs/a');
   // };
@@ -91,46 +91,49 @@ const Content = () => {//lazyloading+catch
     ])
   }
   
-  if ((Object.keys(Allblogs).length<4 && cat.length!=allCat.length) || (cat.length==0 || Object.keys(Allblogs).length!=cat.length+1)) {
+  if ((Object.keys(Allblogs).length<4 && cat.length!=allCat.length) || (cat.length==0) || Object.keys(Allblogs).length<=1 ){
     return(<div style={{minHeight:"110vh"}}><Spinner/></div>)
   }
   return (
-    <div className={styles.allList}>
+    <section className={styles.allList}>
       {/* {Object.keys(Allblogs).length==0 && <Spinner/>} */}
     
       {Object.entries(Allblogs).map(([category, blogs])=>(
       
-      <div key={category} className={styles.mainlist}>
+      <article key={category} className={styles.mainlist}>
        <h2>{category}</h2>
       <div className={styles.secmainlist}>
-      <Link href={`/categories/${category}`}>more</Link>
+      <Link href={`/categories/${category}`} >more</Link>
 
-    <div ref={(el) => (scrollRefs.current[category] = el)} className={styles.list}>
-     <button onClick={() => scroll(category, 'left')}><Image height={25} width={25} src={'https://res.cloudinary.com/djruzbhto/image/upload/v1749240844/next_4_vndtsl.png'}/></button>
+    <nav ref={(el) => (scrollRefs.current[category] = el)} className={styles.list} aria-label={`${category} scrollable blog list`}>
+     <button onClick={() => scroll(category, 'left')}><Image height={25} width={25} alt="Scroll Left" src={'https://res.cloudinary.com/djruzbhto/image/upload/v1749240844/next_4_vndtsl.png'} /></button>
 
       { blogs.map((item,ind)=>(
     
-        <div onClick={()=>{router.push(`/blog/${item.slug}`)}} key={ind} className={styles.listItem}>
+    <Link key={ind} href={`/blog/${item.slug}`} className={styles.linkWrapper}>
+        <article  key={ind} className={styles.listItem}>
         <Image
-            alt='myimage'
+            alt={item.title}
             src={item.coverImageUrl}
             width={200}
             height={150}
-            objectFit='cover'
+            style={{objectFit:"fill"}}
             />
           <span>{item.title}</span>
-          </div>
+        
+          </article>
+     </Link>
       ))}
-          <button onClick={() => scroll(category, 'right')}><Image height={25} width={25} src={'https://res.cloudinary.com/djruzbhto/image/upload/v1749240839/next_4_dqze8s.png'}/></button>
-    </div>
+          <button onClick={() => scroll(category, 'right')}><Image height={25} width={25} alt="Scroll Left" src={'https://res.cloudinary.com/djruzbhto/image/upload/v1749240839/next_4_dqze8s.png'}/></button>
+    </nav>
     </div>
 
-</div>
+</article>
 ))
 }
     {(Object.keys(Allblogs).length>2 && cat.length!=allCat.length) &&<button onClick={a} style={{marginBottom:"0.4rem"}}>more</button>}
     {cat.length!=(Object.keys(Allblogs).length-1) && <Spinner2/>}
-    </div>
+    </section>
   )
 }
 

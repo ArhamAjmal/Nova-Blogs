@@ -96,22 +96,25 @@ const Details = (props) => {
       </div>
 
       <div className={styles.buttondiv}>
-      <button onClick={handleClick} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} style={{border:'0'}}>
+      <button onClick={handleClick} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} style={{border:'0'}} aria-label="Like blog">
         <Image
+        alt='Like Blog'
         width={22}
         height={22}
         src={liked? '/like(2).png' : '/like(1).png'} 
         />{likes}
       </button>
-      <button onClick={()=>console.log("shared")} onMouseEnter={() => setHovered2(true)} onMouseLeave={() => setHovered2(false)} style={{border:'0'}}>
+      <button onClick={()=>console.log("shared")} onMouseEnter={() => setHovered2(true)} onMouseLeave={() => setHovered2(false)} style={{border:'0'}} aria-label="Share blog">
         <Image
+        alt='Share Blog'
         width={22}
         height={22}
         src={hovered2 ? '/send(2).png' : '/send(1).png'} 
         />{props.shares}
       </button>
-      {admin&&<button onClick={()=>handleDelete()} style={{border:'0'}}>
+      {admin&&<button onClick={()=>handleDelete()} style={{border:'0'}} aria-label="Delete blog">
         <Image
+        alt='Delete Blog'
         width={20}
         height={20}
         src={'/delete.png'} 

@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import styles from './blog.module.css';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 const BlogTags = (props) => {
     const router=useRouter()
@@ -32,7 +33,9 @@ const BlogTags = (props) => {
     <div style={{marginTop:false?"2rem":"1rem"}} className={styles.tagscon}>
       Tags: 
       {list.map((item,ind)=>(
-        <div onClick={()=>router.push(`/tags?selected=${item}`)} key={ind}>{item}</div>
+        <Link key={ind} href={`/tags?selected=${item}`} className='linkWrapper'>
+        <div  key={ind}>{item}</div>
+        </Link>
       ))}
     </div>
   )

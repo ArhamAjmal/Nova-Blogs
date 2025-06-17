@@ -17,6 +17,7 @@ import { useRouter } from 'next/navigation';
 import NotFoundPage from '@/app/components/action/NotFoundPage';
 import { useUser } from '@clerk/nextjs';
 import Image from 'next/image';
+import Head from 'next/head';
 const Blogpage = () => {
   const {user, isLoaded} = useUser();//is loaded?
   const adminEmail1 = "arhamoajmal@gmail.com";
@@ -81,12 +82,47 @@ const Blogpage = () => {
 
 
   return (
-    <div>
+    <>
+      <Head>
+        <title>{blog.title} | My Blog</title>
+        <meta name="description" content={blog.description.slice(0, 150)} />
+        <meta property="og:title" content={blog.title} />
+        <meta property="og:description" content={blog.description.slice(0, 150)} />
+        <meta property="og:image" content={blog.coverImageUrl} />
+        <meta property="og:type" content="article" />
+        <script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": blog.title,
+      "image": [blog.coverImageUrl],
+      "author": {
+        "@type": "Person",
+        "name": blog.authorName || "Your Name"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Your Site Name",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://yourdomain.com/logo.png"
+        }
+      },
+      "datePublished": blog.date,
+      "description": blog.description?.slice(0, 150)
+    })
+  }}
+/>
+      </Head>
+      <main>
     {/* {!mdxSource &&<p  style={{textAlign:"center",marginTop:"2rem"}}>Loading...</p>} */}
-    <div className={styles.container}>
-      <div style={{display:"flex",justifyContent:"center"}}>
+    <article className={styles.container}>
+      <header style={{display:"flex",justifyContent:"center"}}>
         <h1>{blog.title}</h1>
   {admin&&<button
+     aria-label="Edit blog"
       onClick={() => r.push(`/admin/edit?slug=${blog.slug}`)}
       style={{
         border: 'none',
@@ -102,28 +138,38 @@ const Blogpage = () => {
     >
       <FaPen size={20} color='grey'/>
     </button>      }
-      </div>
+      </header>
+      <figure>
        <Image
+       alt={blog.title}
         height={400}
         width={400}
         src={blog.coverImageUrl}
          style={{
-            height:'240px',
+            height:'250px',
             maxWidth: '400px', // Responsive width
             maxHeight: '650px', // Your desired max height
             margin:'0px auto 20px auto',
             display:'flex',
-            objectFit:'cover',
+            objectFit:'fill',
             border:"solid 2px",
           }}/>
+          </figure>
       {/* <Description des={blog.description}/> */}
+      <section>
       {mdxSource && <MDXRemote {...mdxSource} components={mdxComponents} />}
-    </div>
+      </section>
+    </article>
+    <footer>
     <Details likes={blog.likes?blog.likes:0} shares={blog.shares?blog.shares:0} aa={blog.author} date={blog.date} slug={blog.slug} admin={admin}/>
     <BlogTags tags={blog.tags}/>
+    </footer>
+    <section>
     <div style={{width:'fit-content',marginLeft:'3.4rem',marginTop:"1rem",fontWeight:'400',fontSize:'1.3rem',marginTop:'0.5rem'}}>Related Blogs</div>
     <FBlogs related={blog.tags} ss={blog.slug} minheight={true}/>
-    </div>
+    </section>
+    </main>
+    </>
   )
 }
 

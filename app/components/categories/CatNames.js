@@ -2,6 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import styles from './Filter.module.css'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 
 const CatNames = () => {
   const r=useRouter();
@@ -29,14 +30,16 @@ const CatNames = () => {
   }, []);
 
   return (
-    <div className={styles.mainCatNames} >
+    <section className={styles.mainCatNames} >
         <h2>Top Categories</h2>
-    <div className={styles.CatNames} ref={reff}>
+    <nav className={styles.CatNames} ref={reff} aria-label="Category Navigation">
       {Cats.map((item,ind)=>(
-        <div onClick={()=>{r.push(`/categories/${item}`)}} key={ind}>{item}</div>
+        <Link key={ind} href={`/categories/${item}`} className='linkWrapper'>
+        <div key={ind}>{item}</div>
+</Link>
       ))}
-    </div>
-    </div>
+    </nav>
+    </section>
   )
 }
 

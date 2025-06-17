@@ -19,7 +19,9 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 5px;
 }
-
+.list li{
+    list-style: none;
+}
 .listItem {
     background-color: rgb(255, 255, 255);
     margin: 0.2rem;
@@ -45,13 +47,15 @@
     height: 9rem;
 }
 
-.listItem span {
+.listItem h2 {
     font-size: 0.8rem;
     text-align: center;
     font-family: Arial, sans-serif;
     /* background-color: #555; */
     padding: 0.2rem 0 0 0;
     color: #3b3b3b;
+    min-height: 2rem;
+    font-weight: 300;
 }
 
 .sh {
@@ -73,6 +77,9 @@
     text-align: center;
     /* background-color: rebeccapurple; */
     min-height: 100vh;
+}
+.linkWrapper{
+  text-decoration: none;
 }
 
 @media (min-width: 300px) and (max-width: 400px) {

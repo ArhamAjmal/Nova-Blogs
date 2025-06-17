@@ -10,11 +10,11 @@ const Cimage = ({ src, alt}) => {
         height={300}
         style={{
             height:'240px',
-            maxWidth: '350px', // Responsive width
+            maxWidth: '390px', // Responsive width
             maxHeight: '650px', // Your desired max height
             margin:'20px auto 0px auto',
             display:'flex',
-            objectFit:'cover',
+            objectFit:'fill',
             border:"solid 2px",
           }}
       />

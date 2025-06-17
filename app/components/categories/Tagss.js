@@ -77,7 +77,7 @@ const Tags = (props) => {
 
           <div className={styles.tags}>
             {groupedTags[letter].map(tag => (
-              <div style={{backgroundColor:selectedtags.includes(tag) ? "orange" : "#eee",color: selectedtags.includes(tag) ? "#fff" : "#000",}} onClick={()=>{handletagclick(tag)}} key={tag}>{tag}</div>
+              <button style={{backgroundColor:selectedtags.includes(tag) ? "orange" : "#eee",color: selectedtags.includes(tag) ? "#fff" : "#000",}} onClick={()=>{handletagclick(tag)}} key={tag}>{tag}</button>
             ))}
           </div>
 

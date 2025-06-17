@@ -167,3 +167,6 @@ html{
   opacity: 1.0;
   transform: rotate(3deg) translate(0px, -4px);
 }
+.linkWrapper{
+  text-decoration: none;
+}

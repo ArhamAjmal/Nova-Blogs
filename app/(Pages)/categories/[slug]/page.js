@@ -32,13 +32,17 @@ const page =async ({ params }) => {
   //here well also fetch tags and send to blog tags
   
   return (
-    <div>
-        <div className={styles.slugDisplay}>{slug.charAt(0).toUpperCase() + slug.slice(1)}</div>
+    <main>
+            <section aria-label="Liked Blogs">
+
+        <h1 className={styles.slugDisplay}>{slug.charAt(0).toUpperCase() + slug.slice(1)}</h1>
         {/* <div style={{marginLeft:'0rem',fontWeight:'500',fontSize:'1.6rem',marginTop:'0.5rem',textAlign:"center"}}>{slug.charAt(0).toUpperCase() + slug.slice(1)}</div> */}
 
         <FBlogs cat={slug.charAt(0).toUpperCase() + slug.slice(1)} catlist={(blogss2)}/>
+        </section>
         {!slug.startsWith("Recent") &&<BlogTags cat={(slug)}/>}
-    </div>
+
+    </main>
   )
 }
 

@@ -25,7 +25,7 @@ const page = async({ searchParams }) => {
   console.log("blogs2.2",blogs2)
   
   return (
-    <div style={{minHeight:"110vh"}}>
+    <main style={{minHeight:"110vh"}}>
       <NavBar/>
       <Filter aa={selected}/>
       {selected=="empty" && 
@@ -36,7 +36,7 @@ const page = async({ searchParams }) => {
         {selected!="empty" &&
       <FBlogs tags={selected} tlist={blogs2}/>} 
        <Footer/>
-    </div>
+    </main>
     /* width: fit-content;
     margin-left: 4rem;
     font-family:Arial, Helvetica, sans-serif;

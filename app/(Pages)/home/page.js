@@ -15,18 +15,12 @@ const page =async () => {
 //  console.log(await checkAdmin())
 console.log("user:",user?.primaryEmailAddress.emailAddress)
   return (
-    <div >
+    <main >
       {user && <CreatUser/>}
       
       <CatNames/>
       <Content/>
-      {/* <SignedIn>
-        <UserButton/>
-      </SignedIn>
-      <SignedOut>
-        <SignInButton/>
-      </SignedOut> */}
-    </div>
+    </main>
   )
 }
 

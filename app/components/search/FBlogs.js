@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import Spinner from '../allblogs/Spinner';
 import Footer from '../Footer/Footer';
 import Spinner2 from '../allblogs/Spinner2';
+import Link from 'next/link';
 
 const FBlogs = (props) => {//props will decide
   const minheight=props.minheight
@@ -154,26 +155,29 @@ const FBlogs = (props) => {//props will decide
       if(!success)return(<div  className={styles.noresult}>No result found</div>)
 
   return (
-    <div style={{minHeight:minheight?"0vh":"90vh"}} className={styles.listcon}>
+    <section style={{minHeight:minheight?"0vh":"90vh"}} className={styles.listcon} aria-label="Blog List">
     {data2.length==0 &&<Spinner/>}
-   <div className={styles.list}>
+   <ul className={styles.list}>
       { data2.map((item,ind)=>(
-
-        <div onClick={()=>router.push(`/blog/${item.slug}`)} key={ind} className={styles.listItem}>
+        <li key={item.slug}>
+        <Link href={`/blog/${item.slug}`} className={styles.linkWrapper}>
+        <article className={styles.listItem}>
         <Image
             src={item.coverImageUrl}
-            alt='myimage'
+            alt={item.title}
             width={300}
             height={200}
-            objectFit='cover'
+            style={{ objectFit: 'cover' }}
             />
-          <span>{item.title}</span>
-          </div>
+          <h2>{item.title}</h2>
+          </article>
+          </Link>
+          </li>
       ))}
-    </div>
+    </ul>
     {showSpinner &&<div style={{marginTop:"0.7rem",marginBottom:"0.3rem"}}><Spinner2/></div> } 
 {(data2.length!=0 && (!finish) && !showSpinner) &&<button onClick={b} style={{width:"fit-content",alignSelf:'center',border:"0",color:"grey",margin:"0.7rem",cursor:"pointer",background:"transparent"}}>more</button>}    
-</div>
+</section>
   )
 }
 

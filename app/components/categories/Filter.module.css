@@ -217,7 +217,7 @@
     padding-left: 1rem;
 }
 
-.tags div{
+.tags button{
     margin: 3px;
     color: rgb(66, 66, 66);
     /* color: rgb(27, 182, 81); */
