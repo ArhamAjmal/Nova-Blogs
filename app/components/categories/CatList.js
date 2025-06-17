@@ -19,8 +19,9 @@ const CatList = (props) => {
       <div className={styles.Catlist}>
         {/* <button onClick={()=>console.log(allcategories)}>Click</button> */}
       { allcategories.map((item,ind)=>(
+        <div key={ind} >
         <Link href={`/categories/${item}`} className='linkWrapper'>
-        <div key={ind} className={styles.listItem}>
+        <div className={styles.listItem}>
         <Image
             alt={item}
             src={`/${item}.png`}
@@ -32,6 +33,7 @@ const CatList = (props) => {
           <span>{item}</span>
           </div>
           </Link>
+          </div>
       ))}
     </div>
     </div>
