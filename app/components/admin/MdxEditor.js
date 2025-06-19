@@ -190,10 +190,10 @@ export default function MdxEditor(props) {
       alert("Invalid Slug")
       return
     }
-    else if(!finalData.coverImageUrl.startsWith("/")){
-      alert("Invalid cover image url")
-      return
-    }
+    // else if(!finalData.coverImageUrl.startsWith("/")){
+    //   alert("Invalid cover image url")
+    //   return
+    // }
     else if(hasSpaceInCategory(finalData.category)){
       alert("Invalid Category name")
       return
