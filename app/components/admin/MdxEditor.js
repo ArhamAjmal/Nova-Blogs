@@ -187,7 +187,7 @@ export default function MdxEditor(props) {
       return; // prevent further action like form submissio
     }
     else if(!isValidSlug(finalData.slug)){
-      alert("Invalid Slug")
+      alert("Invalid Slug: Slug can only contain small letters(a-z) and hyphen(-)")
       return
     }
     // else if(!finalData.coverImageUrl.startsWith("/")){
@@ -195,7 +195,7 @@ export default function MdxEditor(props) {
     //   return
     // }
     else if(hasSpaceInCategory(finalData.category)){
-      alert("Invalid Category name")
+      alert("Invalid Category name: Can't contain space(If required, use hyphen(-))")
       return
     }
     // else{
