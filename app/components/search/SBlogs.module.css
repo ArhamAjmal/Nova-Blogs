@@ -1,5 +1,5 @@
 .listcon {
-    background-color: aqua;
+    /* background-color: aqua; */
     min-height: 110vh;
     display: flex;
     flex-direction: column;
@@ -9,7 +9,7 @@
 
 
 .list {
-    background-color: #8a2be2;
+    /* background-color: #8a2be2; */
     /* display: flex; */
     flex-wrap: wrap;
     padding-top: 0.2rem;
