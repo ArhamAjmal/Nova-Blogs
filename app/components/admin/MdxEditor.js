@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import uploadblog from "@/app/actions/uploadblog";
 import { useRouter } from "next/navigation";
 import editblog from "@/app/actions/editBlog";
+import { serialize } from 'next-mdx-remote/serialize';
+import remarkGfm from 'remark-gfm';
 
 import dynamic from "next/dynamic";
 
@@ -71,7 +73,7 @@ export default function MdxEditor(props) {
 
     // Special handling for tags (comma separated string to array)
     if (name === "tags") {
-      console.log("Elelee",value.endsWith(" "))
+      //console.log("Elelee",value.endsWith(" "))
       if(value.trim().endsWith(",")||value.endsWith(" ")){
         settagComma(true)
         setBlogData((prev) => ({
@@ -89,6 +91,7 @@ export default function MdxEditor(props) {
         tags: tagArray,
       }));
     } else {
+
       setBlogData((prev) => ({
         ...prev,
         [name]: value,
@@ -102,11 +105,43 @@ export default function MdxEditor(props) {
         ...blogData,
         description: content,
       };
-      console.log(finalData)
+    //   console.log(finalData)
+    //   const isAnyFieldEmpty = Object.values(finalData).some(value => value === '');
+    //   if (isAnyFieldEmpty) {
+    //   alert('Please fill out all the fields');
+    //   return; // prevent further action like form submissio
+    // }
+    //console.log(finalData)
+      try {
+        const result = await serialize(content, {
+                  mdxOptions: { remarkPlugins: [remarkGfm] }
+                });
+                //console.log(result)
+                
+      } catch (error) {
+        console.log("Failed",error)
+        alert(error)
+        return
+      }
       const isAnyFieldEmpty = Object.values(finalData).some(value => value === '');
+      const isValidSlug = (slug) => /^[a-z0-9-]+$/.test(slug);
+      const hasSpaceInCategory = (category) => typeof category === "string" && /\s/.test(category);
+
       if (isAnyFieldEmpty) {
       alert('Please fill out all the fields');
       return; // prevent further action like form submissio
+    }
+    else if(!isValidSlug(finalData.slug)){
+      alert("Invalid Slug")
+      return
+    }
+    // else if(!finalData.coverImageUrl.startsWith("/")){
+    //   alert("Invalid cover image url")
+    //   return
+    // }
+    else if(hasSpaceInCategory(finalData.category)){
+      alert("Invalid Category name")
+      return
     }
     //  console.log("Submitted Blog Data:", finalData);
      //server action to edit blog
@@ -120,7 +155,7 @@ export default function MdxEditor(props) {
       // if(a)console.log("Yes")
       //   else console.log("No")
      }else{
-      alert(`Edit Failed:${up.data}`)
+      alert(`Edit Failed:${ed.data}`)
      }
 
     }
@@ -131,18 +166,48 @@ export default function MdxEditor(props) {
         ...blogData,
         description: content,
       };
-      console.log(finalData)
+      //console.log(finalData)
+      try {
+        const result = await serialize(content, {
+                  mdxOptions: { remarkPlugins: [remarkGfm] }
+                });
+                //console.log(result)
+                
+      } catch (error) {
+        console.log("Failed",error)
+        alert(error)
+        return
+      }
       const isAnyFieldEmpty = Object.values(finalData).some(value => value === '');
+      const isValidSlug = (slug) => /^[a-z0-9-]+$/.test(slug);
+      const hasSpaceInCategory = (category) => typeof category === "string" && /\s/.test(category);
+
       if (isAnyFieldEmpty) {
       alert('Please fill out all the fields');
       return; // prevent further action like form submissio
     }
+    else if(!isValidSlug(finalData.slug)){
+      alert("Invalid Slug")
+      return
+    }
+    else if(!finalData.coverImageUrl.startsWith("/")){
+      alert("Invalid cover image url")
+      return
+    }
+    else if(hasSpaceInCategory(finalData.category)){
+      alert("Invalid Category name")
+      return
+    }
+    // else{
+    //   return
+    // }
      const up=await uploadblog(finalData)
-     console.log(up)
+     //console.log(up)
      if(up.success){
       alert("File Uploaded")
       r.push(`/blog/${up.data.slug}`)
-     }else{
+     }
+     else{
       alert(`Upload Failed:${up.data}`)
      }
   }
