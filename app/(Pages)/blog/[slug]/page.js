@@ -90,6 +90,8 @@ const Blogpage = () => {
         <meta property="og:description" content={blog.description.slice(0, 150)} />
         <meta property="og:image" content={blog.coverImageUrl} />
         <meta property="og:type" content="article" />
+        <link rel="canonical" href={`https://yourdomain.com/blog/${blog.slug}`} />
+
         <script
   type="application/ld+json"
   dangerouslySetInnerHTML={{

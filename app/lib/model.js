@@ -13,7 +13,8 @@ const blogscheme=new mongoose.Schema({
     likes:Number,
     author:String,
     views:Number,
-    
+},{
+  timestamps: true // ✅ Automatically adds createdAt and updatedAt
 });
 //exporting scheme
 const BlogModel=mongoose.models.MyBlogs ||mongoose.model('MyBlogs',blogscheme)//next js especial

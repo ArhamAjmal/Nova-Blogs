@@ -6,6 +6,28 @@ import Shead from '../../components/search/Shead'
 import Footer from '../../components/Footer/Footer'
 import BlogModel from '@/app/lib/model'
 import dbConnect from '@/app/lib/connect'
+export const metadata = {
+  title: 'Search Results – YourSite',
+  description: 'Find blog articles based on your search query. Browse results across various categories and topics.',
+  alternates: {
+    canonical: 'https://your-domain.com/search', // No query string in canonical
+  },
+  openGraph: {
+    title: 'Search Results – YourSite',
+    description: 'Browse blogs that match your search query.',
+    url: 'https://your-domain.com/search',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Search Results – YourSite',
+    description: 'Browse blogs that match your search query.',
+  },
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 const page = async({ params, searchParams }) => {
   await dbConnect()

@@ -12,6 +12,24 @@ export const dynamic = 'force-dynamic'; // This disables static generation
 
 import { catImageCloud } from '@/app/actions/catImageCloud';
 //server
+export const metadata = {
+  title: 'Explore Blog Categories – YourSite',
+  description: 'Browse all our blog categories including technology, innovation, AI, lifestyle, healthcare, and more.',
+  alternates: {
+    canonical: 'https://your-domain.com/categories',
+  },
+  openGraph: {
+    title: 'Explore Blog Categories – YourSite',
+    description: 'Discover blog content organized by category. Dive into topics like tech, AI, and more.',
+    url: 'https://your-domain.com/categories',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Explore Blog Categories – YourSite',
+    description: 'Discover blog content organized by category. Dive into topics like tech, AI, and more.',
+  },
+};
 const page =async() => {
        await dbConnect();
     let categories2 = []; // <-- define outside

@@ -5,6 +5,28 @@ import styles from './like.module.css'
 import BlogModel from '@/app/lib/model';
 import dbConnect from '@/app/lib/connect';
 import UserModel from '@/app/lib/userModel';
+export const metadata = {
+  title: 'Your Liked Blogs – Nova Blogs',
+  description: 'View all the blogs you’ve liked. Curate your personal collection of the most insightful posts.',
+  alternates: {
+    canonical: 'https://your-domain.com/liked',
+  },
+  openGraph: {
+    title: 'Your Liked Blogs – Nova Blogs',
+    description: 'Access your collection of liked blog posts from various categories.',
+    url: 'https://your-domain.com/liked',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Your Liked Blogs – Nova Blogs',
+    description: 'Access your collection of liked blog posts from various categories.',
+  },
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 const page =async () => {
     await dbConnect();

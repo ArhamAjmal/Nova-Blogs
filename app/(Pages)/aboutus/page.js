@@ -1,6 +1,23 @@
 import React from 'react';
 import styles from './about.module.css';
-
+export const metadata = {
+  title: 'About Us – Blogs',
+  description: 'Learn about our mission, what we write about, and why we’re passionate about sharing knowledge, tech insights, and creative ideas.',
+  alternates: {
+    canonical: 'https://your-domain.com/about',
+  },
+  openGraph: {
+    title: 'About Us – YourSite',
+    description: 'We are passionate bloggers sharing authentic, insightful content on technology, creativity, and more.',
+    url: 'https://your-domain.com/about',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About Us – Nova Blogs',
+    description: 'We are passionate bloggers sharing authentic, insightful content on technology, creativity, and more.',
+  },
+};
 const Page = () => {
   return (
     <div>

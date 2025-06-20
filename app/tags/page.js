@@ -6,6 +6,28 @@ import Footer from '../components/Footer/Footer';
 import BlogModel from '../lib/model';
 import styles from './tags.module.css'
 import dbConnect from '../lib/connect';
+export const metadata = {
+  title: 'Tagged Blog Results – Nova Blogs',
+  description: 'Browse blogs by selected tags such as AI, Healthcare, Innovation, and more.',
+  alternates: {
+    canonical: 'https://your-domain.com/tags',
+  },
+  openGraph: {
+    title: 'Tagged Blog Results – Nova Blogs',
+    description: 'Explore blogs filtered by your selected interests and tags.',
+    url: 'https://your-domain.com/tags',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Tagged Blog Results – Nova Blogs',
+    description: 'Explore blogs filtered by your selected interests and tags.',
+  },
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 // Server Component
 const page = async({ searchParams }) => {
@@ -37,13 +59,7 @@ const page = async({ searchParams }) => {
       <FBlogs tags={selected} tlist={blogs2}/>} 
        <Footer/>
     </main>
-    /* width: fit-content;
-    margin-left: 4rem;
-    font-family:Arial, Helvetica, sans-serif;
-    margin-top: 0.5rem;
-    font-weight: 100;
-    font-size: 1.25rem;
-    color: #5e5e5e; */
+    
   )
 }
 
