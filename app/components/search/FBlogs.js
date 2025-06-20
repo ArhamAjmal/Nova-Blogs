@@ -19,6 +19,7 @@ const FBlogs = (props) => {//props will decide
   const catlist=props.catlist;
   const qlist=props.qlist;
   const tlist=props.tlist;
+  const trendlist=props.trendlist;
 
   const [success, setsuccess] = useState(true)
 
@@ -107,6 +108,12 @@ const FBlogs = (props) => {//props will decide
                 // console.log("Likedddddddddd",likedList)
                 setdata2(likedList)
                 setfinish(true)
+              }
+              else if (trendlist!=null && likedList == null && related == null && slug == null && query == null && tags == null) {
+                console.log("Trend",trendlist)
+                setdata2(trendlist)
+                setfinish(true)
+                //setsuccess(false)
               }
           }
             a();

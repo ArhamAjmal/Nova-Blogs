@@ -1,0 +1,17 @@
+.heading {
+  width: fit-content;
+  margin-left: 5rem;
+  font-weight: 500;
+  font-size: 1.6rem;
+  margin-top: 0.5rem;
+}
+@media (min-width: 300px) and (max-width: 500px) {
+    .CategoriesTitle{
+        margin: 0;
+        width: 100%;
+        text-align: center;
+    }
+    .heading{
+        margin-left: 3rem;
+    }
+}

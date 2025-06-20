@@ -108,8 +108,9 @@ const NavBar = () => {
       {/* <li><Link href="/allblogs">AllBlogs</Link></li> */}
       <li><Link href="/categories">Categories</Link></li>
       {/* <li><Link href="/tags">Tags#</Link></li> */}
-      <li><Link href="/aboutus">About</Link></li>
-      <li><Link href="/likedBlogs">Liked Blogs</Link></li>
+      <li><Link href="/trending">Trending</Link></li>
+      <li><Link href="/library">Library</Link></li>
+      <li><Link href="/settings">Settings</Link></li>
     </ul>
 
     <div className={styles.sbar}>
