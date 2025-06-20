@@ -5,6 +5,8 @@ import styles from './like.module.css'
 import BlogModel from '@/app/lib/model';
 import dbConnect from '@/app/lib/connect';
 import UserModel from '@/app/lib/userModel';
+import SignOutWrapper from '@/app/components/library/SignoutWrapper';
+import SigninWrapper from '@/app/components/library/SigninWrapper';
 export const metadata = {
   title: 'Your Liked Blogs – Nova Blogs',
   description: 'View all the blogs you’ve liked. Curate your personal collection of the most insightful posts.',
@@ -31,7 +33,7 @@ export const metadata = {
 const page =async () => {
     await dbConnect();
     const user = await currentUser();
-    if(user==null)return(<div style={{minHeight:"100vh",fontSize:"1.9rem",textAlign:"center",marginTop:"2rem",color:"#727272"}}>No user found</div>)
+    if(user==null)return(<div style={{minHeight:"100vh"}}><div style={{fontSize:"1.9rem",textAlign:"center",marginTop:"2rem",color:"#727272"}}>No user found</div><SigninWrapper/></div>)
     console.log("User",user)
     //1.fetching data directly from db and then sending to fblogs
   //   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/user/${user?.primaryEmailAddress?.emailAddress}`, {

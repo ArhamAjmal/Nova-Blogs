@@ -17,9 +17,12 @@
   color: #000000;
   background-color: transparent;
   border: 1px solid rgb(78, 78, 78);
+  /* border: 0; */
   border-radius: 4px;
   cursor: pointer;
   background-color: white;
+  box-shadow: 2px 2px 10px 3px rgba(47, 46, 46, 0.09);
+
 }
 .settinglist{
     /* display: flex; */

@@ -4,9 +4,14 @@ import { auth, currentUser } from "@clerk/nextjs/server";
 import Image from 'next/image';
 import styles from './library.module.css'
 import SignOutWrapper from './SignoutWrapper';
+import SigninWrapper from './SigninWrapper';
 const Profile =async () => {
     const user = await currentUser();
-    console.log(user?.imageUrl)
+    //console.log(user?.imageUrl)
+    if(!user){
+      console.log("eleeeee")
+      return(<><SigninWrapper/></>)
+    }
   return (
     <section className={styles.profile}>
       <Image
