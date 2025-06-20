@@ -12,7 +12,24 @@ const CatList = (props) => {
   // const [imageMap, setImageMap] = useState(props.imgmap|| {}); // key: category, value: image url
 // console.log(props.imgmap)
      const [allcategories, setallcategories] = useState(props.cat);
-
+     const a=(c)=>{
+      if(c=="Health"){
+        return("https://res.cloudinary.com/djruzbhto/image/upload/v1748694313/Health-Care-Financial-Consultant-Technology_v4ysx4.png")
+      }
+      else if(c=="Science"){
+        return("https://res.cloudinary.com/djruzbhto/image/upload/v1748694486/Science-and-Technology-2_tl59ra.jpg")
+      }
+      else if(c=="Tech"){
+        return("https://res.cloudinary.com/djruzbhto/image/upload/v1748693988/tech-companies_uc3uoh.jpg")
+      }
+      else if(c=="Gadgets"){
+        return("https://res.cloudinary.com/djruzbhto/image/upload/v1748693410/1__0_8X--FEYoQpz7K6PV8DQ_nxmfc9.jpg")
+      }
+      else if(c=="Crypto"){
+        return("https://res.cloudinary.com/djruzbhto/image/upload/v1748694433/bitcoin-what-is-crypto-scaled_qplqyp.jpg")
+      }
+      else return("/")
+     }
   return (
     <div style={{minHeight:"100vh"}}>
       {allcategories.length==0 && <Spinner/>}
@@ -23,7 +40,7 @@ const CatList = (props) => {
         <div className={styles.listItem}>
         <Image
             alt={item}
-            src={`/${item}.png`}
+            src={a(item)}
             width={200}
             height={150}
             objectFit='cover'
