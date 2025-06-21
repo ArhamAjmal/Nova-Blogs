@@ -176,7 +176,7 @@ const FBlogs = (props) => {//props will decide
             height={200}
             style={{ objectFit: 'fill' }}
             />
-          <h2>{item.title}</h2>
+          <span>{item.title}</span>
           </article>
           </Link>
           </li>

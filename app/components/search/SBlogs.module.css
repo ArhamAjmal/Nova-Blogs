@@ -25,15 +25,19 @@
 }
 .listItem {
     background-color: rgb(255, 255, 255);
-    margin: 0.2rem;
+    margin: 0.1rem 0.15rem;
     display: flex;
+    align-items: center;
     flex-direction: column;
     height: auto;
     width: 15rem;
-    border-radius: 12px;
-    padding: 0.7rem 0.7rem 0.5rem 0.7rem;
-
-    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.26);
+    min-height: 13.3rem;
+    /*border-radius: 12px;
+    padding: 0.7rem 0.7rem 0.5rem 0.7rem; */
+    border-radius: 3px;
+    padding: 0.6rem 0.7rem 0.5rem 0.7rem;
+    /* box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.26); */
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.163);
     /* horizontal | vertical | blur | spread | color */
     break-inside: avoid;
 }
@@ -44,19 +48,25 @@
 
 .listItem img {
     border-radius: 0px;
+    /* width: 13.5rem;
+    height: 9rem; */
     width: 13.5rem;
-    height: 9rem;
+    height:10rem;
 }
 
-.listItem h2 {
-    font-size: 0.8rem;
+.listItem span {
+    font-size: 0.85rem;
     text-align: center;
     font-family: Arial, sans-serif;
-    /* background-color: #555; */
+    /* background-color: #e12222; */
     padding: 0.2rem 0 0 0;
     color: #3b3b3b;
     min-height: 2rem;
-    font-weight: 300;
+    /* font-weight: 300; */
+
+    padding: 0.4rem 0 0 0;
+    color: #222222;
+    min-height: 2rem;
 }
 
 .sh {

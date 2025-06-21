@@ -214,13 +214,14 @@
     height: auto;
     /* width: 13.4rem; */
     width: 15rem;
+    min-height: 13.3rem;
     /* border-radius: 12px; */
     border-radius: 3px;
     /* padding: 0.5rem 0.7rem 0.5rem 0.7rem; */
     padding: 0.6rem 0.7rem 0.5rem 0.7rem;
 
      /* box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.26); */
-     box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.163);
+     box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.09);
   /* horizontal | vertical | blur | spread | color */
 }
 .listItem:hover{
@@ -234,12 +235,12 @@
     height:10rem;
 }
 .listItem span{
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     text-align: center;
     font-family:   Arial, sans-serif;
-    /* background-color: #555; */
-    padding: 0.2rem 0 0 0;
-    color: #3b3b3b;
+    /* background-color: #d2860c; */
+    padding: 0.4rem 0 0 0;
+    color: #222222;
     min-height: 2rem;
 }
 .suggList{
