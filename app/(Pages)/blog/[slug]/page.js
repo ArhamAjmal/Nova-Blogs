@@ -18,6 +18,7 @@ import NotFoundPage from '@/app/components/action/NotFoundPage';
 import { useUser } from '@clerk/nextjs';
 import Image from 'next/image';
 import Head from 'next/head';
+import UserData from '@/app/actions/UserData';
 const Blogpage = () => {
   const {user, isLoaded} = useUser();//is loaded?
   const adminEmail1 = "arhamoajmal@gmail.com";

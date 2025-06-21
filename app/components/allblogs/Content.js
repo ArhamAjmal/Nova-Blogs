@@ -9,8 +9,12 @@ import Spinner from './Spinner';
 import Footer from '../Footer/Footer';
 import Spinner2 from './Spinner2';
 import getLimitedBlogs from '@/app/actions/getLimitedBlogs';
-const Content = () => {//lazyloading+catch
+import BlogCard from './BlogCard';
+import { useUser } from '@clerk/nextjs';
+const Content = (props) => {//lazyloading+catch
   const scrollRefs = useRef({});
+  const {user, isLoaded} = useUser();//is loaded?
+  const [saved, setsaved] = useState(props.saved)
 //  const router = useRouter();
   // const handleClick = () => {
   //   router.push('/blogs/a');
@@ -30,6 +34,7 @@ const Content = () => {//lazyloading+catch
   const [allCat, setallCat] = useState([])
   const [cat,setcat]=useState([])
   const [Allblogs, setAllblogs] = useState({})
+  const [isHovered, setIsHovered] = useState(false);
   //getting recent blogs
   useEffect(() => {
       const fetchRecent = async () => {
@@ -90,7 +95,19 @@ const Content = () => {//lazyloading+catch
       ...allCat.slice(cat.length, cat.length+4)
     ])
   }
-  
+  const isSaved=(s)=>{
+    // console.log("first",s)
+    // const res = await fetch(`/api/user/${user?.primaryEmailAddress?.emailAddress}`);
+    //  const data = await res.json();
+    // //   console.log(data?.data?.readLater?.includes(s))
+
+      if (saved.includes(s)) {
+        return(true)
+      }
+      else return false
+  }
+
+
   if ((Object.keys(Allblogs).length<4 && cat.length!=allCat.length) || (cat.length==0) || Object.keys(Allblogs).length<=1 ){
     return(<div style={{minHeight:"110vh"}}><Spinner/></div>)
   }
@@ -109,20 +126,23 @@ const Content = () => {//lazyloading+catch
      <button onClick={() => scroll(category, 'left')}><Image height={25} width={25} alt="Scroll Left" src={'https://res.cloudinary.com/djruzbhto/image/upload/v1749240844/next_4_vndtsl.png'} /></button>
 
       { blogs.map((item,ind)=>(
-    
-    <Link key={ind} href={`/blog/${item.slug}`} className={styles.linkWrapper}>
-        <article  key={ind} className={styles.listItem}>
-        <Image
-            alt={item.title}
-            src={item.coverImageUrl}
-            width={200}
-            height={150}
-            style={{objectFit:"fill"}}
-            />
-          <span>{item.title}</span>
-        
-          </article>
-     </Link>
+        <BlogCard key={ind} item={item} saved={isSaved(item.slug)}/>
+      
+    // <Link key={ind} href={`/blog/${item.slug}`} className={styles.linkWrapper}>
+    //     <article  key={ind} className={styles.listItem}>
+    //     <Image
+    //         alt={item.title}
+    //         src={item.coverImageUrl}
+    //         width={200}
+    //         height={150}
+    //         style={{objectFit:"fill"}}
+    //         />
+    //       <span>{item.title}</span>
+    //       <button onMouseEnter={() => setIsHovered(true)}
+    //               onMouseLeave={() => setIsHovered(false)}
+    //       ><Image height={50} width={50} src={isHovered ? "/saved.png" : "/save2.png"} style={{width:"1rem",height:"1rem"}}/></button>
+    //       </article>
+    //  </Link>
       ))}
           <button onClick={() => scroll(category, 'right')}><Image height={25} width={25} alt="Scroll Left" src={'https://res.cloudinary.com/djruzbhto/image/upload/v1749240839/next_4_dqze8s.png'}/></button>
     </nav>

@@ -8,6 +8,10 @@ import { auth, currentUser } from "@clerk/nextjs/server";
 
 import CreatUser from '@/app/components/action/CreatUser'
 import checkAdmin from '@/app/actions/checkAdmin'
+import dbConnect from '@/app/lib/connect'
+import BlogModel from '@/app/lib/model'
+import UserModel from '@/app/lib/userModel'
+import UserData from '@/app/actions/UserData'
 // import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/nextjs'
 //server component
 // ✅ 1. Add metadata for SEO
@@ -31,15 +35,21 @@ export const metadata = {
 }
 
 const page =async () => {
+  await dbConnect()
+
  const user = await currentUser();
 //  console.log(await checkAdmin())
-console.log("user:",user?.primaryEmailAddress.emailAddress)
+//console.log("user:",user?.primaryEmailAddress.emailAddress)
+
+  //  const res = await fetch(`/api/user/${user?.primaryEmailAddress?.emailAddress}`);
+      const Udata=await UserData()
+      console.log("fffff:::",Udata)
   return (
     <main >
       {user && <CreatUser/>}
       
       <CatNames/>
-      <Content/>
+      <Content saved={Udata.readLater}/>
     </main>
   )
 }

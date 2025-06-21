@@ -6,6 +6,7 @@ import Shead from '../../components/search/Shead'
 import Footer from '../../components/Footer/Footer'
 import BlogModel from '@/app/lib/model'
 import dbConnect from '@/app/lib/connect'
+import UserData from '@/app/actions/UserData'
 export const metadata = {
   title: 'Search Results – YourSite',
   description: 'Find blog articles based on your search query. Browse results across various categories and topics.',
@@ -38,11 +39,14 @@ const page = async({ params, searchParams }) => {
   const sBlogs = await BlogModel.find({title:{$regex: query, $options: "i" }}).sort({ date: -1 }).limit(9).select("title coverImageUrl slug"); // Searching
   const sBlogs2=JSON.parse(JSON.stringify(sBlogs))
   console.log(sBlogs2)
+
+    const Udata=await UserData()
+    
   return (
     <main>
     <section aria-label="Liked Blogs">
     <Shead query={query}/>
-    <FBlogs query={query} qlist={sBlogs2}/>
+    <FBlogs query={query} qlist={sBlogs2} userSaved={Udata.readLater}/>
     </section>
     </main>
   )

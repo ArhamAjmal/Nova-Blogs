@@ -170,7 +170,7 @@
     padding: 0 1.5rem;
 
 }
-.list button{
+.list >button{
     background: transparent;
     /* background: radial-gradient(circle, rgba(40, 40, 40, 0.134) 1%, transparent 80%); */
     align-self: center;
@@ -191,20 +191,21 @@
     /* margin-left: 0.2rem; */
     /* cursor: pointer; */
     z-index: 999;
-      opacity: 0.8; /* Makes the image 50% transparent */
+      opacity: 0.7; /* Makes the image 50% transparent */
      /* box-shadow: 2px 10px 40px 4px rgba(0, 0, 0, 0.908); */
   /* horizontal | vertical | blur | spread | color */
 }
-.list button:first-child{
+.list>button:first-child{
   /* background-color: rgb(255, 0, 149); */
   left: -15px;
 }
-.list button:last-child{
+.list>button:last-child{
     margin-right: 0.1rem;
     /* background-color: green; */
     right: -15px;
 }
 .listItem{
+    position: relative;
     background-color: rgb(255, 255, 255);
     /* margin: 0.2rem; */
     margin: 0.2rem;
@@ -218,7 +219,7 @@
     /* border-radius: 12px; */
     border-radius: 3px;
     /* padding: 0.5rem 0.7rem 0.5rem 0.7rem; */
-    padding: 0.6rem 0.7rem 0.5rem 0.7rem;
+    padding: 0rem 0.7rem 0.5rem 0.7rem;
 
      /* box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.26); */
      box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.09);
@@ -231,8 +232,8 @@
     border-radius: 0px;
     /* width: 12rem; */
     /* height: 8.5rem; */
-    width: 13.5rem;
-    height:10rem;
+    width: 15rem;
+    height:10.5rem;
 }
 .listItem span{
     font-size: 0.88rem;
@@ -243,6 +244,16 @@
     color: #000000;
     min-height: 2rem;
 }
+.listItem button{
+  background-color: transparent;
+  border: 0;
+  position: absolute;
+  right: 0.3rem;
+  bottom: -0.1rem;
+  /* opacity: 0.3; */
+  cursor: pointer;
+}
+
 .suggList{
   max-height: 23rem;
   width: 15rem;
@@ -337,6 +348,10 @@
      }
 
      @media (max-width: 550px){
+      .listItem button{
+        /* right: 4rem; */
+        /* background-color: red; */
+      }
     .maincon{
         height: 7.7rem;
         padding-bottom: 1rem;
@@ -355,15 +370,15 @@
     .sbar form>input{
       width: 10.5rem;
     }
-    .list button{
+    .list>button{
     transform: scale(0.8);
     opacity: (0.6);
     }
-    .list button:first-child{
+    .list>button:first-child{
   /* background-color: rgb(255, 0, 149); */
   left: -10px;
 }
-.list button:last-child{
+.list>button:last-child{
     margin-right: 0.1rem;
     /* background-color: green; */
     right: -10px;
@@ -391,7 +406,7 @@
 
   left: 0px;
 }
-.list button:last-child{
+.list>button:last-child{
     right: 0px;
 }
      }

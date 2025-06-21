@@ -4,6 +4,7 @@ import FBlogs from '@/app/components/search/FBlogs'
 import BlogModel from '@/app/lib/model'
 import styles from '../cat.module.css'
 import dbConnect from '@/app/lib/connect'
+import UserData from '@/app/actions/UserData'
 //server
 const page =async ({ params }) => {
   await dbConnect()
@@ -11,7 +12,7 @@ const page =async ({ params }) => {
    let { slug } =await params; // Extract route param->params should be awaited
    slug=decodeURIComponent(slug)
      //now we will extract the data direclt and pass to blogs page
-
+    const Udata=await UserData()
    //fetching recent blogs
    if(slug.startsWith("Recent")){
     const blogs=await BlogModel.find().sort({ date: -1 }).limit(9).select("title coverImageUrl slug");
@@ -21,7 +22,7 @@ const page =async ({ params }) => {
         <div style={{width:'fit-content',marginLeft:'5rem',fontWeight:'500',fontSize:'1.6rem',marginTop:'0.5rem'}}>{slug.charAt(0).toUpperCase() + slug.slice(1)}</div>
         {/* <div style={{marginLeft:'0rem',fontWeight:'500',fontSize:'1.6rem',marginTop:'0.5rem',textAlign:"center"}}>{slug.charAt(0).toUpperCase() + slug.slice(1)}</div> */}
 
-        <FBlogs cat={slug.charAt(0).toUpperCase() + slug.slice(1)} catlist={(blogs2)}/>
+        <FBlogs cat={slug.charAt(0).toUpperCase() + slug.slice(1)} catlist={(blogs2)} userSaved={Udata.readLater}/>
         {!slug.startsWith("Recent") &&<BlogTags cat={(slug)}/>}
     </div>
   )
@@ -38,7 +39,7 @@ const page =async ({ params }) => {
         <h1 className={styles.slugDisplay}>{slug.charAt(0).toUpperCase() + slug.slice(1)}</h1>
         {/* <div style={{marginLeft:'0rem',fontWeight:'500',fontSize:'1.6rem',marginTop:'0.5rem',textAlign:"center"}}>{slug.charAt(0).toUpperCase() + slug.slice(1)}</div> */}
 
-        <FBlogs cat={slug.charAt(0).toUpperCase() + slug.slice(1)} catlist={(blogss2)}/>
+        <FBlogs cat={slug.charAt(0).toUpperCase() + slug.slice(1)} catlist={(blogss2)} userSaved={Udata.readLater}/>
         </section>
         {!slug.startsWith("Recent") &&<BlogTags cat={(slug)}/>}
 

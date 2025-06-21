@@ -4,6 +4,10 @@ import FBlogs from '@/app/components/search/FBlogs'
 import BlogModel from '@/app/lib/model'
 import dbConnect from '@/app/lib/connect'
 import Head from 'next/head'
+import { auth, currentUser } from "@clerk/nextjs/server";
+import UserModel from '@/app/lib/userModel'
+import UserData from '@/app/actions/UserData'
+
 const page = async() => {
     await dbConnect()
   const topLikedBlogs = await BlogModel.find()
@@ -11,6 +15,15 @@ const page = async() => {
   .limit(15).select("title coverImageUrl slug");;            // ✅ Limit to top 9
 
     const blogs2=JSON.parse(JSON.stringify(topLikedBlogs))
+
+    
+    //     const user = await currentUser();
+    // //  console.log(await checkAdmin())
+    // //console.log("user:",user?.primaryEmailAddress.emailAddress)
+    //   //  const res = await fetch(`/api/user/${user?.primaryEmailAddress?.emailAddress}`);
+    //       const userdata = await UserModel.findOne({email:user?.primaryEmailAddress.emailAddress});//.lean() to return a plain JavaScript object instead of a Mongoose document
+    //       const data=JSON.parse(JSON.stringify(userdata))
+    const Udata=await UserData()
     // console.log(blogs2)
   return (
     <>
@@ -27,7 +40,7 @@ const page = async() => {
     <main style={{minHeight:"100vh"}}>
      <h1 className={styles.heading}>Trending</h1>
      <section aria-label="Trending Blog Posts">
-        <FBlogs trendlist={blogs2} />
+        <FBlogs trendlist={blogs2} userSaved={Udata.readLater}/>
       </section>    
     </main>
     </>

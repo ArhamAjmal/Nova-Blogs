@@ -7,6 +7,8 @@ import Spinner from '../allblogs/Spinner';
 import Footer from '../Footer/Footer';
 import Spinner2 from '../allblogs/Spinner2';
 import Link from 'next/link';
+import BlogCard from '../allblogs/BlogCard';
+import UserData from '@/app/actions/UserData';
 
 const FBlogs = (props) => {//props will decide
   const minheight=props.minheight
@@ -16,10 +18,13 @@ const FBlogs = (props) => {//props will decide
   const tags=props.tags;
   const related=props.related;
   const likedList=props.likedList;//for specific liked lists
+  const savedList=props.savedList;//for specific savedblog lists
   const catlist=props.catlist;
   const qlist=props.qlist;
   const tlist=props.tlist;
   const trendlist=props.trendlist;
+  const [userSaved, setuserSaved] = useState(props.userSaved || [])
+  //const userSaved=props.userSaved || [];
 
   const [success, setsuccess] = useState(true)
 
@@ -87,8 +92,11 @@ const FBlogs = (props) => {//props will decide
                const a=async()=>{
                  const res = await fetch(`/api/blogs/category/related?tags=${related}&&skip=${props.ss}`);
                  const data = await res.json();
-                 console.log("Relwtedddd",data)
-                 if(data.data.length==0){setsuccess(false)}
+                 if(data.data.length==0){setsuccess(false)
+                  return
+                 }
+                 const d=await UserData()
+                 setuserSaved(d.readLater)
                  setdata2(data.data)
                 }
                 a();
@@ -99,6 +107,7 @@ const FBlogs = (props) => {//props will decide
               //   {title:"AI Analyzes Elon Musk’s Public Health Advice",coverImageUrl:"https://res.cloudinary.com/djruzbhto/image/upload/v1747562193/190142-landscapes-nature-trees_mflqw6.jpg",slug:"slug"},
               //   {title:"AI Analyzes Elon Musk’s Public Health Advice",coverImageUrl:"https://res.cloudinary.com/djruzbhto/image/upload/v1747562193/190142-landscapes-nature-trees_mflqw6.jpg",slug:"slug"},
               // ])
+              
               setfinish(true)
              }
               else if (likedList != null && related == null && slug == null && query == null && tags == null) {
@@ -107,6 +116,14 @@ const FBlogs = (props) => {//props will decide
                 }
                 // console.log("Likedddddddddd",likedList)
                 setdata2(likedList)
+                setfinish(true)
+              }
+              else if (savedList!=null && likedList == null && related == null && slug == null && query == null && tags == null) {
+                if(savedList.length==0){
+                  return(<div className={styles.noresult}>No saved blogs</div>)
+                }
+                // console.log("Likedddddddddd",likedList)
+                setdata2(savedList)
                 setfinish(true)
               }
               else if (trendlist!=null && likedList == null && related == null && slug == null && query == null && tags == null) {
@@ -118,7 +135,7 @@ const FBlogs = (props) => {//props will decide
           }
             a();
           
-        }, [tags,slug,query,likedList])
+        }, [tags,slug,query,likedList,savedList])
         const b=async()=>{
           setshowSpinner(true)
           //relacing  spinner with more
@@ -154,6 +171,17 @@ const FBlogs = (props) => {//props will decide
             
 
       }
+      const isSaved=(s)=>{
+    // console.log("first",s)
+    // const res = await fetch(`/api/user/${user?.primaryEmailAddress?.emailAddress}`);
+    //  const data = await res.json();
+    // //   console.log(data?.data?.readLater?.includes(s))
+
+      if (userSaved.includes(s)) {
+        return(true)
+      }
+      else return false
+  }
       //if(tags!=null )return(<div>i am tags {query}</div>)
       // useEffect(() => {
       //   if(tags.length==0)router.push("/tags?selected=empty")
@@ -167,7 +195,7 @@ const FBlogs = (props) => {//props will decide
    <ul className={styles.list}>
       { data2.map((item,ind)=>(
         <li key={item.slug}>
-        <Link href={`/blog/${item.slug}`} className={styles.linkWrapper}>
+        {/* <Link href={`/blog/${item.slug}`} className={styles.linkWrapper}>
         <article className={styles.listItem}>
         <Image
             src={item.coverImageUrl}
@@ -178,7 +206,8 @@ const FBlogs = (props) => {//props will decide
             />
           <span>{item.title}</span>
           </article>
-          </Link>
+          </Link> */}
+          <BlogCard item={item} saved={isSaved(item.slug)}/>
           </li>
       ))}
     </ul>

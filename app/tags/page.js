@@ -6,6 +6,7 @@ import Footer from '../components/Footer/Footer';
 import BlogModel from '../lib/model';
 import styles from './tags.module.css'
 import dbConnect from '../lib/connect';
+import UserData from '../actions/UserData';
 export const metadata = {
   title: 'Tagged Blog Results – Nova Blogs',
   description: 'Browse blogs by selected tags such as AI, Healthcare, Innovation, and more.',
@@ -45,7 +46,8 @@ const page = async({ searchParams }) => {
     console.log(error)
   }
   console.log("blogs2.2",blogs2)
-  
+      const Udata=await UserData()
+
   return (
     <main style={{minHeight:"110vh"}}>
       <NavBar/>
@@ -56,7 +58,7 @@ const page = async({ searchParams }) => {
       {selected!="empty" && 
       <div className={styles.resultDisplay}>Result:</div>}
         {selected!="empty" &&
-      <FBlogs tags={selected} tlist={blogs2}/>} 
+      <FBlogs tags={selected} tlist={blogs2} userSaved={Udata.readLater}/>} 
        <Footer/>
     </main>
     

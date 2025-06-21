@@ -7,10 +7,12 @@ import Test from '../home/Test';
 import { FaDeleteLeft } from 'react-icons/fa6';
 import { deleteBlog } from '@/app/actions/deleteBlog';
 import { useRouter } from 'next/navigation';
+import UserData from '@/app/actions/UserData';
 
 const Details = (props) => {
   const [likes, setlikes] = useState(props.likes)
   const [liked, setLiked] = useState(false);
+  const [saved, setsaved] = useState(false)
   const [hovered, setHovered] = useState(false);
   const [hovered2, setHovered2] = useState(false);
   const {user, isLoaded} = useUser();//is loaded?
@@ -20,13 +22,18 @@ const Details = (props) => {
   useEffect(() => {
     //2.check if user already liked the slug
     const a=async()=>{
-      const res = await fetch(`/api/user/${user?.primaryEmailAddress?.emailAddress}`);
-      const data = await res.json();
+      // const res = await fetch(`/api/user/${user?.primaryEmailAddress?.emailAddress}`);
+      // const data = await res.json();
+      const data=await UserData()
+      console.log("first:::",data)
       // console.log(data.data.liked);//
-      if(data.data.liked.includes(slug)){
-        console.log("yes inclueddddddddd")
+      if(data.liked.includes(slug)){
         setLiked(true)
       }
+      if(data.readLater.includes(slug)){
+        setsaved(true)
+      }
+      console.log(slug,":::::::::::::",data.readLater)
     }
     if(user){//1.if user islogined then
        a()
@@ -57,7 +64,21 @@ const Details = (props) => {
   console.log(data);
 
   }
-  const handleClick = async() => {
+   const updateUserSave=async(task)=>{
+    const a = task === "save" ? "put" : task === "unsave" ? "delete" : "";
+    const res = await fetch(`/api/user/${user?.primaryEmailAddress.emailAddress}`,{
+    method:a,headers:{
+      "Content-Type":"application/json",
+    }, 
+    body:JSON.stringify({field:"readLater",slug:slug})
+  })
+  const data = await res.json();
+  console.log(data);
+
+  }
+  const handleClick = async(t) => {
+    if(user){
+    if(t=="Like"){
     if(!liked){//1.if not liked then like on click
       setLiked(true)
       setlikes(likes+1)
@@ -72,8 +93,20 @@ const Details = (props) => {
       updateBlogLikes("dislike")
       updateUserLikes("dislike")
     }
-  
-
+    }else if(t=="Save"){
+      console.log("eleeeeeeeeeeeeeeeeeeeeee")
+      if(!saved){
+      updateUserSave("save")
+      setsaved(true)
+    }
+    else {
+      updateUserSave("unsave")
+      setsaved(false)
+    }
+    }
+  }else{
+    alert("User not exist: Please sign in")
+  }
   };
   const handleDelete=()=>{
     const c=confirm(`Do you to delete the blog: ${slug}`)
@@ -88,6 +121,7 @@ const Details = (props) => {
       // console.log("hi")
     }
   }
+
   return (
     <div className={styles.main}>
        <div className={styles.detaildiv}>
@@ -96,7 +130,7 @@ const Details = (props) => {
       </div>
 
       <div className={styles.buttondiv}>
-      <button onClick={handleClick} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} style={{border:'0'}} aria-label="Like blog">
+      <button onClick={()=>handleClick("Like")} onMouseEnter={() => setHovered(false)} onMouseLeave={() => setHovered(false)} style={{border:'0'}} aria-label="Like blog">
         <Image
         alt='Like Blog'
         width={22}
@@ -104,13 +138,21 @@ const Details = (props) => {
         src={liked? '/like(2).png' : '/like(1).png'} 
         />{likes}
       </button>
-      <button onClick={()=>console.log("shared")} onMouseEnter={() => setHovered2(true)} onMouseLeave={() => setHovered2(false)} style={{border:'0'}} aria-label="Share blog">
+      <button onClick={()=>console.log("shared")} onMouseEnter={() => setHovered2(false)} onMouseLeave={() => setHovered2(false)} style={{border:'0'}} aria-label="Share blog">
         <Image
         alt='Share Blog'
         width={22}
         height={22}
         src={hovered2 ? '/send(2).png' : '/send(1).png'} 
         />{props.shares}
+      </button>
+      <button onClick={()=>handleClick("Save")} style={{border:'0'}} aria-label="Share blog">
+        <Image
+        alt='Save Blog'
+        width={22}
+        height={22}
+        src={saved ? '/saved.png' : '/save.png'} 
+        />
       </button>
       {admin&&<button onClick={()=>handleDelete()} style={{border:'0'}} aria-label="Delete blog">
         <Image

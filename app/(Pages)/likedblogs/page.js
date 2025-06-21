@@ -7,6 +7,7 @@ import dbConnect from '@/app/lib/connect';
 import UserModel from '@/app/lib/userModel';
 import SignOutWrapper from '@/app/components/library/SignoutWrapper';
 import SigninWrapper from '@/app/components/library/SigninWrapper';
+import UserData from '@/app/actions/UserData';
 export const metadata = {
   title: 'Your Liked Blogs – Nova Blogs',
   description: 'View all the blogs you’ve liked. Curate your personal collection of the most insightful posts.',
@@ -51,6 +52,9 @@ const page =async () => {
     //console.log(blogs)
     console.log("firs:t",blogs2)
 
+        const Udata=await UserData()
+
+
   return (
     <main>
       <section aria-label="Liked Blogs">
@@ -59,7 +63,7 @@ const page =async () => {
         <FBlogs email={user?.primaryEmailAddress?.emailAddress}/>
         } */}
         {/* <FBlogs likedList={JSON.parse(JSON.stringify(blogs))}/> */}
-         <FBlogs likedList={blogs2}/>
+         <FBlogs likedList={blogs2} userSaved={Udata.readLater}/>
 </section>
          </main>
   )
