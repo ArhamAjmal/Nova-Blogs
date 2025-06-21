@@ -53,7 +53,7 @@ const BlogCard = (props) => {
           src={item.coverImageUrl}
           width={200}
           height={150}
-          style={{ objectFit: "fill" }}
+          style={{ objectFit: "fill"  }}
         />
         <span>{item.title}</span>
         <button
