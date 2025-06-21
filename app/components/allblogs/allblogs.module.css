@@ -235,12 +235,12 @@
     height:10rem;
 }
 .listItem span{
-    font-size: 0.85rem;
+    font-size: 0.88rem;
     text-align: center;
     font-family:   Arial, sans-serif;
     /* background-color: #d2860c; */
     padding: 0.4rem 0 0 0;
-    color: #222222;
+    color: #000000;
     min-height: 2rem;
 }
 .suggList{

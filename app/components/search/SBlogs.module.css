@@ -55,12 +55,12 @@
 }
 
 .listItem span {
-    font-size: 0.85rem;
+    font-size: 0.88rem;
     text-align: center;
     font-family: Arial, sans-serif;
     /* background-color: #e12222; */
     padding: 0.2rem 0 0 0;
-    color: #3b3b3b;
+    color: #000000;
     min-height: 2rem;
     /* font-weight: 300; */
 
