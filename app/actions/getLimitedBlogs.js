@@ -7,15 +7,14 @@ const getLimitedBlogs =async (category) => {
     await dbConnect();
     // console.log("elleeeeeeeee",category)
     const limit=6;
-    console.log("Limitttttt::",limit)
   if(category=="Recent"){
-      const blogs=await BlogModel.find().sort({ date: -1 }).limit(6).select("title coverImageUrl slug");//.select("title coverImageUrl") tells Mongoose to include only these two fields.
+      const blogs=await BlogModel.find().sort({ date: -1 }).limit(limit).select("title coverImageUrl slug");//.select("title coverImageUrl") tells Mongoose to include only these two fields.
      const blogs2=JSON.parse(JSON.stringify(blogs))
       return({success:true,data:blogs2})   
        //   console.log("eleeeeee")
     //   console.log(blogs)
   }
-    const blogs=await BlogModel.find({ category }).sort({ date: -1 }).limit(6).select("title coverImageUrl slug");//.select("title coverImageUrl") tells Mongoose to include only these two fields.
+    const blogs=await BlogModel.find({ category }).sort({ date: -1 }).limit(limit).select("title coverImageUrl slug");//.select("title coverImageUrl") tells Mongoose to include only these two fields.
     const blogs2=JSON.parse(JSON.stringify(blogs))
     return({success:true,data:blogs2})  
   
