@@ -226,7 +226,7 @@
   /* horizontal | vertical | blur | spread | color */
 }
 .listItem:hover{
-    transform: scale(1.02);
+    transform: scale(1.01);
 }
 .listItem img{
     border-radius: 0px;

@@ -7,6 +7,7 @@ import styles from './savedblogs.module.css'
 import FBlogs from '@/app/components/search/FBlogs';
 import UserData from '@/app/actions/UserData';
 import SigninWrapper from '@/app/components/library/SigninWrapper';
+import Footer from '@/app/components/Footer/Footer';
 
 const page = async() => {
       await dbConnect();
