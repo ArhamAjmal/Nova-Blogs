@@ -317,12 +317,16 @@
 }
 
 
-@media (min-width: 1100px){
+@media (min-width: 900px){
     .maincon{
     flex-direction: row;
     /* justify-content: center; */
     /* height: 6rem; */
+    padding: 0.7rem 3rem 0 3rem;
   }
+  /* .maincon .logo{
+    margin-left: 3rem;
+  } */
    .maincon div:first-child{
     margin-left: 1rem;
   }
@@ -391,3 +395,10 @@
     right: 0px;
 }
      }
+
+@media (min-width: 1430px){
+  .maincon{
+        padding: 0.7rem 4rem 0 4rem;
+
+  }
+}

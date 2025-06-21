@@ -135,3 +135,15 @@
         /* background-color: #3b3b3b; */
     }
 }
+@media (min-width: 890px) and (max-width: 1350px) {
+    .list{
+        grid-template-columns: repeat(4, 1fr);
+
+    }
+}
+@media (min-width: 1350px) and (max-width: 1550px) {
+       .list{
+        grid-template-columns: repeat(5, 1fr);
+
+    }
+}

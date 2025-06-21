@@ -6,7 +6,7 @@ import BlogModel from "../lib/model";
 const getLimitedBlogs =async (category) => {
     await dbConnect();
     // console.log("elleeeeeeeee",category)
-    const limit=5;
+    const limit=6;
 
   if(category=="Recent"){
       const blogs=await BlogModel.find().sort({ date: -1 }).limit(limit).select("title coverImageUrl slug");//.select("title coverImageUrl") tells Mongoose to include only these two fields.

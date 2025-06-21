@@ -272,3 +272,23 @@
 }
 
 }
+@media (min-width: 900px)and (max-width: 1050px) {
+    .mainCatNames h2{
+        margin-left: 5rem;
+    }
+}
+@media (min-width: 1050px)and (max-width: 1250px) {
+    .mainCatNames h2{
+        margin-left: 7rem;
+    }
+}
+@media (min-width: 1250px)and (max-width: 1350px) {
+    .mainCatNames h2{
+        margin-left: 9rem;
+    }
+}
+@media (min-width: 1350px)and (max-width: 1550px) {
+    .mainCatNames h2{
+        margin-left: 14rem;
+    }
+}
