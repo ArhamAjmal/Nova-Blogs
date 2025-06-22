@@ -145,12 +145,12 @@ const Blogpage = () => {
       <figure>
        <Image
        alt={blog.title}
-        height={400}
+        height={300}
         width={400}
         src={blog.coverImageUrl}
         objectFit='fill'
          style={{
-            height:'250px',
+            height:'220px',
             maxWidth: '400px', // Responsive width
             maxHeight: '650px', // Your desired max height
             margin:'0px auto 20px auto',
