@@ -138,14 +138,14 @@ const Details = (props) => {
         src={liked? '/like(2).png' : '/like(1).png'} 
         />{likes}
       </button>
-      <button onClick={()=>console.log("shared")} onMouseEnter={() => setHovered2(false)} onMouseLeave={() => setHovered2(false)} style={{border:'0'}} aria-label="Share blog">
+      {/* <button onClick={()=>console.log("shared")} onMouseEnter={() => setHovered2(false)} onMouseLeave={() => setHovered2(false)} style={{border:'0'}} aria-label="Share blog">
         <Image
         alt='Share Blog'
         width={22}
         height={22}
         src={hovered2 ? '/send(2).png' : '/send(1).png'} 
         />{props.shares}
-      </button>
+      </button> */}
       <button onClick={()=>handleClick("Save")} style={{border:'0'}} aria-label="Share blog">
         <Image
         alt='Save Blog'
