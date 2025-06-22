@@ -168,8 +168,10 @@ const Blogpage = () => {
     <BlogTags tags={blog.tags}/>
     </footer>
     <section>
-    <div style={{width:'fit-content',marginLeft:'3.4rem',marginTop:"1rem",fontWeight:'400',fontSize:'1.3rem',marginTop:'0.5rem'}}>Related Blogs</div>
-    <FBlogs related={blog.tags} ss={blog.slug} minheight={true}/>
+    <h2 style={{width:'fit-content',marginLeft:'3.4rem',marginTop:"1rem",fontWeight:'400',fontSize:'1.3rem',marginTop:'0.5rem'}}>Related Blogs</h2>
+    <div>
+          <FBlogs related={blog.tags} ss={blog.slug} minheight={true}/>
+    </div>
     </section>
     </main>
     </>

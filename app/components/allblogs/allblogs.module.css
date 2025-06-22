@@ -61,17 +61,20 @@
     margin: 0;
     padding:0.3rem 1.1rem;
     /* border: solid rgb(255, 157, 0); */
+
     
 }
 
 .navdiv a{
-    font-size: 1rem;
+    font-size: 1.13rem;
     
-    font-weight: 500;
+    font-weight: 540;
     color: black;
     margin: 0.5rem;
     text-decoration: none;
     /* background-color: aqua; */
+    font-family: 'Times New Roman', Times, serif;
+
 }
 .navdiv a:hover{
   color: #f17b06;
@@ -132,7 +135,9 @@
 }
 .mainlist h2{
     margin-left: 2.5rem;
+    margin-bottom: 0.2rem;
     font-weight: 500;
+    font-size: 1.5rem;
 }
 .secmainlist{
     display: flex;

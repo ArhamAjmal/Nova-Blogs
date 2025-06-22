@@ -50,7 +50,7 @@ const Filter = (props) => {
   
   return (
     <div className={styles.mainTags}>
-      <span>Tags:</span>
+      <h2>Tags:</h2>
       <div className={styles.tagscon}>
         {tags.length==0 && <span>Add tags</span>}
         {/* <div>Medicine<button>x</button></div> */}

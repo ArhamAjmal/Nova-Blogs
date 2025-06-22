@@ -9,6 +9,11 @@
     position: relative;
   /* horizontal | vertical | blur | spread | color */
 }
+.mainTags>h2{
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: normal;
+    font-size: 1.2rem;
+}
 
 /* .mainTags span{
 } */
@@ -91,8 +96,9 @@
     /* background-color: aqua; */
     width: fit-content;
     margin-left: 1.6rem;
+    font-size: 1.35rem;
     font-weight: 500;
-    font-size: 1.5rem;
+    /* font-family: serif; */
 }
 .CatNames{
     /* background-color: rgb(71, 0, 251); */
