@@ -12,6 +12,8 @@ import dbConnect from '@/app/lib/connect'
 import BlogModel from '@/app/lib/model'
 import UserModel from '@/app/lib/userModel'
 import UserData from '@/app/actions/UserData'
+import allCategories from '@/app/actions/allCategories'
+import getLimitedBlogs from '@/app/actions/getLimitedBlogs'
 // import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/nextjs'
 //server component
 // ✅ 1. Add metadata for SEO
@@ -36,20 +38,20 @@ export const metadata = {
 
 const page =async () => {
   await dbConnect()
+  const user = await currentUser();
+  const Udata=await UserData()
 
- const user = await currentUser();
-//  console.log(await checkAdmin())
-//console.log("user:",user?.primaryEmailAddress.emailAddress)
+  //fetching all categories
+  const cat=await allCategories()
+  //console.log(allCategories())
+  const recentBlogs=await getLimitedBlogs("Recent")
 
-  //  const res = await fetch(`/api/user/${user?.primaryEmailAddress?.emailAddress}`);
-      const Udata=await UserData()
-      console.log("fffff:::",Udata)
   return (
     <main >
       {user && <CreatUser/>}
       
       <CatNames/>
-      <Content saved={Udata.readLater}/>
+      <Content saved={Udata.readLater} cat={cat} recentBlogs={recentBlogs.data}/>
     </main>
   )
 }

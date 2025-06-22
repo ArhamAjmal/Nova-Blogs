@@ -11,6 +11,7 @@ export const dynamic = 'force-dynamic'; // This disables static generation
 
 
 import { catImageCloud } from '@/app/actions/catImageCloud';
+import allCategories from '@/app/actions/allCategories';
 //server
 export const metadata = {
   title: 'Explore Blog Categories – YourSite',
@@ -31,21 +32,18 @@ export const metadata = {
   },
 };
 const page =async() => {
-       await dbConnect();
-    let categories2 = []; // <-- define outside
-  try {
-    const categories = await BlogModel.distinct("category");//fetching all categories and caching them
-    categories2=JSON.parse(JSON.stringify(categories))
-  } catch (error) {
-    console.log(error)
-  }
+    await dbConnect();
+
+    // const categories = await BlogModel.distinct("category");//fetching all categories and caching them
+    // const categories2=JSON.parse(JSON.stringify(categories))
+      const cat=await allCategories()
    
   
   return (
     <div>
     <div className={styles.CategoriesTitle}>Categories</div>
     {/* <div style={{marginLeft:'0rem',fontWeight:'600',fontSize:'1.6rem',marginTop:'0.5rem',textAlign:"center"}}>Categories</div> */}
-    <CatList cat={categories2} /*imgmap={map}*//>
+    <CatList cat={cat} /*imgmap={map}*//>
     </div>
   )
 }

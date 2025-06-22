@@ -15,6 +15,8 @@ const Content = (props) => {//lazyloading+catch
   const scrollRefs = useRef({});
   const {user, isLoaded} = useUser();//is loaded?
   const [saved, setsaved] = useState(props.saved)
+  const Allcats=props.cat || []
+  const recentBlogs=props.recentBlogs || []
 //  const router = useRouter();
   // const handleClick = () => {
   //   router.push('/blogs/a');
@@ -31,30 +33,33 @@ const Content = (props) => {//lazyloading+catch
 };
 
    //const [cat,setcat]=useState(["Recent Blogs","Science","Technology"])
-  const [allCat, setallCat] = useState([])
+  const [allCat, setallCat] = useState([])//isko back se lana
   const [cat,setcat]=useState([])
   const [Allblogs, setAllblogs] = useState({})
   const [isHovered, setIsHovered] = useState(false);
   //getting recent blogs
-  useEffect(() => {
+  useEffect(() => {//isko v
       const fetchRecent = async () => {
-    //  const res = await fetch(`/api/blogs/category/limited?category=Recent`);
+    /*/  const res = await fetch(`/api/blogs/category/limited?category=Recent`);
     //   const data = await res.json();
       const d=await getLimitedBlogs("Recent")
-      // console.log("Hiiiiiiiiiiiiiiii",d.data)
-      setAllblogs({"Recent Blogs":d.data})
+      console.log("Hiiiiiiiiiiiiiiii",d.data)
+      console.log("Hiiiiiiiiiiiiiiii",recentBlogs)*/
+      setAllblogs({"Recent Blogs":recentBlogs})
     }
     fetchRecent()
   
   }, [])
   
   //1. All cat list
-  useEffect(() => {
+  useEffect(() => {//isko v
     const fetchCategories = async () => {
-      const res = await fetch("/api/Allcategories");
-      const data = await res.json();
-      setallCat(data.data);
-      setcat(data.data.slice(0,3))//4 ki limit
+      /*/ const res = await fetch("/api/Allcategories");
+      // const data = await res.json();
+      // setallCat(data.data);
+      // setcat(data.data.slice(0,3))//4 ki limit*/
+         setallCat(Allcats)
+         setcat(Allcats.slice(0,3))
     };
     fetchCategories();
   }, []);
@@ -67,7 +72,7 @@ const Content = (props) => {//lazyloading+catch
       for (let c of cat) {  //console.log(c)->categoy
       // const res = await fetch(`/api/blogs/category/limited?category=${c}`);
       // const data = await res.json();
-      const d=await getLimitedBlogs(c)
+      const d=await getLimitedBlogs(c)//isko v
       obj[c]=d.data
       // console.log("objjjjjjjjj:",obj)
       /*/game for giving it 4 list until cat==allcat
