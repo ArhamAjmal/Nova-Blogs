@@ -35,9 +35,9 @@ const Footer = () => {
           <ul>
             <h3 style={{marginLeft:"-0.2rem"}}>Categories</h3>
             <li>Technology</li>
-            <li>Lifestyle</li>
-            <li>Travel</li>
-            <li>Food</li>
+            <li>Crypto</li>
+            <li>Finance</li>
+            <li>Future</li>
             <li>Health</li>
           </ul>
         </div>
@@ -63,10 +63,10 @@ const Footer = () => {
       </div>
 
       <div className={styles.footerbottom}>
-        <p>&copy; 2025 Your Blog Name. All rights reserved.</p>
+        <p>&copy; 2025 Nova Blogs. All rights reserved.</p>
         <div className={styles.footerlinks}>
           <a href="#">Privacy Policy</a>
-          <a href="#">Terms & Service</a>
+          <a href="#">Terms& Service</a>
           <a href="#">Contact</a>
         </div>
       </div>
