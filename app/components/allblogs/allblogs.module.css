@@ -297,6 +297,9 @@
   /* background-color: #000; */
   justify-self: center;
     }
+    .mobile{
+      /* background-color: red; */
+    }
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
@@ -400,6 +403,17 @@
   .maincon ul{
     margin-bottom: 0.1rem;
   }
+  
+}
+@media (min-width: 300px) and (max-width: 400px) {
+  .mobile{
+    width: 21rem;
+  }
+  .mobile img{
+    width: 21rem;
+        height: 13rem;
+  }
+
 }
      @media (min-width: 950px){
       .list button:first-child{

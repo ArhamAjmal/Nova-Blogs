@@ -10,8 +10,8 @@ const BlogCard = (props) => {
   const [isHovered, setIsHovered] = useState(false);
   const {user, isLoaded} = useUser();//is loaded?
   const [savedd, setsaved] = useState(saved ||false)
+  const mobile=props.mobile || false
   
-  console.log(savedd)
   useEffect(() => {
     setsaved(saved)
   
@@ -26,11 +26,9 @@ const BlogCard = (props) => {
     body:JSON.stringify({field:"readLater",slug:item.slug})
   })
   const data = await res.json();
-  console.log(data);
   }
 
   const saveBlog=(s)=>{
-    console.log(s)
     if(!user){
       alert("User not exist: Please Sign in")
       return
@@ -42,12 +40,14 @@ const BlogCard = (props) => {
       else {
         setsaved(false)
         updateUsersaved("unsave")
+          console.log(mobile)
+
       }
   }
   return (
     
     <Link href={`/blog/${item.slug}`} className={styles.linkWrapper}>
-      <article className={styles.listItem}>
+      <article className={`${styles.listItem} ${mobile ? styles.mobile : ""}`} >
         <Image
           alt={item.title}
           src={item.coverImageUrl}

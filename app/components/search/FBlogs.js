@@ -207,7 +207,7 @@ const FBlogs = (props) => {//props will decide
           <span>{item.title}</span>
           </article>
           </Link> */}
-          <BlogCard item={item} saved={isSaved(item.slug)}/>
+          <BlogCard item={item} saved={isSaved(item.slug)} mobile={true}/>
           </li>
       ))}
     </ul>
