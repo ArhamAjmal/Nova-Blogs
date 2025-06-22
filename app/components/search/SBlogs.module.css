@@ -129,13 +129,13 @@
 }
 }
 
-@media (min-width: 400px) and (max-width: 680px) {
+@media (min-width: 400px) and (max-width: 700px) {
     .list {
         grid-template-columns: repeat(2, 1fr);
         /* background-color: #3b3b3b; */
     }
 }
-@media (min-width: 890px) and (max-width: 1350px) {
+@media (min-width: 920px) and (max-width: 1350px) {
     .list{
         grid-template-columns: repeat(4, 1fr);
 

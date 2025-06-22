@@ -407,13 +407,22 @@
 }
 @media (min-width: 300px) and (max-width: 400px) {
   .mobile{
-    width: 21rem;
+    width: 22.5rem;
   }
   .mobile img{
-    width: 21rem;
-        height: 13rem;
+    width: 22.5rem;
+        height: 14rem;
   }
 
+}
+@media (min-width: 560px) and (max-width: 700px) {
+  .mobile{
+    width: 18rem;
+  }
+  .mobile img{
+    width: 18rem;
+    height: 12rem;
+  }
 }
      @media (min-width: 950px){
       .list button:first-child{
