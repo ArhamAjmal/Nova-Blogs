@@ -150,9 +150,8 @@ const Blogpage = () => {
         src={blog.coverImageUrl}
         objectFit='fill'
          style={{
-            height:'220px',
-            maxWidth: '400px', // Responsive width
-            maxHeight: '650px', // Your desired max height
+            height:'17rem',
+            width: '26rem', // Responsive width
             margin:'0px auto 20px auto',
             display:'flex',
             objectFit:'fill',

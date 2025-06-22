@@ -102,6 +102,7 @@
 .container img{
   /* width: fit-content; */
   /* border-radius: 10px; */
+  height: 12rem;
 }
 /* Code blocks */
 .container pre {
