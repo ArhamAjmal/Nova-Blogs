@@ -23,6 +23,7 @@ const FBlogs = (props) => {//props will decide
   const qlist=props.qlist;
   const tlist=props.tlist;
   const trendlist=props.trendlist;
+  const authBlogs=props.authBlogs;
   const [userSaved, setuserSaved] = useState(props.userSaved || [])
   //const userSaved=props.userSaved || [];
 
@@ -110,6 +111,12 @@ const FBlogs = (props) => {//props will decide
               
               setfinish(true)
              }
+              else if(authBlogs!=null &&related==null && slug==null && query==null &&tags==null){
+                console.log(authBlogs)
+                setdata2(authBlogs)
+                setfinish(true)
+              }
+
               else if (likedList != null && related == null && slug == null && query == null && tags == null) {
                 if(likedList.length==0){
                   return(<div className={styles.noresult}>No Like selected</div>)

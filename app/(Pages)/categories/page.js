@@ -43,7 +43,7 @@ const page =async() => {
     <div>
     <div className={styles.CategoriesTitle}>Categories</div>
     {/* <div style={{marginLeft:'0rem',fontWeight:'600',fontSize:'1.6rem',marginTop:'0.5rem',textAlign:"center"}}>Categories</div> */}
-    <CatList cat={cat} /*imgmap={map}*//>
+    <CatList list={cat} auth={false}/*imgmap={map}*//>
     </div>
   )
 }

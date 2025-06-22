@@ -9,9 +9,12 @@ import Link from 'next/link';
 
 const CatList = (props) => {
   const router=useRouter();
+  const auth=props.auth
+  const page=auth?"authors":"categories"
   // const [imageMap, setImageMap] = useState(props.imgmap|| {}); // key: category, value: image url
 // console.log(props.imgmap)
-     const [allcategories, setallcategories] = useState(props.cat);
+     const [allcategories, setallcategories] = useState(props.list);
+
      const a=(c)=>{
       if(c=="Health"){
         return("https://res.cloudinary.com/djruzbhto/image/upload/v1748694313/Health-Care-Financial-Consultant-Technology_v4ysx4.png")
@@ -36,7 +39,7 @@ const CatList = (props) => {
       <div className={styles.Catlist}>
         {/* <button onClick={()=>console.log(allcategories)}>Click</button> */}
       { allcategories.map((item,ind)=>(
-        <Link key={ind}  href={`/categories/${item}`} className='linkWrapper'>
+        <Link key={ind}  href={`/${page}/${item}`} className='linkWrapper'>
         <div className={styles.listItem}>
         <Image
             alt={item}

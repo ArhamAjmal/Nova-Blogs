@@ -4,7 +4,7 @@ import styles from './library.module.css'
 import Link from 'next/link'
 
 const SettingList = () => {
-    const [list, setlist] = useState(["Liked Blogs","Saved Blogs","Authors","About us","Feedback","Dark Mode"])
+    const [list, setlist] = useState(["Liked Blogs","Saved Blogs","Authors","About us","Contact","Dark Mode"])
     const formatSlug = (text) =>
   typeof text === "string" ? text.toLowerCase().replace(/\s+/g, "") : "";
   return (
