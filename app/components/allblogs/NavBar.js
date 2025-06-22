@@ -110,7 +110,7 @@ const NavBar = () => {
       {/* <li><Link href="/tags">Tags#</Link></li> */}
       <li><Link href="/trending">Trending</Link></li>
       <li><Link href="/library">Library</Link></li>
-      <li><Link href="/settings">Settings</Link></li>
+      <li><Link href="/profile">Profile</Link></li>
     </ul>
 
     <div className={styles.sbar}>
