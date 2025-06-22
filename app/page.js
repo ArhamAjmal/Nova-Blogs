@@ -17,7 +17,7 @@ export default function Home() {
     
  useEffect(() => {
 
- if (typeof window !== "undefined" && window.innerWidth < 720) {
+ if (typeof window !== "undefined" && window.innerWidth < 750) {
   console.log("eleeeeeeeeeeee")
   setsmall(true)
   r.push('/home')

@@ -101,7 +101,7 @@
 }*/
 .container img{
   /* width: fit-content; */
-  border-radius: 10px;
+  /* border-radius: 10px; */
 }
 /* Code blocks */
 .container pre {
@@ -173,9 +173,9 @@
   color: #313131;
 }
 .container img{
-  width: 23rem;
-  height: 13rem;
-  border-radius: 10px;
+  width: 25rem;
+  height: 12rem;
+  /* border-radius: 10px; */
 }
 .container ul,
 .container ol {

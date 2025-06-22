@@ -156,7 +156,6 @@ const Blogpage = () => {
             margin:'0px auto 20px auto',
             display:'flex',
             objectFit:'fill',
-            border:"solid 2px",
           }}/>
           
           </figure>
