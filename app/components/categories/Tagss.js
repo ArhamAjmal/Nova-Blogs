@@ -73,7 +73,7 @@ const Tags = (props) => {
       {sortedLetters.length==0 && <Spinner/>}
       {sortedLetters.map(letter => (
         <div className={styles.lettercon} key={letter}>
-          <h3>{letter}</h3>
+          <h3>#{letter}</h3>
 
           <div className={styles.tags}>
             {groupedTags[letter].map(tag => (
