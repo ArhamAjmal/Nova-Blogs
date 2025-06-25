@@ -85,7 +85,6 @@
 }
 /*CAtList/////////////////*/
 .mainCatNames{
-    /* background-color: red; */
     padding-top: 0.6rem;
     padding-right: 1rem;
     padding-left: 1rem;
@@ -102,7 +101,6 @@
     /* font-family: serif; */
 }
 .CatNames{
-    /* background-color: rgb(71, 0, 251); */
     display: flex;
     overflow: scroll;
     padding: 0 1rem;
@@ -113,7 +111,6 @@
     justify-content: center;
 }
 .CatNames div{
-    /* background-color: rgb(255, 109, 30); */
     background-color: rgb(255, 255, 255);
     margin: 0.5rem 0.2rem;
     padding: 0.2rem 0.5rem;
@@ -124,7 +121,8 @@
     border-radius: 0.5rem;
     cursor: pointer;
     box-shadow: 2px 2px 10px 3px rgba(66, 66, 66, 0.09);
-    border: 1px solid rgba(117, 117, 117, 0.301);
+    box-shadow: 2px 2px 10px 3px rgba(66, 66, 66, 0.178);
+    /* border: 1px solid rgba(117, 117, 117, 0.301); */
 }
 .CatNames div:hover{
     transform: scale(1.1);
