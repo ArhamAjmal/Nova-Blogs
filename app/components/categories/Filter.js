@@ -52,7 +52,7 @@ const Filter = (props) => {
     <div className={styles.mainTags}>
       {/* <h2>Tags:</h2> */}
       <div className={styles.tagscon}>
-        {tags.length==0 && <span>Add tags</span>}
+        {tags.length==0 && <span>Add tags#</span>}
         {/* <div>Medicine<button>x</button></div> */}
         {tags.map((item,ind)=>(
           <div key={ind}>{item}
