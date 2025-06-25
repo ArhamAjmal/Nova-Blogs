@@ -105,10 +105,12 @@ border: 1px solid white; */
     font-size: 1.1rem;
     font-weight: 500;
     color: rgb(0, 0, 0);
-    padding: 0.2rem 1.7rem 0.2rem 1rem;
+    padding: 0.1rem 1.7rem 0.1rem 1rem;
     margin-left: 1rem;
     width: 9rem;
     height: auto;
+    /* background-color: red; */
+    border: 2px solid white; /* Add your custom color */
 
 }
 .sbar form>input:focus {
@@ -391,6 +393,9 @@ border: 1px solid white; */
     }
     .sbar form>input{
       width: 10.5rem;
+      margin-top: 0.1rem;
+      padding: 0.1rem 1.7rem 0.1rem 1rem;
+
     }
     .list>button{
     transform: scale(0.8);
