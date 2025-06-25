@@ -132,7 +132,7 @@ const NavBar = () => {
       height={100}
       width={100}
       src={'/trending2.png'}
-      style={{height:"1.3rem",width:"1.3rem"}}
+      style={{height:"1.3rem",width:"1.35rem",marginRight:"-0.1rem"}}
       />
       <span>Trending</span>
       </Link></li>
