@@ -428,9 +428,9 @@ border: 1px solid white; */
         padding-bottom: 1rem;
         padding-top: 0.6rem;
     }
-  .maincon ul{
+  /* .maincon ul{
     margin-bottom: 0.1rem;
-  }
+  } */
   
 }
 @media (min-width: 300px) and (max-width: 400px) {
