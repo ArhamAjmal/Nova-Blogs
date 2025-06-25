@@ -387,7 +387,7 @@ border: 1px solid white; */
     }
     .navdiv ul{
       width: fit-content;
-          padding:0.3rem 0.7rem;
+          padding:0.3rem 1rem;
     }
     .sbar{
         margin: 0.1rem 0;
@@ -418,6 +418,9 @@ border: 1px solid white; */
 .navdiv a:hover{
   color: #232222;
 }
+    .navdiv li:last-child{
+      display: none;
+    }
 }
 @media (min-width: 300px) and (max-width: 500px) {
   .maincon{
