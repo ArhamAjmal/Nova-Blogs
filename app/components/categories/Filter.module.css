@@ -254,7 +254,7 @@
         width: 8rem;
     }
     .listItem img{
-        display: none;
+        /* display: none; */
     }
     /* .tagscon{
         padding: 0;
