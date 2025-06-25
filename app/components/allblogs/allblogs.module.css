@@ -426,7 +426,7 @@ border: 1px solid white; */
 }
 @media (min-width: 300px) and (max-width: 500px) {
   .maincon{
-        height: 7.8rem;
+        height: 8rem;
         padding-bottom: 1rem;
         padding-top: 0.6rem;
     }
