@@ -13,6 +13,7 @@ import Link from 'next/link'
 import React from 'react'
 import styles from './allblogs.module.css'
 import Suggestions from './Suggestions';
+import Image from 'next/image';
 
 const NavBar = () => {
   const [query, setQuery] = useState('');
@@ -104,13 +105,55 @@ const NavBar = () => {
 <h1 onClick={handleClickLogo} className={styles.logo} style={{ fontFamily: "'Times New Roman', Times, serif" }}>Nova Blogs</h1>
     <nav className={styles.navdiv}>
     <ul >
-      <li ><Link href="/home">Home</Link></li>
+      <li ><Link href="/home">
+      <Image 
+      height={100}
+      width={100}
+      src={'/house.png'}
+      style={{height:"1.2rem",width:"1.2rem"}}
+      />
+      <span>Home</span>
+      
+      </Link></li>
+
       {/* <li><Link href="/allblogs">AllBlogs</Link></li> */}
-      <li><Link href="/categories">Categories</Link></li>
+      <li><Link href="/categories">
+      <Image 
+      height={100}
+      width={100}
+      src={'/categories.png'}
+      style={{height:"1.2rem",width:"1.2rem"}}
+      />
+      <span>Categories</span>
+      </Link></li>
       {/* <li><Link href="/tags">Tags#</Link></li> */}
-      <li><Link href="/trending">Trending</Link></li>
-      <li><Link href="/library">Library</Link></li>
-      <li><Link href="/profile">Profile</Link></li>
+      <li><Link href="/trending">
+      <Image 
+      height={100}
+      width={100}
+      src={'/trending.png'}
+      style={{height:"1.2rem",width:"1.2rem"}}
+      />
+      <span>Trending</span>
+      </Link></li>
+      <li><Link href="/library">
+      <Image 
+      height={100}
+      width={100}
+      src={'/library.png'}
+      style={{height:"1.2rem",width:"1.2rem"}}
+      />
+      <span>Library</span>
+      </Link></li>
+      <li><Link href="/profile">
+      <Image 
+      height={100}
+      width={100}
+      src={'/user.png'}
+      style={{height:"1.2rem",width:"1.2rem"}}
+      />
+      <span>Profile</span>
+      </Link></li>
     </ul>
 
     <div className={styles.sbar}>
