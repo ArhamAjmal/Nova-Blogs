@@ -140,7 +140,7 @@ const NavBar = () => {
       <Image 
       height={100}
       width={100}
-      src={'/library.png'}
+      src={'/collection.png'}
       style={{height:"1.2rem",width:"1.2rem"}}
       />
       <span>Library</span>
