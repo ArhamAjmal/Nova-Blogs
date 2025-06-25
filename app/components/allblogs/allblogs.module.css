@@ -387,6 +387,7 @@ border: 1px solid white; */
     }
     .navdiv ul{
       width: fit-content;
+          padding:0.3rem 0.7rem;
     }
     .sbar{
         margin: 0.1rem 0;
