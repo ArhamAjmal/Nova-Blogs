@@ -119,11 +119,14 @@ border: 1px solid white; */
 }
 .sbar form>button{
  background: transparent;
+ /* background-color: red; */
   border: none;
   color: #555;
   cursor: pointer;
-  margin-left: -2rem;
-  padding-top: 0rem;
+  /* margin-left: -2rem; */
+  position: absolute;
+  top: 0.35rem;
+  right: 0.1rem;
 }
 
 .sbar form>button{
