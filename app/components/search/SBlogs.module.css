@@ -19,7 +19,17 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 5px;
     padding-left: 0;
+
+    position: relative;
+
 }
+.list>img:first-child{
+    position: absolute;
+    right: 1.2rem;
+    top: -1.7rem;
+    opacity: 0.6;
+}
+
 .list li{
     list-style: none;
 }

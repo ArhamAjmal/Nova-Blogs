@@ -200,6 +200,7 @@ const FBlogs = (props) => {//props will decide
     <section style={{minHeight:minheight?"0vh":"90vh"}} className={styles.listcon} aria-label="Blog List">
     {data2.length==0 &&<Spinner/>}
    <ul className={styles.list}>
+     <Image width={100} height={100} src={'/sort3.png'} style={{height:"1.5rem",width:"1.5rem"}}/>
       { data2.map((item,ind)=>(
         <li key={item.slug}>
         {/* <Link href={`/blog/${item.slug}`} className={styles.linkWrapper}>
