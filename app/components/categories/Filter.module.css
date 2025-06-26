@@ -156,13 +156,13 @@
 }
 .listItem{
     background-color: rgb(255, 255, 255);
-    margin: 0.2rem;
+    margin: 0.3rem;
     display: flex;
     flex-direction: column;
     height: auto;
     width: fit-content;
     border-radius: 5px;
-    padding: 0.3rem 0.3rem 0rem 0.3rem;
+    /* padding: 0.3rem 0.3rem 0rem 0.3rem; */
     /* justify-content: center;
     align-items: center; */
      box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.26);
@@ -173,7 +173,7 @@
 }
 .listItem img{
     border-radius: 0px;
-    width: 13rem;
+    width: 14rem;
     height: 9rem;
 }
 .listItem span{
