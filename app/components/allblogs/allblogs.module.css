@@ -266,7 +266,8 @@ border: 1px solid white; */
     /* background-color: #d2860c; */
     padding: 0.4rem 0 0 0;
     color: #000000;
-    min-height: 2rem;
+    min-height: 2.3rem;
+    /* background-color: red; */
 }
 .listItem button{
   background-color: transparent;
