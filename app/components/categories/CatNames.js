@@ -33,7 +33,7 @@ const CatNames = () => {
   return (
     <section className={styles.mainCatNames} >
         <h2>
-          <Image height={100} width={100} src={'/trend.png'} style={{height:"1.5rem",width:"1.5rem"}}/>
+          <Image height={100} width={100} src={'/trend.png'} style={{height:"1.4rem",width:"1.4rem"}}/>
           Top Categories
         </h2>
     <nav className={styles.CatNames} ref={reff} aria-label="Category Navigation">

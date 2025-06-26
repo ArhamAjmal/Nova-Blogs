@@ -100,11 +100,11 @@
     color: #000000;
     /* font-family: serif; */
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: end;
 }
 .mainCatNames img{
     margin-right: 0.2rem;
+    margin-bottom: 0.1rem;
     /* transform: rotate(-10deg); */
 }
 .CatNames{
@@ -125,7 +125,7 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 400;
     color: rgb(57, 57, 57);
-    /* color: rgb(227, 128, 51); */
+    color: rgb(0, 0, 0);
     border-radius: 0.5rem;
     cursor: pointer;
     /* box-shadow: 2px 2px 10px 3px rgba(66, 66, 66, 0.09); */
