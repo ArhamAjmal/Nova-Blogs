@@ -26,8 +26,8 @@
 .list>img:first-child{
     position: absolute;
     right: 1.2rem;
-    top: -1.7rem;
-    opacity: 0.9;
+    top: -1.8rem;
+    /* opacity: 0.9; */
 }
 
 .list li{

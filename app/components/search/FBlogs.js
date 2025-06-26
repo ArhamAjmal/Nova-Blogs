@@ -200,8 +200,8 @@ const FBlogs = (props) => {//props will decide
     <section style={{minHeight:minheight?"0vh":"90vh"}} className={styles.listcon} aria-label="Blog List">
     {data2.length==0 &&<Spinner/>}
    <ul className={styles.list}>
-     <Image width={100} height={100} src={'/sort4.png'} style={{height:"1.6rem",width:"1.6rem"}}/>
-      { data2.map((item,ind)=>(
+{ data2.length!=0 &&    <Image width={100} height={100} src={'/arrow.png'} style={{height:"2rem",width:"2rem"}}/>
+}      { data2.map((item,ind)=>(
         <li key={item.slug}>
         {/* <Link href={`/blog/${item.slug}`} className={styles.linkWrapper}>
         <article className={styles.listItem}>
