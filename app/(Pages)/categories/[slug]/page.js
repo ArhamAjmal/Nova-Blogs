@@ -5,6 +5,7 @@ import BlogModel from '@/app/lib/model'
 import styles from '../cat.module.css'
 import dbConnect from '@/app/lib/connect'
 import UserData from '@/app/actions/UserData'
+import Image from 'next/image'
 //server
 const page =async ({ params }) => {
   await dbConnect()
@@ -38,7 +39,9 @@ const page =async ({ params }) => {
     <main>
             <section aria-label="Liked Blogs">
 
-        <h1 className={styles.slugDisplay}>{slug.charAt(0).toUpperCase() + slug.slice(1)}</h1>
+        <h1 className={styles.slugDisplay}>
+          <Image width={100} height={100} src={'/categories.png'} style={{height:"1.5rem",width:"1.5rem"}}/>
+          {slug.charAt(0).toUpperCase() + slug.slice(1)}</h1>
         {/* <div style={{marginLeft:'0rem',fontWeight:'500',fontSize:'1.6rem',marginTop:'0.5rem',textAlign:"center"}}>{slug.charAt(0).toUpperCase() + slug.slice(1)}</div> */}
 
         <FBlogs cat={slug.charAt(0).toUpperCase() + slug.slice(1)} catlist={(blogss2)} userSaved={Udata.readLater}/>
