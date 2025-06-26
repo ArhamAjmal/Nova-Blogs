@@ -23,6 +23,40 @@ const NavBar = () => {
   const modalRef = useRef(null);
   const router = useRouter();
   const inputref = useRef()
+  //scroll sick
+  const [showHeader, setShowHeader] = useState(true);
+  const lastScrollYRef = useRef(0);
+  const headerRef = useRef(null);
+  const [headerHeight, setHeaderHeight] = useState(0);
+
+  useEffect(() => {
+    if (headerRef.current) {
+      setHeaderHeight(headerRef.current.offsetHeight-30);
+    }
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentY = window.scrollY;
+      const lastY = lastScrollYRef.current;
+
+      if (currentY > headerHeight) {
+        if (currentY > lastY) {
+          setShowHeader(false); // scrolling down
+        } else {
+          setShowHeader(true); // scrolling up
+        }
+      } else {
+        setShowHeader(true); // always show near top
+      }
+
+      lastScrollYRef.current = currentY;
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [headerHeight]);
+
   useEffect(() => {
     
   if (typeof window !== 'undefined') {
@@ -90,7 +124,7 @@ const NavBar = () => {
     };
  
   return (
-    <header className={styles.maincon}>
+    <header ref={headerRef} className={`${styles.maincon} ${showHeader ? styles.show : styles.hide}`}>
       <div className={styles.clerkb}>
       <SignedIn>
         <UserButton/>
