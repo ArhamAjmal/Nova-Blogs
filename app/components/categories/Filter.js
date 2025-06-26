@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import styles from './Filter.module.css'
 import Tags from './Tagss'
 import { useRouter } from 'next/navigation'
+import Image from 'next/image'
 const Filter = (props) => {
   const router=useRouter()
   // const [tags, settags] = useState(["Healthh","Techh","Medicine"])
@@ -56,7 +57,9 @@ const Filter = (props) => {
         {/* <div>Medicine<button>x</button></div> */}
         {tags.map((item,ind)=>(
           <div key={ind}>{item}
-          <button onClick={() => removeTag(ind)} >x</button></div>
+          <button onClick={() => removeTag(ind)} >
+            <Image width={100} height={100} src={"/close.png"} style={{width:"0.45rem",height:"0.45rem"}}/>
+            </button></div>
         ))}
       </div>
       {/* <button onClick={()=>{settags(prev => [...prev, "arham"])}}>+</button>*???? */}

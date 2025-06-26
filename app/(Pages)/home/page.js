@@ -14,6 +14,7 @@ import UserModel from '@/app/lib/userModel'
 import UserData from '@/app/actions/UserData'
 import allCategories from '@/app/actions/allCategories'
 import getLimitedBlogs from '@/app/actions/getLimitedBlogs'
+import NotifyAdd from '@/app/components/action/NotifyAdd'
 // import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/nextjs'
 //server component
 // ✅ 1. Add metadata for SEO
@@ -52,6 +53,7 @@ const page =async () => {
       
       <CatNames/>
       <Content saved={Udata.readLater} cat={cat} recentBlogs={recentBlogs.data}/>
+      {/* <NotifyAdd show={true} task={"remove"}/> */}
     </main>
   )
 }

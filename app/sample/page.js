@@ -1,20 +1,23 @@
-import React from 'react'
-import Tags from '../components/categories/Tagss'
-import Details from '../components/blog/Details'
-import Footer from '../components/Footer/Footer'
-import Spinner from '../components/allblogs/Spinner'
-import Test from '../components/home/Test'
-import MdxEditor from '../components/admin/MdxEditor'
-import NotFoundPage from '../components/action/NotFoundPage'
-import Spinner2 from '../components/allblogs/Spinner2'
+"use client"
+import React, { useState } from 'react'
+import NotifyAdd from '../components/action/NotifyAdd'
 
 const page = () => {
+  const [show, setshow] = useState(false)
+ const handleClick = () => {
+    setshow(true);
+    setTimeout(() => setshow(false), 3000); // Hide after 3s
+  };
   return (
     <div style={{height:"110vh"}}>
-      <Spinner2/>
-      <NotFoundPage/>
-      <Footer/>
-      </div>
+      <button
+        onClick={handleClick}
+      >
+        Helloaaaa
+      </button>
+
+     <NotifyAdd show={show} task={"add"}/>   
+</div>
   )
 }
 

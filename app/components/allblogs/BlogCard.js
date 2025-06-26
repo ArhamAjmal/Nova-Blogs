@@ -11,7 +11,11 @@ const BlogCard = (props) => {
   const {user, isLoaded} = useUser();//is loaded?
   const [savedd, setsaved] = useState(saved ||false)
   const mobile=props.mobile || false
-  
+
+  const funToSetNot=props.setNot;
+  const funToSetNotTask=props.setTaskNot;
+  //funToSetNot(false)
+
   useEffect(() => {
     setsaved(saved)
   
@@ -36,12 +40,16 @@ const BlogCard = (props) => {
     if(!savedd){
       setsaved(true)
       updateUsersaved("save")
+      funToSetNotTask("add")
+      funToSetNot(true)
+      setTimeout(() => funToSetNot(false), 2000); // Hide after 3s
     }
       else {
         setsaved(false)
         updateUsersaved("unsave")
-          console.log(mobile)
-
+        funToSetNotTask("remove")
+        funToSetNot(true)
+        setTimeout(() => funToSetNot(false), 2000); // Hide after 3s
       }
   }
   return (

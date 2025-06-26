@@ -1,0 +1,60 @@
+.not{
+    display: flex;
+    width: fit-content;
+    position: fixed;
+    bottom: 1rem;
+    left: 3rem;
+    opacity: 0;
+  border-radius: 8px;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+  z-index: 9999999;
+  /* transform: translateY(100px); */
+
+}
+.show {
+  opacity: 1;
+  transform: translateY(-10px);
+  pointer-events: auto;
+}
+.hide {
+  opacity: 0;
+  transform: translateY(60px);
+  pointer-events: auto;
+}
+
+.savednotification {
+  background-color: #d4edda;
+  color: #155724;
+  padding: 0.75rem 1.2rem;
+  border-left: 5px solid #28a745;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  margin: 1rem 0;
+}
+.red{
+    background-color: #eddbd4;
+    border-left: 5px solid #a74128;
+    color: #572915;
+
+}
+.tickicon {
+  width: 25px;
+  height: 25px;
+}
+
+.savedlink {
+  text-decoration: underline;
+  font-weight: 600;
+  color: #155724;
+  cursor: pointer;
+}
+.savedlink2 {
+    color: #572a15;
+
+
+}

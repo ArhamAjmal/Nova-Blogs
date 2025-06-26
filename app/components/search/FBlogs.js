@@ -9,6 +9,7 @@ import Spinner2 from '../allblogs/Spinner2';
 import Link from 'next/link';
 import BlogCard from '../allblogs/BlogCard';
 import UserData from '@/app/actions/UserData';
+import NotifyAdd from '../action/NotifyAdd';
 
 const FBlogs = (props) => {//props will decide
   const minheight=props.minheight
@@ -32,6 +33,8 @@ const FBlogs = (props) => {//props will decide
   const [data2, setdata2] = useState([])
   const [finish, setfinish] = useState(false)
   const [showSpinner, setshowSpinner] = useState(false)
+  const [shownot, setshownot] = useState(false)
+  const [taskNot, settaskNot] = useState("add")
 
   useEffect(() => {
    //console.log("first")
@@ -215,12 +218,14 @@ const FBlogs = (props) => {//props will decide
           <span>{item.title}</span>
           </article>
           </Link> */}
-          <BlogCard item={item} saved={isSaved(item.slug)} mobile={true}/>
+          <BlogCard item={item} saved={isSaved(item.slug)} mobile={true} setNot={setshownot} setTaskNot={settaskNot}/>
           </li>
       ))}
     </ul>
     {showSpinner &&<div style={{marginTop:"0.7rem",marginBottom:"0.3rem"}}><Spinner2/></div> } 
-{(data2.length!=0 && (!finish) && !showSpinner) &&<button onClick={b} style={{width:"fit-content",alignSelf:'center',border:"0",color:"grey",margin:"0.7rem",cursor:"pointer",background:"transparent"}}>more</button>}    
+{(data2.length!=0 && (!finish) && !showSpinner) &&<button onClick={b} style={{width:"fit-content",alignSelf:'center',border:"0",color:"grey",margin:"0.7rem",cursor:"pointer",background:"transparent"}}>more</button>}  
+    
+     <NotifyAdd show={shownot} task={taskNot}/>   
 </section>
   )
 }

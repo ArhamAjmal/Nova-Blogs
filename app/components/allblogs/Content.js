@@ -11,16 +11,15 @@ import Spinner2 from './Spinner2';
 import getLimitedBlogs from '@/app/actions/getLimitedBlogs';
 import BlogCard from './BlogCard';
 import { useUser } from '@clerk/nextjs';
+import NotifyAdd from '../action/NotifyAdd';
 const Content = (props) => {//lazyloading+catch
   const scrollRefs = useRef({});
   const {user, isLoaded} = useUser();//is loaded?
   const [saved, setsaved] = useState(props.saved)
   const Allcats=props.cat || []
   const recentBlogs=props.recentBlogs || []
-//  const router = useRouter();
-  // const handleClick = () => {
-  //   router.push('/blogs/a');
-  // };
+  const [shownot, setshownot] = useState(false)
+  const [taskNot, settaskNot] = useState("add")
  const scroll = (category, direction) => {
   const container = scrollRefs.current[category];
   if (container) {
@@ -32,7 +31,6 @@ const Content = (props) => {//lazyloading+catch
   }
 };
 
-   //const [cat,setcat]=useState(["Recent Blogs","Science","Technology"])
   const [allCat, setallCat] = useState([])//isko back se lana
   const [cat,setcat]=useState([])
   const [Allblogs, setAllblogs] = useState({})
@@ -69,18 +67,9 @@ const Content = (props) => {//lazyloading+catch
     //loop of allcategories
     const obj={}     
     const b=async() => {
-      for (let c of cat) {  //console.log(c)->categoy
-      // const res = await fetch(`/api/blogs/category/limited?category=${c}`);
-      // const data = await res.json();
+      for (let c of cat) {  
       const d=await getLimitedBlogs(c)//isko v
       obj[c]=d.data
-      // console.log("objjjjjjjjj:",obj)
-      /*/game for giving it 4 list until cat==allcat
-      setAllblogs(prev => ({
-           ...prev,        // Copy existing properties
-           [c]:d.data  // Add new array
-          }))
-      }*/
     }
      setAllblogs(prev => ({//means ab loop complete one k bad data mile ga
            ...prev,        // Copy existing properties
@@ -101,11 +90,7 @@ const Content = (props) => {//lazyloading+catch
     ])
   }
   const isSaved=(s)=>{
-    // console.log("first",s)
-    // const res = await fetch(`/api/user/${user?.primaryEmailAddress?.emailAddress}`);
-    //  const data = await res.json();
-    // //   console.log(data?.data?.readLater?.includes(s))
-
+   
       if (saved.includes(s)) {
         return(true)
       }
@@ -131,23 +116,7 @@ const Content = (props) => {//lazyloading+catch
      <button onClick={() => scroll(category, 'left')}><Image height={25} width={25} alt="Scroll Left" src={'https://res.cloudinary.com/djruzbhto/image/upload/v1749240844/next_4_vndtsl.png'} /></button>
 
       { blogs.map((item,ind)=>(
-        <BlogCard key={ind} item={item} saved={isSaved(item.slug)}/>
-      
-    // <Link key={ind} href={`/blog/${item.slug}`} className={styles.linkWrapper}>
-    //     <article  key={ind} className={styles.listItem}>
-    //     <Image
-    //         alt={item.title}
-    //         src={item.coverImageUrl}
-    //         width={200}
-    //         height={150}
-    //         style={{objectFit:"fill"}}
-    //         />
-    //       <span>{item.title}</span>
-    //       <button onMouseEnter={() => setIsHovered(true)}
-    //               onMouseLeave={() => setIsHovered(false)}
-    //       ><Image height={50} width={50} src={isHovered ? "/saved.png" : "/save2.png"} style={{width:"1rem",height:"1rem"}}/></button>
-    //       </article>
-    //  </Link>
+        <BlogCard key={ind} item={item} saved={isSaved(item.slug)} setNot={setshownot} setTaskNot={settaskNot}/>
       ))}
           <button onClick={() => scroll(category, 'right')}><Image height={25} width={25} alt="Scroll Left" src={'https://res.cloudinary.com/djruzbhto/image/upload/v1749240839/next_4_dqze8s.png'}/></button>
     </nav>
@@ -158,6 +127,8 @@ const Content = (props) => {//lazyloading+catch
 }
     {(Object.keys(Allblogs).length>2 && cat.length!=allCat.length) &&<button onClick={a} style={{marginBottom:"0.4rem"}}>more</button>}
     {cat.length!=(Object.keys(Allblogs).length-1) && <Spinner2/>}
+         
+    <NotifyAdd show={shownot} task={taskNot}/>   
     </section>
   )
 }
