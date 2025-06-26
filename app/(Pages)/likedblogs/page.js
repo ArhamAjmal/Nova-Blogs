@@ -8,6 +8,7 @@ import UserModel from '@/app/lib/userModel';
 import SignOutWrapper from '@/app/components/library/SignoutWrapper';
 import SigninWrapper from '@/app/components/library/SigninWrapper';
 import UserData from '@/app/actions/UserData';
+import Image from 'next/image';
 export const metadata = {
   title: 'Your Liked Blogs – Nova Blogs',
   description: 'View all the blogs you’ve liked. Curate your personal collection of the most insightful posts.',
@@ -58,7 +59,9 @@ const page =async () => {
   return (
     <main>
       <section aria-label="Liked Blogs">
-       <h1 className={styles.likeBlogs}>Liked Blogs</h1>
+       <h1 className={styles.likeBlogs}>
+         <Image width={100} height={100} src={'/like(4).png'} style={{height:"1.4rem",width:"1.4rem"}}/>
+        Liked Blogs</h1>
         {/* {user &&
         <FBlogs email={user?.primaryEmailAddress?.emailAddress}/>
         } */}

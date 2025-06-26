@@ -7,7 +7,8 @@ const page =async () => {
     const authors=await getAuthors()
   return (
     <main style={{minHeight:"100vh"}} >
-    <div className={styles.AuthorTitle}>Authors</div>
+    <div className={styles.AuthorTitle}>
+      Authors</div>
         
       <CatList list={authors} auth={true}/>
     </main>

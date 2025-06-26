@@ -7,6 +7,7 @@ import Head from 'next/head'
 import { auth, currentUser } from "@clerk/nextjs/server";
 import UserModel from '@/app/lib/userModel'
 import UserData from '@/app/actions/UserData'
+import Image from 'next/image'
 
 const page = async() => {
     await dbConnect()
@@ -37,8 +38,11 @@ const page = async() => {
       <meta property="og:image" content="https://yourdomain.com/preview/trending.jpg" />
       <link rel="canonical" href="https://yourdomain.com/trending" />
     </Head>
-    <main style={{minHeight:"100vh"}}>
-     <h1 className={styles.heading}>Trending</h1>
+      <main style={{ minHeight: "100vh" }}>
+        <h1 className={styles.heading}>
+          <Image width={100} height={100} src={'/trending2.png'} style={{ height: "1.7rem", width: "1.7rem" }} />
+
+          Trending</h1>
      <section aria-label="Trending Blog Posts">
         <FBlogs trendlist={blogs2} userSaved={Udata.readLater}/>
       </section>    

@@ -8,6 +8,7 @@ import FBlogs from '@/app/components/search/FBlogs';
 import UserData from '@/app/actions/UserData';
 import SigninWrapper from '@/app/components/library/SigninWrapper';
 import Footer from '@/app/components/Footer/Footer';
+import Image from 'next/image';
 
 const page = async() => {
       await dbConnect();
@@ -21,7 +22,6 @@ const page = async() => {
       //  });
       //   const data = await res.json();
         const data= await UserModel.findOne({email:user?.primaryEmailAddress.emailAddress}).select("readLater");
-        console.log("dddddddddddddddd:::",data.readLater)
         // console.log(data.data.liked)
         const readlater=data.readLater || []
         if(!user ||readlater.length==0)return(<div><div className={styles.noresult}>No saved blogs</div><Footer/></div>)
@@ -35,7 +35,9 @@ const page = async() => {
   return (
     <main>
       <section aria-label="Liked Blogs">
-       <h1 className={styles.savedBlogs}>Saved Blogs</h1>
+       <h1 className={styles.savedBlogs}>
+        <Image width={100} height={100} src={'/bookmark.png'} style={{height:"1.3rem",width:"1.35rem"}}/>
+        Saved Blogs</h1>
         {/* {user &&
         <FBlogs email={user?.primaryEmailAddress?.emailAddress}/>
         } */}

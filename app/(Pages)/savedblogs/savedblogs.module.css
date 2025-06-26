@@ -9,14 +9,22 @@
     min-height: 100vh;
 }
 .savedBlogs {
-  width: fit-content;
+    width: fit-content;
   margin-left: 5rem;
   font-weight: 500;
-  font-size: 1.6rem;
+  font-size: 1.7rem;
   margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  /* background-color: red; */
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+.savedBlogs img{
+  margin-right: 0.25rem;
 }
      @media (min-width: 300px) and (max-width: 500px) {
     .savedBlogs {
-        margin-left: 2.5rem;
+        margin-left: 3.7rem;
     }
      }
