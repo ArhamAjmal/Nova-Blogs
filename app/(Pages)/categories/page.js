@@ -12,6 +12,7 @@ export const dynamic = 'force-dynamic'; // This disables static generation
 
 import { catImageCloud } from '@/app/actions/catImageCloud';
 import allCategories from '@/app/actions/allCategories';
+import Image from 'next/image';
 //server
 export const metadata = {
   title: 'Explore Blog Categories – YourSite',
@@ -41,7 +42,9 @@ const page =async() => {
   
   return (
     <div>
-    <div className={styles.CategoriesTitle}>Categories</div>
+    <div className={styles.CategoriesTitle}>
+      <Image width={100} height={100} src={'/categories.png'} style={{height:"1.3rem",width:"1.35rem"}}/>
+      Categories</div>
     {/* <div style={{marginLeft:'0rem',fontWeight:'600',fontSize:'1.6rem',marginTop:'0.5rem',textAlign:"center"}}>Categories</div> */}
     <CatList list={cat} auth={false}/*imgmap={map}*//>
     </div>

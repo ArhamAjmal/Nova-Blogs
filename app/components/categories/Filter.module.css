@@ -155,7 +155,7 @@
     height: auto;
     width: fit-content;
     border-radius: 5px;
-    padding: 0.2rem 0.2rem 0rem 0.2rem;
+    padding: 0.3rem 0.3rem 0rem 0.3rem;
     /* justify-content: center;
     align-items: center; */
      box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.26);
@@ -175,7 +175,7 @@
     /* font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
-    padding: 0.2rem 0 0.5rem 0;
+    padding: 0.3rem 0 0.6rem 0;
     color: #191919;
     /* background-color: red; */
 }

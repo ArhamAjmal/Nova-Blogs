@@ -6,13 +6,16 @@
   margin-top: 0.5rem;
   color: rgb(53, 53, 53);
 }
+.AuthorTitle img{
+  margin-right: 0.3rem;
+}
 .slugDisplay {
    width: fit-content;
   margin-left: 5rem;
   font-weight: 500;
   font-size: 1.7rem;
   margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.1rem;
   /* background-color: red; */
   display: flex;
   justify-content: end;
