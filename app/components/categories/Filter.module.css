@@ -99,6 +99,13 @@
     font-weight: 500;
     color: #000000;
     /* font-family: serif; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.mainCatNames img{
+    margin-right: 0.2rem;
+    /* transform: rotate(-10deg); */
 }
 .CatNames{
     display: flex;
@@ -122,7 +129,7 @@
     border-radius: 0.5rem;
     cursor: pointer;
     /* box-shadow: 2px 2px 10px 3px rgba(66, 66, 66, 0.09); */
-    box-shadow: 2px 2px 10px 3px rgba(66, 66, 66, 0.134);
+    box-shadow: 2px 2px 10px 3px rgba(66, 66, 66, 0.084);
     /* border: 1px solid rgba(117, 117, 117, 0.301); */
 }
 .CatNames div:hover{

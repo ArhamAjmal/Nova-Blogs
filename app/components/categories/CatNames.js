@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import styles from './Filter.module.css'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 
 const CatNames = () => {
   const r=useRouter();
@@ -31,7 +32,10 @@ const CatNames = () => {
 
   return (
     <section className={styles.mainCatNames} >
-        <h2>Top Categories</h2>
+        <h2>
+          <Image height={100} width={100} src={'/trend.png'} style={{height:"1.5rem",width:"1.5rem"}}/>
+          Top Categories
+        </h2>
     <nav className={styles.CatNames} ref={reff} aria-label="Category Navigation">
       {Cats.map((item,ind)=>(
         <Link key={ind} href={`/categories/${item}`} className='linkWrapper'>
