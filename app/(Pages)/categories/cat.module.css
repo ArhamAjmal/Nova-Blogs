@@ -30,7 +30,7 @@
     .CategoriesTitle{
         margin: 0;
         width: 100%;
-        text-align: center;
+        /* text-align: center; */
     }
     .slugDisplay{
         margin-left: 3.7rem;
