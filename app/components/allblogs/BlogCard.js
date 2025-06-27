@@ -52,6 +52,12 @@ const BlogCard = (props) => {
         setTimeout(() => funToSetNot(false), 2000); // Hide after 3s
       }
   }
+  const titleDot=(l)=>{
+    if(l>57){
+      return("...")
+    }
+    else return("")
+  }
   return (
     
     <Link href={`/blog/${item.slug}`} className={styles.linkWrapper}>
@@ -63,7 +69,7 @@ const BlogCard = (props) => {
           height={150}
           style={{ objectFit: "fill"  }}
         />
-        <span>{item.title}</span>
+        <span>{item.title.slice(0,57)+titleDot(item.title.length)}</span>
         <button
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}

@@ -2,13 +2,23 @@
   width: fit-content;
   margin-left: 5rem;
   font-weight: 600;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   margin-top: 0.5rem;
-  color: rgb(53, 53, 53);
-  color: black;
+  color: rgba(53, 53, 53, 0.721);
+  color: rgb(0, 0, 0);
+  display: flex;
+  align-items: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .CategoriesTitle img{
   margin-right: 0.1rem;
+  margin-bottom: -0.4rem;
+}
+.paragraph{
+  /* background-color: red; */
+  margin-left: 5rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 0.93rem;
 }
 .slugDisplay {
   width: fit-content;
@@ -30,9 +40,14 @@
     .CategoriesTitle{
         margin: 0;
         width: 100%;
-        text-align: center;
+        justify-content: center;
     }
     .slugDisplay{
         margin-left: 3.7rem;
     }
+    .paragraph{
+  margin-left:0;
+  text-align: center;
+  margin: 0 5rem;
+}
 }

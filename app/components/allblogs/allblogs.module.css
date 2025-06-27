@@ -249,6 +249,7 @@ border: 1px solid white; */
     /* width: 13.4rem; */
     width: 15rem;
     min-height: 13.3rem;
+    /* max-height: 13.3rem; */
     /* border-radius: 12px; */
     border-radius: 3px;
     /* padding: 0.5rem 0.7rem 0.5rem 0.7rem; */
@@ -273,9 +274,9 @@ border: 1px solid white; */
     text-align: center;
     font-family:   Arial, sans-serif;
     /* background-color: #d2860c; */
-    padding: 0.4rem 0 0 0;
+    padding: 0.25rem 0 0 0;
     color: #000000;
-    min-height: 2.3rem;
+    min-height: 2.45rem;
     /* background-color: red; */
 }
 .listItem button{

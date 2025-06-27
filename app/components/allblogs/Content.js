@@ -19,7 +19,7 @@ const Content = (props) => {//lazyloading+catch
   const Allcats=props.cat || []
   const recentBlogs=props.recentBlogs || []
   const [shownot, setshownot] = useState(false)
-  const [taskNot, settaskNot] = useState("add")
+  const [taskNot, settaskNot] = useState("")
  const scroll = (category, direction) => {
   const container = scrollRefs.current[category];
   if (container) {

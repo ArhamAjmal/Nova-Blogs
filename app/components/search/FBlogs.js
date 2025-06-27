@@ -34,7 +34,7 @@ const FBlogs = (props) => {//props will decide
   const [finish, setfinish] = useState(false)
   const [showSpinner, setshowSpinner] = useState(false)
   const [shownot, setshownot] = useState(false)
-  const [taskNot, settaskNot] = useState("add")
+  const [taskNot, settaskNot] = useState("")
 
   useEffect(() => {
    //console.log("first")

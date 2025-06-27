@@ -167,6 +167,8 @@
     align-items: center; */
      box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.26);
   /* horizontal | vertical | blur | spread | color */
+  position: relative;
+  border-radius: 10px;
 }
 .listItem:hover{
     transform: scale(1.02);
@@ -174,17 +176,30 @@
 .listItem img{
     border-radius: 0px;
     width: 14rem;
-    height: 9rem;
+    height: 11rem;
+    object-fit: cover;
+    filter: brightness(0.8);
+      border-radius: 10px;
+        border: 1px solid rgba(0, 0, 0, 0.432);
+
+
 }
+
 .listItem span{
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-weight: 600;
-    /* font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
     text-align: center;
     padding: 0.3rem 0 0.6rem 0;
-    color: #191919;
+    color: #ffffffe1;
+
     /* background-color: red; */
+    position: absolute;
+    bottom: 0.7rem;
+    align-self: center;
+      text-shadow: 2px 2px 4px rgb(0, 0, 0);
+      /* text-shadow: offset-x offset-y blur-radius color; */
+
 }
 .ch{
      width: fit-content;
