@@ -273,10 +273,12 @@ border: 1px solid white; */
     font-size: 0.88rem;
     text-align: center;
     font-family:   Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     /* background-color: #d2860c; */
     padding: 0.25rem 0 0 0;
-    color: #000000;
+    color: #000000ee;
     min-height: 2.45rem;
+    font-weight: bold;
     /* background-color: red; */
 }
 .listItem button{

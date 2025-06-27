@@ -37,7 +37,7 @@
 @media (min-width: 300px) and (max-width: 500px) {
     .AuthorTitle{
         width: 100%;
-        margin-left: 3.5rem;
+        margin-left: 3rem;
 
     }
     .slugDisplay{
@@ -46,7 +46,7 @@
     .paragraph{
   /* text-align: center; */
   /* margin: 0 5rem; */
-      margin-left: 3.5rem;
+      margin-left: 3.3rem;
       margin-right: 1.5rem;
 }
 }
