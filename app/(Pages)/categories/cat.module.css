@@ -38,16 +38,19 @@
 
 @media (min-width: 300px) and (max-width: 500px) {
     .CategoriesTitle{
-        margin: 0;
+        /* margin: 0; */
         width: 100%;
-        justify-content: center;
+        /* justify-content: center; */
+        margin-left: 3.5rem;
+
     }
     .slugDisplay{
         margin-left: 3.7rem;
     }
     .paragraph{
-  margin-left:0;
-  text-align: center;
-  margin: 0 5rem;
+  /* text-align: center; */
+  /* margin: 0 5rem; */
+      margin-left: 3.5rem;
+      margin-right: 1.5rem;
 }
 }
