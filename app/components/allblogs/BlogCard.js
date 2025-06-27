@@ -69,7 +69,7 @@ const BlogCard = (props) => {
           height={150}
           style={{ objectFit: "fill"  }}
         />
-        <span>{item.title.slice(0,57)+titleDot(item.title.length)}</span>
+        <span>{item.title.slice(0,57).trim()+titleDot(item.title.length)}</span>
         <button
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}

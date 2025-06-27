@@ -11,8 +11,7 @@ const page =async () => {
     <div className={styles.AuthorTitle}>
               <Image width={100} height={100} src={'/quill-pen.png'} style={{height:"1.5rem",width:"1.5rem"}}/>
       Authors</div>
-      <p className={styles.paragraph}>Explore intriguing niches that challenge your thinking and spark new ideas.</p>
-        
+      <p className={styles.paragraph}>Explore the perspectives of your favorite authors.</p>        
       <CatList list={authors} auth={true}/>
     </main>
   )

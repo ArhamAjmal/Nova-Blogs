@@ -276,7 +276,7 @@ border: 1px solid white; */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     /* background-color: #d2860c; */
     padding: 0.25rem 0 0 0;
-    color: #000000ee;
+    color: #000000;
     min-height: 2.45rem;
     font-weight: bold;
     /* background-color: red; */
@@ -457,6 +457,9 @@ border: 1px solid white; */
   .mobile img{
     width: 22.5rem;
         height: 14rem;
+  }
+  .mobile span{
+    font-size: 1rem;
   }
 
 }

@@ -46,6 +46,7 @@ const page =async() => {
       <Image width={100} height={100} src={'/categories.png'} style={{height:"1.5rem",width:"1.6rem"}}/>
       Categories</div>
       <p className={styles.paragraph}>Explore intriguing niches that challenge your thinking and spark new ideas.</p>
+      <p className={styles.paragraph2}>Explore intriguing niches that challenge your thinking.</p>
     {/* <div style={{marginLeft:'0rem',fontWeight:'600',fontSize:'1.6rem',marginTop:'0.5rem',textAlign:"center"}}>Categories</div> */}
     <CatList list={cat} auth={false}/*imgmap={map}*//>
     </div>
