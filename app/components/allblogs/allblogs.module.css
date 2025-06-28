@@ -241,23 +241,17 @@ border: 1px solid white; */
 .listItem{
     position: relative;
     background-color: rgb(255, 255, 255);
-    /* margin: 0.2rem; */
     margin: 0.2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     height: auto;
-    /* width: 13.4rem; */
-    width: 15rem;
-    min-height: 13.3rem;
-    /* max-height: 13.3rem; */
-    /* border-radius: 12px; */
+    width: 16.5rem;
+    min-height: 13.9rem;
     border-radius: 3px;
-    /* padding: 0.5rem 0.7rem 0.5rem 0.7rem; */
     padding: 0rem 0.7rem 0.5rem 0.7rem;
-
-     /* box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.26); */
      box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.09);
+     box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.262);
   /* horizontal | vertical | blur | spread | color */
 }
 .listItem:hover{
@@ -267,17 +261,18 @@ border: 1px solid white; */
     border-radius: 0px;
     /* width: 12rem; */
     /* height: 8.5rem; */
-    width: 15rem;
+    width: 16.5rem;
     height:10.5rem;
 }
 .listItem span{
     font-size: 0.88rem;
+    font-size: 0.95rem;
     text-align: center;
     font-family:   Arial, sans-serif;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     /* background-color: #d2860c; */
     padding: 0.25rem 0 0 0;
-    color: #000000;
+    color: #000000ee;
     min-height: 2.45rem;
     font-weight: bold;
     /* background-color: red; */
@@ -286,8 +281,8 @@ border: 1px solid white; */
   background-color: transparent;
   border: 0;
   position: absolute;
-  right: 0.3rem;
-  bottom: -0.1rem;
+  right: 0.1rem;
+  bottom: -0.05rem;
   /* opacity: 0.3; */
   cursor: pointer;
 }
@@ -460,7 +455,7 @@ border: 1px solid white; */
         height: 14rem;
   }
   .mobile span{
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
 
 }

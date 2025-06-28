@@ -74,8 +74,8 @@ const BlogCard = (props) => {
           <Image
             height={50}
             width={50}
-            src= {(savedd)? "/saved.png" : "/save2.png"}
-            style={{ width: "1rem", height: "1rem" }}
+            src= {(savedd)? "/saved.png" : "/save5.png"}
+            style={{ width: "1.1rem", height: "1rem",opacity:savedd?"1":"0.6"}}
             alt="Save Icon"
           />
         </button>

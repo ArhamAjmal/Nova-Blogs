@@ -22,7 +22,7 @@ const NotifyList = (props) => {
         {list.map((item, ind) => (
           <motion.div
             key={ind}
-            initial={{ opacity: 1, height: 0, y: 20 }}
+            initial={{ opacity: 1, height: 0, y: 150 }}
             animate={{ opacity: 1, height: "auto", y: 0 }}
             exit={{ opacity: 0, height: 0, y: 0 }}
             transition={{ duration: 0.1 }}
