@@ -31,43 +31,7 @@ export default function MdxEditor(props) {
     coverImageUrl: blog?.coverImageUrl ||"",
     author:blog?.author ||"",
   });
-/*/toast code
-  useEffect(() => {
-     if (!editorRef.current || editorInstance.current) return;
-
-  // Clear previous children (in case hot reload or re-render happens)
-        editorRef.current.innerHTML = "";
-    if (editorRef.current) {
-      // Attach editor inside a wrapper, not directly on the container
-      const editorWrapper = document.createElement("div");
-      editorRef.current.appendChild(editorWrapper);
-
-      editorInstance.current = new Editor({
-        el: editorWrapper,
-        height: "800px",
-        initialEditType: "markdown",
-        previewStyle: "vertical",
-        initialValue:blog?.description || "##Start Writing...",
-        
-      });
-      // Hide horizontal scrollbar
-    editorWrapper.style.overflowX = "hidden";
-    editorWrapper.style.overflowY = "hidden";
-    editorWrapper.style.width = "100%";
-    }
-     // Cleanup to prevent duplicate editors
-  return () => {
-    if (editorInstance.current) {
-      editorInstance.current.destroy();
-      editorInstance.current = null;
-    }
-
-    if (editorRef.current) {
-      editorRef.current.innerHTML = ""; // Clear any leftover wrapper
-    }
-  };
-  }, []);*/
- // Handle input changes
+// Handle input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -105,13 +69,6 @@ export default function MdxEditor(props) {
         ...blogData,
         description: content,
       };
-    //   console.log(finalData)
-    //   const isAnyFieldEmpty = Object.values(finalData).some(value => value === '');
-    //   if (isAnyFieldEmpty) {
-    //   alert('Please fill out all the fields');
-    //   return; // prevent further action like form submissio
-    // }
-    //console.log(finalData)
       try {
         const result = await serialize(content, {
                   mdxOptions: { remarkPlugins: [remarkGfm] }

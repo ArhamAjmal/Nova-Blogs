@@ -15,7 +15,20 @@ const uploadblog = async(data) => {
     return({Success:false,data:"Slug already exist"})
   }
   else{
-    const newData=new BlogModel(data)
+    //trimming
+    const trimfun=(obj)=>{
+      const trimmed = {};
+  for (const key in obj) {
+    if (typeof obj[key] === 'string') {
+      trimmed[key] = obj[key].trim();
+    } else {
+      trimmed[key] = obj[key]; // keep non-strings untouched
+    }
+  }
+  return trimmed;
+    }
+    const clean = trimfun(data);
+    const newData=new BlogModel(clean)
     // .then(ress=>console.log("Add:",ress))//Models automatically save data in a pluralized collection (e.g., "todos" from model name Todo).
     // .catch(err=>console.log("error:",err.errors))//printing age specific error
     const savedBlog = await newData.save();

@@ -6,6 +6,7 @@ import Image from 'next/image'
 
 const page =async () => {
     const authors=await getAuthors()
+    console.log(authors)
   return (
     <main style={{minHeight:"100vh"}} >
     <div className={styles.AuthorTitle}>
