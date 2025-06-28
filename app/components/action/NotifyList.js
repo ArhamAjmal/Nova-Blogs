@@ -6,12 +6,12 @@ import NotifyAdd from "./NotifyAdd"
 import { AnimatePresence, motion } from 'framer-motion'
 
 const NotifyList = (props) => {
-    const [list, setlist] = useState(["add","add","remove","add","remove","add","remove"])
-    // const [list, setlist] = useState(props.list)
+    // const [list, setlist] = useState(["add","add","remove","add","remove","add","remove"])
+    const [list, setlist] = useState(props.list)
     
 
     useEffect(() => {
-      // setlist(props.list)
+      setlist(props.list)
     
     }, [props.list])
     
@@ -22,10 +22,10 @@ const NotifyList = (props) => {
         {list.map((item, ind) => (
           <motion.div
             key={ind}
-            initial={{ opacity: 1, height: 0, y: 150 }}
+            initial={{ opacity: 1, height: 0, y: 50 }}
             animate={{ opacity: 1, height: "auto", y: 0 }}
             exit={{ opacity: 0, height: 0, y: 0 }}
-            transition={{ duration: 0.1 }}
+            transition={{ duration: 0.01 }}
           >
             <NotifyAdd task={item}/>
           </motion.div>

@@ -17,10 +17,11 @@
 .notList{
   /* background-color: red; */
   position: fixed;
-  top: 80vh;
+  bottom: 1rem;
   left: 3rem;
   z-index: 9999999;
   /* background-color: red; */
+  height: 10rem;
 }
 /* .show {
   opacity: 1;
@@ -69,8 +70,8 @@
 
 }
 
-     @media (max-width: 550px){
+     /* @media (max-width: 550px){
 .notList{
     top: 42rem;
 }
-     }
+     } */
