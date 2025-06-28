@@ -70,5 +70,7 @@
 }
 
      @media (max-width: 550px){
-
+.notList{
+    top: 42rem;
+}
      }

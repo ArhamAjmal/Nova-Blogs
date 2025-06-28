@@ -6,12 +6,12 @@ import NotifyAdd from "./NotifyAdd"
 import { AnimatePresence, motion } from 'framer-motion'
 
 const NotifyList = (props) => {
-    // const [list, setlist] = useState(["add","add","remove","add","remove","add","remove"])
-    const [list, setlist] = useState(props.list)
+    const [list, setlist] = useState(["add","add","remove","add","remove","add","remove"])
+    // const [list, setlist] = useState(props.list)
     
 
     useEffect(() => {
-      setlist(props.list)
+      // setlist(props.list)
     
     }, [props.list])
     
