@@ -4,12 +4,11 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 const NotifyAdd = (props) => {
-    let show=props.show;
      let task=props.task;
     let title=task=="add"? "Blog added to ":"Blog removed from "
     // console.log(title)
   return (
-    <div className={`${styles.not} ${show ? styles.show : styles.hide}`}>
+    <div className={styles.not}>
        <div className={`${styles.savednotification} ${task=="remove"? styles.red :""}`}>
       <Image
         src={task=="add"? '/check.png':"/remove.png"} // Replace with your tick image path

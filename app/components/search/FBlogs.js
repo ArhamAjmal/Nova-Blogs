@@ -10,6 +10,7 @@ import Link from 'next/link';
 import BlogCard from '../allblogs/BlogCard';
 import UserData from '@/app/actions/UserData';
 import NotifyAdd from '../action/NotifyAdd';
+import NotifyList from '../action/NotifyList';
 
 const FBlogs = (props) => {//props will decide
   const minheight=props.minheight
@@ -33,8 +34,19 @@ const FBlogs = (props) => {//props will decide
   const [data2, setdata2] = useState([])
   const [finish, setfinish] = useState(false)
   const [showSpinner, setshowSpinner] = useState(false)
-  const [shownot, setshownot] = useState(false)
-  const [taskNot, settaskNot] = useState("")
+  const [notlist, setnotlist] = useState([])
+useEffect(() => {
+    if(notlist.length>0){
+        const timeout = setTimeout(() => {
+
+        setnotlist(prev => prev.slice(1, prev.length))
+
+      }, 2500)
+    
+    return () => clearTimeout(timeout) // cleanup timer
+        }
+  
+  }, [notlist])
 
   useEffect(() => {
    //console.log("first")
@@ -206,26 +218,15 @@ const FBlogs = (props) => {//props will decide
 { data2.length!=0 &&    <Image width={100} height={100} src={'/arrow.png'} style={{height:"2.2rem",width:"2.2rem"}}/>
 }      { data2.map((item,ind)=>(
         <li key={item.slug}>
-        {/* <Link href={`/blog/${item.slug}`} className={styles.linkWrapper}>
-        <article className={styles.listItem}>
-        <Image
-            src={item.coverImageUrl}
-            alt={item.title}
-            width={300}
-            height={200}
-            style={{ objectFit: 'fill' }}
-            />
-          <span>{item.title}</span>
-          </article>
-          </Link> */}
-          <BlogCard item={item} saved={isSaved(item.slug)} mobile={true} setNot={setshownot} setTaskNot={settaskNot}/>
+    
+          <BlogCard item={item} saved={isSaved(item.slug)} mobile={true} funtosetNotList={setnotlist} notList={notlist}/>
           </li>
       ))}
     </ul>
     {showSpinner &&<div style={{marginTop:"0.7rem",marginBottom:"0.3rem"}}><Spinner2/></div> } 
 {(data2.length!=0 && (!finish) && !showSpinner) &&<button onClick={b} style={{width:"fit-content",alignSelf:'center',border:"0",color:"grey",margin:"0.7rem",cursor:"pointer",background:"transparent"}}>more</button>}  
     
-     <NotifyAdd show={shownot} task={taskNot}/>   
+        <NotifyList list={notlist}/>
 </section>
   )
 }

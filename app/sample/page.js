@@ -1,11 +1,11 @@
+import NotifyList from "../components/action/NotifyList"
 
 const page = () => {
 
   return (
     <div style={{height:"110vh"}}>
-      
-
-</div>
+      <NotifyList/>
+      </div>
   )
 }
 

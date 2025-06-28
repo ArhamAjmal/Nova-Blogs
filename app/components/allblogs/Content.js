@@ -12,14 +12,15 @@ import getLimitedBlogs from '@/app/actions/getLimitedBlogs';
 import BlogCard from './BlogCard';
 import { useUser } from '@clerk/nextjs';
 import NotifyAdd from '../action/NotifyAdd';
+import NotifyList from '../action/NotifyList';
 const Content = (props) => {//lazyloading+catch
   const scrollRefs = useRef({});
   const {user, isLoaded} = useUser();//is loaded?
   const [saved, setsaved] = useState(props.saved)
   const Allcats=props.cat || []
   const recentBlogs=props.recentBlogs || []
-  const [shownot, setshownot] = useState(false)
-  const [taskNot, settaskNot] = useState("")
+  const [notlist, setnotlist] = useState([])
+  
  const scroll = (category, direction) => {
   const container = scrollRefs.current[category];
   if (container) {
@@ -35,6 +36,20 @@ const Content = (props) => {//lazyloading+catch
   const [cat,setcat]=useState([])
   const [Allblogs, setAllblogs] = useState({})
   const [isHovered, setIsHovered] = useState(false);
+   
+  useEffect(() => {
+    if(notlist.length>0){
+        const timeout = setTimeout(() => {
+
+        setnotlist(prev => prev.slice(1, prev.length))
+
+      }, 2500)
+    
+    return () => clearTimeout(timeout) // cleanup timer
+        }
+  
+  }, [notlist])
+  
   //getting recent blogs
   useEffect(() => {//isko v
       const fetchRecent = async () => {
@@ -101,6 +116,8 @@ const Content = (props) => {//lazyloading+catch
   if ((Object.keys(Allblogs).length<4 && cat.length!=allCat.length) || (cat.length==0) || Object.keys(Allblogs).length<=1 ){
     return(<div style={{minHeight:"110vh"}}><Spinner/></div>)
   }
+
+
   return (
     <section className={styles.allList}>
       {/* {Object.keys(Allblogs).length==0 && <Spinner/>} */}
@@ -116,7 +133,7 @@ const Content = (props) => {//lazyloading+catch
      <button onClick={() => scroll(category, 'left')}><Image height={25} width={25} alt="Scroll Left" src={'https://res.cloudinary.com/djruzbhto/image/upload/v1749240844/next_4_vndtsl.png'} /></button>
 
       { blogs.map((item,ind)=>(
-        <BlogCard key={ind} item={item} saved={isSaved(item.slug)} setNot={setshownot} setTaskNot={settaskNot}/>
+        <BlogCard key={ind} item={item} saved={isSaved(item.slug)} funtosetNotList={setnotlist} notList={notlist}/>
       ))}
           <button onClick={() => scroll(category, 'right')}><Image height={25} width={25} alt="Scroll Left" src={'https://res.cloudinary.com/djruzbhto/image/upload/v1749240839/next_4_dqze8s.png'}/></button>
     </nav>
@@ -128,7 +145,7 @@ const Content = (props) => {//lazyloading+catch
     {(Object.keys(Allblogs).length>2 && cat.length!=allCat.length) &&<button onClick={a} style={{marginBottom:"0.4rem"}}>more</button>}
     {cat.length!=(Object.keys(Allblogs).length-1) && <Spinner2/>}
          
-    <NotifyAdd show={shownot} task={taskNot}/>   
+    <NotifyList list={notlist}/>
     </section>
   )
 }
