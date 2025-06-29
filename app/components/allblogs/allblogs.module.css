@@ -264,6 +264,10 @@ border: 1px solid white; */
     width: 16.5rem;
     height:10.5rem;
 }
+.listItem img:last-child{
+  width: 1.3rem;
+  height: 1.2rem;
+}
 .listItem span{
     font-size: 0.88rem;
     font-size: 0.95rem;
@@ -455,7 +459,12 @@ border: 1px solid white; */
         height: 14rem;
   }
   .mobile span{
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+    min-height: 2.8rem;
+  }
+  .mobile img:last-child{
+    width: 1.5rem;
+  height: 1.4rem;
   }
 
 }

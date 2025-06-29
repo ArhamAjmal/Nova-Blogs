@@ -118,23 +118,28 @@ html{
 
 
 
-@media (min-width: 500px) and (max-width: 785px) {
+@media (min-width: 500px)  {
   html{
     font-size: 14px;
   }
 }
-@media (min-width: 785px) and (max-width: 960px) {
+@media (min-width: 1000px){ 
+    html{
+    font-size: 15px;
+  }
+     }
+/* @media (min-width: 785px) and (max-width: 960px) {
   html{
     font-size: 14px;
   }
 }
      
-@media (min-width: 960px)and (max-width: 1100px){ /*initial min:870*/
+@media (min-width: 960px)and (max-width: 1100px){ 
     html{
     font-size: 15px;
   }
      }
-     @media (min-width: 1100px)and (max-width: 1200px){ /*initial min:870*/
+     @media (min-width: 1100px)and (max-width: 1200px){ 
     html{
     font-size: 16px;
   }
@@ -144,18 +149,9 @@ html{
     html{
     font-size: 17px;
   }
-     }
+     } */
 
 
-
-
-
-
-
-     /* styles/nprogress.css */
-/* #nprogress {
-  pointer-events: none;
-} */
 
 #nprogress .bar {
   background: rgb(221, 124, 34); /* You can change the color */

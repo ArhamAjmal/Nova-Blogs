@@ -22,6 +22,14 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'img.clerk.com', // ✅ Clerk image URLs
       },
+      {
+      protocol: 'https',
+      hostname: 'images.unsplash.com',
+    },
+     {
+        protocol: 'https',
+        hostname: 'plus.unsplash.com',
+      },
 
     ],
   },

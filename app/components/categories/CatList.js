@@ -31,7 +31,7 @@ const CatList = (props) => {
       else if(c=="Crypto"){
         return("https://res.cloudinary.com/djruzbhto/image/upload/v1748694433/bitcoin-what-is-crypto-scaled_qplqyp.jpg")
       }
-      else return("/Me2.jpg")
+      else return("https://plus.unsplash.com/premium_photo-1681426687411-21986b0626a8?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
      }
   return (
     <div style={{minHeight:"100vh"}}>
