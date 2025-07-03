@@ -66,13 +66,14 @@
 /* Lists */
 .container ol {
   padding-left: 1.5rem;
-  margin: 0.3rem 3rem;
+  margin: 0.3rem 2rem;
   list-style-type: lower-alpha;
 }
 .container ul {
   padding-left: 1.5rem;
-  margin: 0.3rem 3rem;
+  margin: 0.3rem 1.3rem;
   list-style-type: square;
+  background-color: rgba(255, 166, 0, 0.171);
 }
 
 .container li {
@@ -123,9 +124,9 @@
 
 /* Horizontal Rule */
 .container hr {
-  border: none;
-  height: 0.3px;
-  background-color: #ffffff4e;
+  /* border: 1px solid black; */
+  height: 1.3px;
+  background-color: #fc4300e8;
   margin: 1rem 0;
 }
 

@@ -277,7 +277,8 @@ border: 1px solid white; */
     /* background-color: #d2860c; */
     padding: 0.25rem 0 0 0;
     color: #000000ee;
-    min-height: 2.45rem;
+    min-height: 3.5rem;
+    max-height: 3.5rem;
     font-weight: bold;
     /* background-color: red; */
 }
@@ -489,7 +490,9 @@ border: 1px solid white; */
 
 @media (min-width: 1430px){
   .maincon{
-        padding: 0.7rem 4rem 0 4rem;
+        padding: 1rem 8rem 1rem 8rem;
+        /* background-color: rgb(255, 81, 0); */
+    height: fit-content;
 
   }
 }
