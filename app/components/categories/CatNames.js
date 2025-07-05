@@ -1,12 +1,25 @@
 "use client"
 import React, { useEffect, useRef, useState } from 'react'
 import styles from './Filter.module.css'
-import { useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
+import { scale } from 'framer-motion'
 
 const CatNames = () => {
   const r=useRouter();
+  const pathname = usePathname();
+ const activeStyle = {
+    backgroundColor: 'orange',
+    // border: '2px solid gray',
+    color: 'white',
+    transform:'scale(1.06)',
+  };
+  // Example logic
+  const isHome = pathname === '/home';
+  const isCategoryPage = pathname.startsWith('/category');
+  const isBlogDetail = pathname.includes('/blog/');
+
   const reff=useRef()
     const [Cats, setCats] = useState(["Health","Science","Tech","Crypto","Gadgets","Startups","RealEstate","Coding","Ai","Future"])
   
@@ -30,6 +43,12 @@ const CatNames = () => {
     };
   }, []);
 
+  useEffect(() => {
+    console.log(pathname)
+  
+  }, [pathname])
+  
+
   return (
     <section className={styles.mainCatNames} >
         <h2>
@@ -39,7 +58,7 @@ const CatNames = () => {
     <nav className={styles.CatNames} ref={reff} aria-label="Category Navigation">
       {Cats.map((item,ind)=>(
         <Link key={ind} href={`/categories/${item}`} className='linkWrapper'>
-        <div key={ind}>{item}</div>
+        <div key={ind} style={(pathname==`/categories/${item}`)?activeStyle:undefined}>{item}</div>
 </Link>
       ))}
     </nav>

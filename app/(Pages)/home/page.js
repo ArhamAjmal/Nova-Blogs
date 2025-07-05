@@ -1,9 +1,4 @@
 import React from 'react'
-import NavBar from '../../components/allblogs/NavBar'
-import Content from '../../components/allblogs/Content'
-import Filter from '../../components/categories/Filter'
-import CatNames from '../../components/categories/CatNames'
-import Footer from '../../components/Footer/Footer'
 import { auth, currentUser } from "@clerk/nextjs/server";
 
 import CreatUser from '@/app/components/action/CreatUser'
@@ -15,6 +10,8 @@ import UserData from '@/app/actions/UserData'
 import allCategories from '@/app/actions/allCategories'
 import getLimitedBlogs from '@/app/actions/getLimitedBlogs'
 import NotifyAdd from '@/app/components/action/NotifyAdd'
+import Content from '@/app/components/allblogs/Content';
+import CatNames from '@/app/components/categories/CatNames';
 // import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/nextjs'
 //server component
 // ✅ 1. Add metadata for SEO
@@ -51,6 +48,7 @@ const page =async () => {
     <main >
       {user && <CreatUser/>}
       
+      {/* <CatNames/> */}
       <CatNames/>
       <Content saved={Udata.readLater} cat={cat} recentBlogs={recentBlogs.data}/>
       {/* <NotifyAdd show={true} task={"remove"}/> */}

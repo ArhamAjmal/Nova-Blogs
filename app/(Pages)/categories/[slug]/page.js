@@ -6,6 +6,7 @@ import styles from '../cat.module.css'
 import dbConnect from '@/app/lib/connect'
 import UserData from '@/app/actions/UserData'
 import Image from 'next/image'
+import CatNames from '@/app/components/categories/CatNames'
 //server
 const page =async ({ params }) => {
   await dbConnect()
@@ -37,8 +38,8 @@ const page =async ({ params }) => {
   
   return (
     <main>
+      <CatNames/>
             <section aria-label="Liked Blogs">
-
         <h1 className={styles.slugDisplay}>
           <Image width={100} height={100} src={'/categories.png'} style={{height:"1.5rem",width:"1.5rem"}}/>
           {slug.charAt(0).toUpperCase() + slug.slice(1)}</h1>
