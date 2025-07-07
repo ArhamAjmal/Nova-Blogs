@@ -31,7 +31,7 @@ const NavBar = () => {
 
   useEffect(() => {
     if (headerRef.current) {
-      setHeaderHeight(headerRef.current.offsetHeight-30);
+      setHeaderHeight(headerRef.current.offsetHeight);
     }
   }, []);
 
@@ -41,9 +41,9 @@ const NavBar = () => {
       const lastY = lastScrollYRef.current;
 
       if (currentY > headerHeight) {
-        if (currentY > lastY) {
+        if (currentY-5 > lastY) {
           setShowHeader(false); // scrolling down
-        } else {
+        } else if (currentY+5 < lastY){
           setShowHeader(true); // scrolling up
         }
       } else {
