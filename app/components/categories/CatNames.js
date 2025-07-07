@@ -21,7 +21,7 @@ const CatNames = () => {
   const isBlogDetail = pathname.includes('/blog/');
 
   const reff=useRef()
-    const [Cats, setCats] = useState(["Health","Science","Tech","Crypto","Gadgets","Startups","RealEstate","Coding","Ai","Future"])
+    const [Cats, setCats] = useState(["Health","Science","Tech","Crypto","Gadgets","Startups","RealEstate","Coding","AI","Future"])
   
     useEffect(() => {
       const a=()=>{
