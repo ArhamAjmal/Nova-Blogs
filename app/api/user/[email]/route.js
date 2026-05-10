@@ -1,68 +1,84 @@
-//updating user info
 import { NextResponse } from "next/server";
+import { currentUser } from "@clerk/nextjs/server";
 import dbConnect from '@/app/lib/connect';
 import UserModel from "@/app/lib/userModel";
 
-//user apis
-export async function GET(request, { params }) {//Get User info
-  await dbConnect();
-  const {email } =await params;
-  const user = await UserModel.findOne({email});//.lean() to return a plain JavaScript object instead of a Mongoose document
-  // console.log(user)
-  if(!user){
-      return NextResponse.json({success:false,data:"user dont exist"})
+const requireSelf = async (paramEmail) => {
+  const u = await currentUser();
+  if (!u) return { error: NextResponse.json({ success: false, data: "unauthenticated" }, { status: 401 }) };
+  const email = u.primaryEmailAddress?.emailAddress;
+  if (!email || email !== paramEmail) {
+    return { error: NextResponse.json({ success: false, data: "forbidden" }, { status: 403 }) };
   }
-  return NextResponse.json({success:true,data:user})
-}
-export async function POST(request, { params }) {//Create user
-  const {liked, readLater } = await request.json();
-  const {email } =await params;
+  return { user: u, email };
+};
+
+export async function GET(request, { params }) {
   await dbConnect();
-  const newData=new UserModel({email,liked,readLater})
-   newData.save()
-  return NextResponse.json({ success: true, data: "Upload data" });
+  const { email } = await params;
+  const guard = await requireSelf(email);
+  if (guard.error) return guard.error;
+
+  const user = await UserModel.findOne({ clerkId: guard.user.id });
+  if (!user) return NextResponse.json({ success: false, data: "user dont exist" });
+  return NextResponse.json({ success: true, data: user });
 }
-export async function PUT(request, {params}) {//update liked and read later array pf user
+
+export async function POST(request, { params }) {
+  await dbConnect();
+  const { email } = await params;
+  const guard = await requireSelf(email);
+  if (guard.error) return guard.error;
+
+  const existing = await UserModel.findOne({ clerkId: guard.user.id });
+  if (existing) return NextResponse.json({ success: true, data: existing });
+
+  const { liked = [], readLater = [] } = await request.json();
+  const username = (email.split("@")[0] || `user${Date.now()}`).toLowerCase();
+  const created = await UserModel.create({
+    clerkId: guard.user.id,
+    email,
+    username,
+    displayName: guard.user.fullName || username,
+    avatarUrl: guard.user.imageUrl || "",
+    liked,
+    readLater,
+  });
+  return NextResponse.json({ success: true, data: created });
+}
+
+export async function PUT(request, { params }) {
+  await dbConnect();
+  const { email } = await params;
+  const guard = await requireSelf(email);
+  if (guard.error) return guard.error;
+
   const { field, slug } = await request.json();
-  const {email } =await params;
-  await dbConnect();
-
-  if (!email) return NextResponse.json({ error: 'Email is required' }, { status: 400 });
-
-  const updatedUser = await UserModel.findOneAndUpdate({ email },
-    { $addToSet: { [field]: slug } }, // Ensures uniqueness
+  if (!["liked", "readLater"].includes(field)) {
+    return NextResponse.json({ success: false, data: "invalid field" }, { status: 400 });
+  }
+  const updated = await UserModel.findOneAndUpdate(
+    { clerkId: guard.user.id },
+    { $addToSet: { [field]: slug } },
     { new: true }
   );
-
-  return NextResponse.json({ success: true, data: updatedUser });
+  return NextResponse.json({ success: true, data: updated });
 }
-export async function DELETE(request, {params}) {//delete slug from liked and read later array of user
-  const { field, slug } = await request.json();
-  const {email } =await params;
+
+export async function DELETE(request, { params }) {
   await dbConnect();
+  const { email } = await params;
+  const guard = await requireSelf(email);
+  if (guard.error) return guard.error;
 
-  if (!email) return NextResponse.json({ error: 'Email is required' }, { status: 400 });
-
-  const updatedUser = await UserModel.findOneAndUpdate({ email },
-    { $pull: { [field]: slug } }, // Ensures uniqueness
+  const { field, slug } = await request.json();
+  if (!["liked", "readLater"].includes(field)) {
+    return NextResponse.json({ success: false, data: "invalid field" }, { status: 400 });
+  }
+  const updated = await UserModel.findOneAndUpdate(
+    { clerkId: guard.user.id },
+    { $pull: { [field]: slug } },
     { new: true }
   );
-
-  return NextResponse.json({ success: true, data: updatedUser });
+  return NextResponse.json({ success: true, data: updated });
 }
-
-  /**Cheat sheet for operations
-   * 1.Get:
-   * a)const allBlogs = await BlogModel.find(); // Returns array of all blogs
-   * b)const oneBlog = await BlogModel.findOne({ ID: 345 });
-   * c)const oneBlog = await BlogModel.findById("mongodbObjectIdHere");
-   * d)const blogs = await BlogModel.find({ category: "Tech" }).sort({ date: -1 }).limit(5);
-   * 2.Update
-   * a)BlogModel.updateOne({title:"My Blog5"},{title:"My Blog6"})
-   * b)seperate for id
-   * 3.Delete
-   * a)await BlogModel.deleteOne({ ID: 345 });
-   * b)await BlogModel.deleteMany({ category: "OldCategory" });
-   * c)await BlogModel.findByIdAndDelete("mongodbObjectIdHere");
-   * 
-   */

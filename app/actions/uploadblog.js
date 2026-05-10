@@ -1,45 +1,64 @@
-"use server"
+"use server";
 
-import dbConnect from "../lib/connect"
+import dbConnect from "../lib/connect";
 import BlogModel from "../lib/model";
+import { requireUser } from "../lib/auth";
 
-const uploadblog = async(data) => {
-    await dbConnect();
-    console.log(data)
-    const slug=data.slug
-     // Check if a blog with the same slug already exists
-  const existing = await BlogModel.findOne({ slug });
-
-  if (existing) {
-    console.log("slug already exist")
-    return({Success:false,data:"Slug already exist"})
-  }
-  else{
-    //trimming
-    const trimfun=(obj)=>{
-      const trimmed = {};
+const trimStrings = (obj) => {
+  const out = {};
   for (const key in obj) {
-    if (typeof obj[key] === 'string') {
-      trimmed[key] = obj[key].trim();
-    } else {
-      trimmed[key] = obj[key]; // keep non-strings untouched
-    }
+    out[key] = typeof obj[key] === "string" ? obj[key].trim() : obj[key];
   }
-  return trimmed;
-    }
-    const clean = trimfun(data);
-    const newData=new BlogModel(clean)
-    // .then(ress=>console.log("Add:",ress))//Models automatically save data in a pluralized collection (e.g., "todos" from model name Todo).
-    // .catch(err=>console.log("error:",err.errors))//printing age specific error
-    const savedBlog = await newData.save();
-    return({success:true,data:JSON.parse(JSON.stringify(savedBlog)) })
+  return out;
+};
 
+const computeReadingTime = (markdown) => {
+  const words = (markdown || "").split(/\s+/).filter(Boolean).length;
+  return Math.max(1, Math.round(words / 200));
+};
+
+const buildExcerpt = (markdown) => {
+  const stripped = (markdown || "")
+    .replace(/```[\s\S]*?```/g, "")
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, "")
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, "$1")
+    .replace(/[#>*_`~-]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+  return stripped.slice(0, 200);
+};
+
+const uploadBlog = async (data) => {
+  let session;
+  try {
+    session = await requireUser();
+  } catch {
+    return { success: false, data: "You must be signed in to publish." };
   }
-    
-    ////*/
-    // const oneBlog = await BlogModel.findOne({ slug });//.lean() to return a plain JavaScript object instead of a Mongoose document
-    // const oneBlog2=JSON.parse(JSON.stringify(oneBlog))
-  
-}
+  await dbConnect();
 
-export default uploadblog
+  const clean = trimStrings(data);
+  const slug = clean.slug;
+
+  const collision = await BlogModel.findOne({ slug });
+  if (collision) return { success: false, data: "Slug already taken. Try a different one." };
+
+  const status = clean.status === "published" ? "published" : "draft";
+  const doc = new BlogModel({
+    ...clean,
+    status,
+    publishedAt: status === "published" ? new Date() : null,
+    excerpt: clean.excerpt || buildExcerpt(clean.description),
+    readingTime: computeReadingTime(clean.description),
+    authorId: session.clerkId,
+    authorUsername: session.profile.username,
+    authorName: session.profile.displayName || session.fullName,
+    authorAvatar: session.profile.avatarUrl || session.imageUrl,
+    author: clean.author || session.profile.displayName || session.fullName,
+  });
+
+  const saved = await doc.save();
+  return { success: true, data: JSON.parse(JSON.stringify(saved)) };
+};
+
+export default uploadBlog;

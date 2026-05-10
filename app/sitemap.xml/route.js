@@ -14,7 +14,7 @@ export async function GET() {
 
     await dbConnect();
 
-    const blogs = await BlogModel.find().select('slug updatedAt');
+    const blogs = await BlogModel.find({ status: "published" }).select('slug updatedAt');
 
    const blogUrls = blogs.map((blog) => {
   const lastMod = blog.updatedAt || blog.createdAt || Date.now();

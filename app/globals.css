@@ -46,6 +46,44 @@ a {
   font-family: Arial, Helvetica, sans-serif;
   transition: transform 0.2s ease, opacity 0.3s ease;
 }
+
+/* ── Public site design tokens — apply on the public layout root ───── */
+.site-theme {
+  --site-bg: #f8fafc;
+  --site-surface: #ffffff;
+  --site-surface-alt: #f1f5f9;
+  --site-border: #e2e8f0;
+  --site-border-strong: #cbd5e1;
+
+  --site-text: #0f172a;
+  --site-text-muted: #475569;
+  --site-text-subtle: #94a3b8;
+
+  --site-accent: #4f46e5;
+  --site-accent-hover: #4338ca;
+  --site-accent-soft: #eef2ff;
+  --site-accent-fg: #ffffff;
+
+  --site-nav-bg: #0b1220;
+  --site-nav-fg: #e2e8f0;
+  --site-nav-fg-muted: #94a3b8;
+  --site-nav-border: rgba(255, 255, 255, 0.08);
+
+  --site-radius: 14px;
+  --site-radius-sm: 10px;
+  --site-radius-pill: 999px;
+
+  --site-shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
+  --site-shadow: 0 6px 16px rgba(15, 23, 42, 0.08);
+  --site-shadow-lg: 0 18px 40px rgba(15, 23, 42, 0.14);
+
+  --site-font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --site-font-serif: "Source Serif 4", "Charter", Georgia, "Times New Roman", serif;
+
+  background: var(--site-bg);
+  color: var(--site-text);
+  font-family: var(--site-font-sans);
+}
 html {
   margin: 0;
   padding: 0;
