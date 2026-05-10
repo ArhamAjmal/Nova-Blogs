@@ -98,7 +98,7 @@ const BlogList = ({ initialPublished = [], initialDrafts = [] }) => {
       {tab === "activity" ? (
         <div className={styles.empty}>
           <p className={styles.emptyTitle}>Activity feed coming soon</p>
-          <p>You'll see likes, comments, and follows here.</p>
+          <p>You&apos;ll see likes, comments, and follows here.</p>
         </div>
       ) : list.length === 0 ? (
         <div className={styles.empty}>

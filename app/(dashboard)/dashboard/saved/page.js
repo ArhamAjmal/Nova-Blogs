@@ -20,7 +20,7 @@ const Page = async () => {
   return (
     <>
       <h1 className={styles.pageTitle}>Saved</h1>
-      <p className={styles.pageSub}>Posts you've saved to read later.</p>
+      <p className={styles.pageSub}>Posts you&apos;ve saved to read later.</p>
 
       {blogs.length === 0 ? (
         <div className={styles.empty}>

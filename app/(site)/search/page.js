@@ -33,7 +33,7 @@ const Page = async ({ searchParams }) => {
   return (
     <main className={styles.pageWrap}>
       <h1 className={styles.heading}>
-        {query ? <>Results for <em>"{query}"</em></> : "Search"}
+        {query ? <>Results for <em>&quot;{query}&quot;</em></> : "Search"}
       </h1>
       <p className={styles.subheading}>
         {query

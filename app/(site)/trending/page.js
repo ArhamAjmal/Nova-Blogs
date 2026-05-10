@@ -29,7 +29,7 @@ const Page = async () => {
       <h1 className={styles.heading} style={{ display: "inline-flex", alignItems: "center", gap: "0.6rem" }}>
         <FaFire color="#ef4444" /> Trending Now
       </h1>
-      <p className={styles.subheading}>The articles capturing readers' attention this week.</p>
+      <p className={styles.subheading}>The articles capturing readers&apos; attention this week.</p>
 
       {top && (
         <Link href={`/blog/${top.slug}`} className={styles.heroPrimary} style={{ display: "block", marginBottom: "2rem" }}>
