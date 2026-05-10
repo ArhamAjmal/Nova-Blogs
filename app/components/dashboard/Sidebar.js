@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { SignOutButton } from "@clerk/nextjs";
 import { FaPen, FaChartBar, FaBookmark, FaGear, FaArrowRightFromBracket, FaHouse } from "react-icons/fa6";
@@ -20,7 +21,7 @@ const Sidebar = () => {
   return (
     <aside className={styles.sidebar}>
       <Link href="/" className={styles.brand}>
-        <span className={styles.brandDot}>N</span>
+        <Image src="/logo.svg" alt="Nova Blogs" width={28} height={28} className={styles.brandLogo} />
         <span>Nova Blogs</span>
       </Link>
 

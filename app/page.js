@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
@@ -27,7 +28,7 @@ export default function Home() {
     <div className={`site-theme ${landing.landing}`}>
       <header className={landing.landingHeader}>
         <Link href="/" className={landing.landingBrand}>
-          <span className={landing.landingBrandDot}>N</span>
+          <Image src="/logo.svg" alt="Nova Blogs" width={32} height={32} className={landing.landingBrandLogo} priority />
           <span>Nova Blogs</span>
         </Link>
         <nav className={landing.landingNav}>

@@ -1,15 +1,16 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter, usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   SignInButton,
   SignedIn,
   SignedOut,
   UserButton,
 } from "@clerk/nextjs";
-import { FaMagnifyingGlass, FaPen, FaGauge } from "react-icons/fa6";
+import { FaMagnifyingGlass, FaPen, FaGauge, FaBars, FaXmark } from "react-icons/fa6";
 import styles from "./site.module.css";
 
 const NAV = [
@@ -23,6 +24,11 @@ const SiteHeader = () => {
   const router = useRouter();
   const pathname = usePathname() || "";
   const [q, setQ] = useState("");
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -34,9 +40,19 @@ const SiteHeader = () => {
   return (
     <header className={styles.header}>
       <div className={styles.headerInner}>
+        <button
+          type="button"
+          className={styles.menuToggle}
+          aria-label="Toggle menu"
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen((v) => !v)}
+        >
+          {menuOpen ? <FaXmark size={18} /> : <FaBars size={18} />}
+        </button>
+
         <Link href="/" className={styles.brand}>
-          <span className={styles.brandDot}>N</span>
-          <span>Nova Blogs</span>
+          <Image src="/logo.svg" alt="Nova Blogs" width={32} height={32} className={styles.brandLogo} priority />
+          <span className={styles.brandText}>Nova Blogs</span>
         </Link>
 
         <nav className={styles.nav}>
@@ -82,6 +98,23 @@ const SiteHeader = () => {
           </SignInButton>
         </SignedOut>
       </div>
+
+      {menuOpen && (
+        <nav className={styles.mobileNav}>
+          {NAV.map(({ href, label }) => {
+            const active = pathname === href || pathname.startsWith(`${href}/`);
+            return (
+              <Link
+                key={href}
+                href={href}
+                className={`${styles.mobileNavLink} ${active ? styles.mobileNavLinkActive : ""}`}
+              >
+                {label}
+              </Link>
+            );
+          })}
+        </nav>
+      )}
     </header>
   );
 };

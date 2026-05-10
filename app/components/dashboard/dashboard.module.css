@@ -66,16 +66,11 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   margin-bottom: 1rem;
 }
-.brandDot {
+.brandLogo {
   width: 28px;
   height: 28px;
-  border-radius: 8px;
-  background: linear-gradient(135deg, #818cf8, #6366f1);
-  display: grid;
-  place-items: center;
-  color: #fff;
-  font-size: 0.85rem;
-  font-weight: 800;
+  display: block;
+  flex-shrink: 0;
 }
 .navLink {
   display: flex;

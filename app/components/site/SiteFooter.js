@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useUser } from "@clerk/nextjs";
 import { FaTwitter, FaFacebook, FaInstagram, FaGithub } from "react-icons/fa6";
 import styles from "./site.module.css";
@@ -13,7 +14,10 @@ const SiteFooter = () => {
     <footer className={styles.footer}>
       <div className={styles.footerInner}>
         <div className={`${styles.footerCol} ${styles.footerBrand}`}>
-          <h4>Nova Blogs</h4>
+          <h4 className={styles.footerBrandTitle}>
+            <Image src="/logo.svg" alt="Nova Blogs" width={28} height={28} />
+            <span>Nova Blogs</span>
+          </h4>
           <p>Fresh perspectives and thought-provoking insights for curious minds.</p>
           <div className={styles.footerSocials}>
             <a className={styles.footerSocial} href="#" aria-label="Twitter"><FaTwitter size={14} /></a>
